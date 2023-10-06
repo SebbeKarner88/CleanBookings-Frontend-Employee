@@ -4,16 +4,22 @@ import 'bootstrap/dist/css/bootstrap.css';
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import {AuthContext} from "./context/AuthContext.tsx";
 import {LoginView} from "./views/LoginView.tsx";
-import MyPages from "./views/MyPages.tsx";
+import AdminPages from "./views/AdminPages.tsx";
+import CleanerPages from "./views/CleanerPages.tsx";
 
 function App() {
-    const {isAuthenticated} = useContext(AuthContext);
+    const {isAuthenticated, role} = useContext(AuthContext);
 
     return (
         <BrowserRouter>
             <Routes>
                 <Route path="/" element={<LoginView/>}/>
-                <Route path="/my-pages" element={isAuthenticated ? <MyPages/> : <LoginView/>}/>
+                <Route path="/my-pages" element={
+                    isAuthenticated && role == "ADMIN"
+                        ? <AdminPages/>
+                        : isAuthenticated && role == "CLEANER"
+                            ? <CleanerPages/>
+                            : <LoginView/>}/>
             </Routes>
         </BrowserRouter>
     )
