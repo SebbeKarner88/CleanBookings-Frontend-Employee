@@ -1,12 +1,13 @@
-import React from "react";
+import {Dispatch, SetStateAction} from "react";
 import api from "./ApiRootUrl.ts";
 
 export async function loginEmployee(
     email: string,
     password: string,
-    setIsAuthenticated: React.Dispatch<React.SetStateAction<boolean>>,
-    setEmployeeId: React.Dispatch<React.SetStateAction<string>>,
-    setRole: React.Dispatch<React.SetStateAction<string>>,
+    setIsAuthenticated: Dispatch<SetStateAction<boolean>>,
+    setEmployeeId: Dispatch<SetStateAction<string>>,
+    setUsername: Dispatch<SetStateAction<string>>,
+    setRole: Dispatch<SetStateAction<string>>,
 ) {
     try {
         const response = await api.post(
@@ -19,6 +20,7 @@ export async function loginEmployee(
         if (response.status == 200) {
             setIsAuthenticated(true);
             setEmployeeId(response.data.employeeId);
+            setUsername(response.data.username);
             setRole(response.data.role);
             return response;
         }

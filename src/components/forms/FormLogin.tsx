@@ -31,10 +31,14 @@ export function FormLogin() {
     });
     const [errorMessage, setErrorMessage] = useState<string | null>(null);
     const navigation = useNavigate();
-    const {setIsAuthenticated, setEmployeeId, setRole} = useContext(AuthContext);
+    const {setIsAuthenticated,
+        setEmployeeId,
+        setUsername,
+        setRole
+    } = useContext(AuthContext);
 
     function onSubmit(data: FieldValues) {
-        loginEmployee(data.emailAddress, data.password, setIsAuthenticated, setEmployeeId, setRole).then(response => {
+        loginEmployee(data.emailAddress, data.password, setIsAuthenticated, setEmployeeId, setUsername, setRole).then(response => {
             if (response?.status == 200) {
                 navigation("/my-pages");
             } else {

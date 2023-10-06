@@ -1,12 +1,14 @@
-import React, { createContext, ReactNode, useState } from 'react';
+import {createContext, Dispatch, ReactNode, SetStateAction, useState} from 'react';
 
 interface IAuthContext {
     isAuthenticated: boolean;
-    setIsAuthenticated: React.Dispatch<React.SetStateAction<boolean>>;
+    setIsAuthenticated: Dispatch<SetStateAction<boolean>>;
     employeeId: string;
-    setEmployeeId: React.Dispatch<React.SetStateAction<string>>;
+    setEmployeeId: Dispatch<SetStateAction<string>>;
+    username: string;
+    setUsername: Dispatch<SetStateAction<string>>;
     role: string,
-    setRole: React.Dispatch<React.SetStateAction<string>>;
+    setRole: Dispatch<SetStateAction<string>>;
 }
 
 const defaultAuthContext: IAuthContext = {
@@ -15,6 +17,9 @@ const defaultAuthContext: IAuthContext = {
     },
     employeeId: "",
     setEmployeeId: () => {
+    },
+    username: "",
+    setUsername: () => {
     },
     role: "",
     setRole: () => {
@@ -26,6 +31,7 @@ export const AuthContext = createContext<IAuthContext>(defaultAuthContext);
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
     const [ isAuthenticated, setIsAuthenticated ] = useState(false);
     const [ employeeId, setEmployeeId ] = useState("");
+    const [ username, setUsername ] = useState("");
     const [ role, setRole ] = useState("");
 
     const authContextValue = {
@@ -33,6 +39,8 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
         setIsAuthenticated,
         employeeId: employeeId,
         setEmployeeId: setEmployeeId,
+        username,
+        setUsername,
         role: role,
         setRole: setRole
     };
