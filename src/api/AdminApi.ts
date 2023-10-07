@@ -6,7 +6,7 @@ export async function getAllJobs(employeeId: string) {
             "/admin/jobs",
             {
                 params: {
-                    employeeId: employeeId
+                    employeeId: employeeId,
                 }
             });
         if (response.status == 200) {

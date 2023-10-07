@@ -1,6 +1,8 @@
+type JobStatus = "OPEN" | "ASSIGNED" | "WAITING_FOR_APPROVAL" | "NOT_APPROVED" | "APPROVED" | "CLOSED";
+
 interface IJobsTable {
-    jobs: Job[] | undefined
-    status?: "OPEN" | "ASSIGNED" | "APPROVED" | "NOT_APPROVED"
+    jobs: Job[] | undefined,
+    statuses?: string[]
 }
 
 interface Job {
@@ -12,7 +14,7 @@ interface Job {
     employeeIds: string[]
 }
 
-export function JobsTable({jobs, status}: IJobsTable) {
+export function JobsTable({jobs, statuses}: IJobsTable) {
     return (
         <div className="table-responsive">
             <table className="table table-responsive table-striped table-hover" data-bs-theme="dark">
@@ -20,39 +22,36 @@ export function JobsTable({jobs, status}: IJobsTable) {
                 <tr>
                     <th scope="col">Job ID</th>
                     <th scope="col">Type</th>
+                    <th scope="col">Status</th>
                     <th scope="col">Message</th>
                     <th scope="col">Customer ID</th>
                     <th scope="col">Employees</th>
                 </tr>
                 </thead>
                 <tbody>
-                {
-                    status
-                        ? jobs?.filter((job: Job) => job.jobStatus == status).map((job: Job) => (
+                {jobs?.map((job: Job) => {
+                    // Check if a status filter is provided and if the job's status is included in the filter
+                    if (!statuses || statuses.includes(job.jobStatus as JobStatus)) {
+                        return (
                             <tr key={job.jobId} className="align-middle">
                                 <td>{job.jobId}</td>
                                 <td>{job.jobType}</td>
+                                <td>{job.jobStatus}</td>
                                 <td>{job.jobMessage}</td>
                                 <td>{job.customerId}</td>
                                 <td>
-                                    {
-                                        job.employeeIds.length == 0 || job.jobStatus == "NOT_APPROVED"
-                                            ? <button className="btn btn-primary">Assign employee(s)</button>
-                                            : job.employeeIds.join(", ")
-                                    }
+                                    {job.employeeIds.length === 0 || job.jobStatus === "NOT_APPROVED" ? (
+                                        <button className="btn btn-primary">Assign employee(s)</button>
+                                    ) : (
+                                        job.employeeIds.join(", ")
+                                    )}
                                 </td>
                             </tr>
-                        ))
-                        : jobs?.map((job: Job) => (
-                            <tr key={job.jobId}>
-                                <td>{job.jobId}</td>
-                                <td>{job.jobType}</td>
-                                <td>{job.jobMessage}</td>
-                                <td>{job.customerId}</td>
-                                <td>{job.employeeIds.join(", ")}</td>
-                            </tr>
-                        ))
-                }
+                        );
+                    }
+                    // Job doesn't match the status filter, so return null
+                    return null;
+                })}
                 </tbody>
             </table>
         </div>

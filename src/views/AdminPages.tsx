@@ -2,7 +2,10 @@ import {NavBar} from "../components/common/NavBar.tsx";
 import {useContext, useEffect, useState} from "react";
 import {AuthContext} from "../context/AuthContext.tsx";
 import {getAllJobs} from "../api/AdminApi.ts";
-import {JobsTable} from "../components/tables/JobsTable.tsx";
+import {JobsTable} from "../components/tables/jobs/JobsTable.tsx";
+import StatusFilter from "../components/tables/jobs/StatusFilter.tsx";
+
+type JobStatus = "OPEN" | "ASSIGNED" | "WAITING_FOR_APPROVAL" | "NOT_APPROVED" | "APPROVED" | "CLOSED";
 
 interface Job {
     jobId: string,
@@ -10,21 +13,27 @@ interface Job {
     jobStatus: string,
     jobMessage: string,
     customerId: string,
-    employeeIds: string[]
+    employeeIds: JobStatus[]
 }
 
 export default function AdminPages() {
     const {employeeId, username} = useContext(AuthContext);
     const [jobs, setJobs] = useState<Job[]>();
+    const [selectedStatus, setSelectedStatus] = useState<string[]>(["OPEN" as JobStatus, "NOT_APPROVED" as JobStatus]);
 
     useEffect(() => {
         fetchJobs().then(data => setJobs(data));
     }, []);
 
     async function fetchJobs() {
-        const response = await getAllJobs(employeeId);
-        if (response?.status == 200)
-            return response.data;
+        try {
+            const response = await getAllJobs(employeeId);
+            if (response?.status == 200)
+                return response.data;
+        } catch (error) {
+            console.error(error);
+        }
+        return [];
     }
 
     return (
@@ -33,18 +42,10 @@ export default function AdminPages() {
             <NavBar/>
             <p className="text-info my-3 my-md-0 mx-2 mx-md-3">Signed in as: {username.toLowerCase()}</p>
             <h1 className="text-md-center fw-bold my-3 mx-2">Current jobs</h1>
+            <StatusFilter selectedStatus={selectedStatus} setSelectedStatus={setSelectedStatus} />
             <div className="container">
                 <div className="my-3">
-                    <h2 className="text-center text-md-start fw-bolder text-warning">Unassigned</h2>
-                    <JobsTable jobs={jobs} status="OPEN"/>
-                </div>
-                <div className="my-3">
-                    <h2 className="text-center text-md-start fw-bolder text-success">In progress</h2>
-                    <JobsTable jobs={jobs} status="ASSIGNED"/>
-                </div>
-                <div className="my-3">
-                    <h2 className="text-center text-md-start fw-bolder text-danger">Not approved</h2>
-                    <JobsTable jobs={jobs} status="NOT_APPROVED"/>
+                    <JobsTable jobs={jobs} statuses={selectedStatus}/>
                 </div>
             </div>
         </div>
