@@ -15,6 +15,18 @@ interface Job {
 }
 
 export function JobsTable({jobs, statuses}: IJobsTable) {
+
+    function getStatusColor(status: string) {
+        let className = "fw-semibold ";
+        if (status == "OPEN")
+            className += "text-warning"
+        if (status == "NOT_APPROVED")
+            className += "text-danger"
+        if (status == "ASSIGNED" || status == "APPROVED" || status == "CLOSED")
+            className += "text-success"
+        return className;
+    }
+
     return (
         <div className="table-responsive">
             <table className="table table-responsive table-striped table-hover" data-bs-theme="dark">
@@ -36,7 +48,7 @@ export function JobsTable({jobs, statuses}: IJobsTable) {
                             <tr key={job.jobId} className="align-middle">
                                 <td>{job.jobId}</td>
                                 <td>{job.jobType}</td>
-                                <td>{job.jobStatus}</td>
+                                <td className={getStatusColor(job.jobStatus)}>{job.jobStatus}</td>
                                 <td>{job.jobMessage}</td>
                                 <td>{job.customerId}</td>
                                 <td>
