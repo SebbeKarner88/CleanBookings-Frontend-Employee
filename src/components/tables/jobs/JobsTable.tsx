@@ -8,10 +8,10 @@ interface IJobsTable {
 interface Job {
     jobId: string,
     jobType: string,
-    jobStatus: string,
+    jobStatus: JobStatus,
     jobMessage: string,
     customerId: string,
-    employeeIds: string[]
+    employees: string[]
 }
 
 export function JobsTable({jobs, statuses}: IJobsTable) {
@@ -52,10 +52,10 @@ export function JobsTable({jobs, statuses}: IJobsTable) {
                                 <td>{job.jobMessage}</td>
                                 <td>{job.customerId}</td>
                                 <td>
-                                    {job.employeeIds.length === 0 || job.jobStatus === "NOT_APPROVED" ? (
+                                    {job.employees.length === 0 || job.jobStatus === "NOT_APPROVED" ? (
                                         <button className="btn btn-primary">Assign employee(s)</button>
                                     ) : (
-                                        job.employeeIds.join(", ")
+                                        job.employees.join(", ")
                                     )}
                                 </td>
                             </tr>

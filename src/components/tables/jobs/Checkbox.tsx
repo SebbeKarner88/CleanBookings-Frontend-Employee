@@ -12,7 +12,7 @@ interface CheckboxProps {
 export function Checkbox({ label, value, selectedStatus, onChange }: CheckboxProps) {
     const checked = selectedStatus.includes(value);
     return (
-        <div className="form-check form-check-inline">
+        <div className="form-check">
             <input
                 className={ checked ? "form-check-input bg-info" : "form-check-input"}
                 type="checkbox"

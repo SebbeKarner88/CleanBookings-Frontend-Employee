@@ -10,10 +10,10 @@ type JobStatus = "OPEN" | "ASSIGNED" | "WAITING_FOR_APPROVAL" | "NOT_APPROVED" |
 interface Job {
     jobId: string,
     jobType: string,
-    jobStatus: string,
+    jobStatus: JobStatus,
     jobMessage: string,
     customerId: string,
-    employeeIds: JobStatus[]
+    employees: string[]
 }
 
 export default function AdminPages() {
@@ -42,8 +42,8 @@ export default function AdminPages() {
             <NavBar/>
             <p className="text-info my-3 my-md-0 mx-2 mx-md-3">Signed in as: {username.toLowerCase()}</p>
             <h1 className="text-md-center fw-bold my-3 mx-2">Current jobs</h1>
-            <StatusFilter selectedStatus={selectedStatus} setSelectedStatus={setSelectedStatus} />
             <div className="container">
+                <StatusFilter selectedStatus={selectedStatus} setSelectedStatus={setSelectedStatus} />
                 <div className="my-3">
                     <JobsTable jobs={jobs} statuses={selectedStatus}/>
                 </div>

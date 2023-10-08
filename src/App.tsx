@@ -1,6 +1,7 @@
-import {useContext} from 'react'
-import './App.css'
-import 'bootstrap/dist/css/bootstrap.css';
+import {useContext} from "react"
+import "./App.css"
+import "bootstrap/dist/css/bootstrap.css";
+import "bootstrap";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import {AuthContext} from "./context/AuthContext.tsx";
 import {LoginView} from "./views/LoginView.tsx";
