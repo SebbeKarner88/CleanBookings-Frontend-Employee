@@ -8,6 +8,7 @@ import {LoginView} from "./views/LoginView.tsx";
 import AdminPages from "./views/AdminPages.tsx";
 import CleanerPages from "./views/CleanerPages.tsx";
 import {QueryClient, QueryClientProvider} from "react-query";
+import GDPREmployeeData from "./components/gdpr-management/GDPREmployeeData.tsx";
 
 function App() {
     const {isAuthenticated, role} = useContext(AuthContext);
@@ -24,6 +25,7 @@ function App() {
                             : isAuthenticated && role == "CLEANER"
                                 ? <CleanerPages/>
                                 : <LoginView/>}/>
+                    <Route path="/gdpr-employee-data" element={<GDPREmployeeData />} />
                 </Routes>
             </BrowserRouter>
         </QueryClientProvider>
