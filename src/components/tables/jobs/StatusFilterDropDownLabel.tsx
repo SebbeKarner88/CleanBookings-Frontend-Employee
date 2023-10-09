@@ -9,7 +9,12 @@ export default function StatusFilterDropDownLabel({ label, onClear }: IStatusFil
     return (
         <h2 className={labelStyle}>
             {label}
-            <button className="btn float-end" type="button" onClick={onClear}>
+            <button
+                className="btn float-end text-danger-emphasis"
+                type="button"
+                onClick={onClear}
+                aria-label={"Press button to clear filter of " + label}
+            >
                 Clear filter
             </button>
         </h2>

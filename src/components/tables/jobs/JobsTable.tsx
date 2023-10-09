@@ -1,3 +1,5 @@
+import {MdDeleteForever} from "react-icons/md";
+
 type JobStatus = "OPEN" | "ASSIGNED" | "WAITING_FOR_APPROVAL" | "NOT_APPROVED" | "APPROVED" | "CLOSED";
 
 interface IJobsTable {
@@ -37,7 +39,8 @@ export function JobsTable({jobs, statuses}: IJobsTable) {
                     <th scope="col">Status</th>
                     <th scope="col">Message</th>
                     <th scope="col">Customer ID</th>
-                    <th scope="col">Employees</th>
+                    <th className="text-center" scope="col">Employees</th>
+                    <th className="text-center" scope="col">Delete</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -57,6 +60,11 @@ export function JobsTable({jobs, statuses}: IJobsTable) {
                                     ) : (
                                         job.employees.join(", ")
                                     )}
+                                </td>
+                                <td>
+                                    <button className="btn" type="button">
+                                        <MdDeleteForever color="#dc3545" size={30}/>
+                                    </button>
                                 </td>
                             </tr>
                         );
