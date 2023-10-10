@@ -58,3 +58,37 @@ export async function assignEmployees(
         console.error(error);
     }
 }
+
+export async function listAllCustomers(employeeId: string) {
+    try {
+        const response = await api.get(
+            "/admin/customers",
+            {
+                params: {
+                    employeeId: employeeId,
+                }
+            });
+        if (response.status == 200) {
+            return response;
+        }
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+/* export async function deleteCustomer(employeeId: string, customerId: string) {
+    try {
+        const response = await api.delete(
+            "/admin/delete",
+            {
+                employeeId: employeeId,
+                customerId: customerId
+
+            });
+        if (response.status == 200) {
+            return response;
+        }
+    } catch (error) {
+        console.error(error);
+    }
+} */

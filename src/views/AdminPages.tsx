@@ -4,6 +4,7 @@ import {AuthContext} from "../context/AuthContext.tsx";
 import {getAllJobs} from "../api/AdminApi.ts";
 import {JobsTable} from "../components/tables/jobs/JobsTable.tsx";
 import StatusFilter from "../components/tables/jobs/StatusFilter.tsx";
+import { CustomersTable } from "../components/tables/customers/CustomersTable.tsx";
 
 type JobStatus = "OPEN" | "ASSIGNED" | "WAITING_FOR_APPROVAL" | "NOT_APPROVED" | "APPROVED" | "CLOSED";
 
@@ -53,6 +54,10 @@ export default function AdminPages() {
                         setTriggerUpdateOfJobs={setTriggerUpdateOfJobs}
                     />
                 </div>
+            </div>
+            <h1 className="text-md-center fw-bold my-3 mx-2">Customers</h1>
+            <div className="container">
+                <CustomersTable />
             </div>
         </div>
     )
