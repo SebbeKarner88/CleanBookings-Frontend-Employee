@@ -76,12 +76,12 @@ export async function listAllCustomers(employeeId: string) {
     }
 }
 
-/* export async function deleteCustomer(employeeId: string, customerId: string) {
+export async function deleteCustomer(employeeId: string, customerId: string) {
     try {
         const response = await api.delete(
             "/admin/delete",
             {
-                employeeId: employeeId,
+                adminId: employeeId,
                 customerId: customerId
 
             });
@@ -91,4 +91,4 @@ export async function listAllCustomers(employeeId: string) {
     } catch (error) {
         console.error(error);
     }
-} */
+}

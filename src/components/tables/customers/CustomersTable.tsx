@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../../context/AuthContext";
-import { MdDeleteForever } from "react-icons/md";
-import { listAllCustomers } from "../../../api/AdminApi";
+import { MdDeleteForever, MdEdit } from "react-icons/md";
+import { deleteCustomer, listAllCustomers } from "../../../api/AdminApi";
 import Modal from "../../common/Modal";
 
 interface Customer {
@@ -42,7 +42,6 @@ export function CustomersTable() {
                 <table className="table table-responsive table-striped table-hover" data-bs-theme="dark">
                     <thead>
                         <tr>
-                            <th scope="col">Customer ID</th>
                             <th scope="col">Type</th>
                             <th scope="col">Name</th>
                             <th scope="col">Address</th>
@@ -53,11 +52,8 @@ export function CustomersTable() {
                     </thead>
                     <tbody>
                         {customers?.map((customer: Customer) => {
-                            // Check if a status filter is provided and if the job's status is included in the filter
-                            if (customer !== null) {
                                 return (
                                     <tr key={customer.customerId} className="align-middle">
-                                        <td>{customer.customerId}</td>
                                         <td>{customer.customerType}</td>
                                         <td>{customer.firstName + ' ' + customer.lastName}</td>
                                         <td>{customer.streetAddress + ' ' + customer.postalCode + ' ' + customer.city}</td>
@@ -65,12 +61,12 @@ export function CustomersTable() {
                                         <td>
                                             <button
                                                 type="button"
-                                                className="btn btn-primary"
+                                                className="btn focus-ring focus-ring-light"
                                                 data-bs-toggle="modal"
                                                 data-bs-target="#updateCustomerModal"
-                                                // onClick={() => }
+                                            // onClick={() => }
                                             >
-                                                Update customer
+                                                <MdEdit color="#light-pink" size={30} />
                                             </button>
 
                                         </td>
@@ -79,29 +75,26 @@ export function CustomersTable() {
                                                 className="btn focus-ring focus-ring-light"
                                                 type="button"
                                                 aria-label="Press button to delete customer"
-                                                //onClick={() => fetch delete customer}
+                                                onClick={() => deleteCustomer(employeeId, customer.customerId)}
                                             >
                                                 <MdDeleteForever color="#dc3545" size={30} />
                                             </button>
                                         </td>
                                     </tr>
-                                );
-                            }
-                            // Job doesn't match the status filter, so return null
-                            return null;
+                                )
                         })}
                     </tbody>
                 </table>
             </div>
-            {/* {customerId &&
-                <Modal
-                    id="updateCustomerModal"
-                    title={"Select the field you want to update"}
-                    body={<SelectEmployees jobId={jobId} setSelectedEmployeeIds={setSelectedEmployeeIds} />}
-                    actionButtonLabel="Update customer"
-                    handleActionButton={assignSelectedEmployeesToJob}
-                />
-            } */}
+
+{/*             <Modal
+                id="updateCustomerModal"
+                title={"Select the field you want to update"}
+                body={<SelectEmployees jobId={jobId} setSelectedEmployeeIds={setSelectedEmployeeIds} />}
+                actionButtonLabel="Update customer"
+                handleActionButton={assignSelectedEmployeesToJob}
+            /> */}
+
         </>
 
     )
