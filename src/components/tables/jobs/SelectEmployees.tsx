@@ -28,11 +28,11 @@ export default function SelectEmployees({ jobId, setSelectedEmployeeIds }: ISele
 
     return (
         <>
-        <label className="form-label text-white">Select employee(s)</label>
+        <label className="form-label fw-bold text-primary-emphasis">Select employee(s) to assign</label>
         <select
             className="form-select"
             multiple
-            aria-label="Select employee(s)"
+            aria-label="Select employee(s) to assign"
             onChange={event => setSelectedEmployeeIds(Array.from(
                 event.target.selectedOptions, option => option.value
             ))}

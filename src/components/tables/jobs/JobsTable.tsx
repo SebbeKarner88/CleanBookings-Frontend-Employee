@@ -65,21 +65,20 @@ export function JobsTable({jobs, statuses, setTriggerUpdateOfJobs, setIsLoadingJ
                 scrollable={true}
             >
                 <Modal.Header
-                    className="bg-dark text-white"
+                    className="bg-secondary-subtle"
                     closeButton
-                    closeVariant="white"
                 >
-                    <Modal.Title className="fs-6 fw-bold text-white">
+                    <Modal.Title className="fs-6 fw-bold">
                         {"Job ID: " + jobId}
                     </Modal.Title>
                 </Modal.Header>
-                <Modal.Body className="bg-dark">
+                <Modal.Body className="bg-secondary-subtle">
                     <SelectEmployees
                         jobId={jobId}
                         setSelectedEmployeeIds={setSelectedEmployeeIds}
                     />
                 </Modal.Body>
-                <Modal.Footer className="bg-dark">
+                <Modal.Footer className="bg-secondary-subtle">
                     <Button variant="danger" onClick={handleClose}>
                         Cancel
                     </Button>
