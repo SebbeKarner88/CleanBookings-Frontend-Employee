@@ -27,6 +27,8 @@ export default function SelectEmployees({ jobId, setSelectedEmployeeIds }: ISele
     }
 
     return (
+        <>
+        <label className="form-label text-white">Select employee(s)</label>
         <select
             className="form-select"
             multiple
@@ -43,5 +45,6 @@ export default function SelectEmployees({ jobId, setSelectedEmployeeIds }: ISele
                 ))
             }
         </select>
+        </>
     )
 }

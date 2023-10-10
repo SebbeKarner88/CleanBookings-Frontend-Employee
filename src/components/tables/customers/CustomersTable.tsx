@@ -2,7 +2,6 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../../context/AuthContext";
 import { MdDeleteForever, MdEdit } from "react-icons/md";
 import { deleteCustomer, listAllCustomers } from "../../../api/AdminApi";
-import Modal from "../../common/Modal";
 
 interface Customer {
     id: string,
