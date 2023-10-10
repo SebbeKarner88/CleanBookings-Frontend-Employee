@@ -5,7 +5,7 @@ import { deleteCustomer, listAllCustomers } from "../../../api/AdminApi";
 import Modal from "../../common/Modal";
 
 interface Customer {
-    customerId: string,
+    id: string,
     firstName: string,
     lastName: string,
     customerType: string,
@@ -18,7 +18,7 @@ interface Customer {
 
 export function CustomersTable() {
     const { employeeId } = useContext(AuthContext)
-    const [ customers, setCustomers ] = useState<Customer[]>();
+    const [ customers, setCustomers ] = useState<Customer[]>([]);
 
     useEffect(() => {
         fetchCustomers().then(data => setCustomers(data))
@@ -34,6 +34,11 @@ export function CustomersTable() {
         }
 
         return []
+    }
+
+    const handleDelete = (employeeId: string, customerId: string) => {
+        setCustomers(customers.filter(t => t.id !== customerId))
+        deleteCustomer(employeeId, customerId)
     }
 
     return (
@@ -53,7 +58,7 @@ export function CustomersTable() {
                     <tbody>
                         {customers?.map((customer: Customer) => {
                                 return (
-                                    <tr key={customer.customerId} className="align-middle">
+                                    <tr key={customer.id} className="align-middle">
                                         <td>{customer.customerType}</td>
                                         <td>{customer.firstName + ' ' + customer.lastName}</td>
                                         <td>{customer.streetAddress + ' ' + customer.postalCode + ' ' + customer.city}</td>
@@ -75,7 +80,7 @@ export function CustomersTable() {
                                                 className="btn focus-ring focus-ring-light"
                                                 type="button"
                                                 aria-label="Press button to delete customer"
-                                                onClick={() => deleteCustomer(employeeId, customer.customerId)}
+                                                onClick={() => handleDelete(employeeId, customer.id)}
                                             >
                                                 <MdDeleteForever color="#dc3545" size={30} />
                                             </button>

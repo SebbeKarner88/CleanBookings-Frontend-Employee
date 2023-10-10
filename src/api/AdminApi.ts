@@ -81,9 +81,10 @@ export async function deleteCustomer(employeeId: string, customerId: string) {
         const response = await api.delete(
             "/admin/delete",
             {
-                adminId: employeeId,
-                customerId: customerId
-
+                params: {
+                    adminId: employeeId,
+                    customerId: customerId
+                }
             });
         if (response.status == 200) {
             return response;
