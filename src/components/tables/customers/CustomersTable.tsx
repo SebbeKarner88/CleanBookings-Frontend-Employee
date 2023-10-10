@@ -37,6 +37,7 @@ export function CustomersTable() {
     }
 
     const handleDelete = (employeeId: string, customerId: string) => {
+        // TODO add warning if customer has a booked cleaning job
         setCustomers(customers.filter(t => t.id !== customerId))
         deleteCustomer(employeeId, customerId)
     }
