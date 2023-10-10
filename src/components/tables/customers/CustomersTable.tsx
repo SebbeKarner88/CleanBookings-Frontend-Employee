@@ -22,6 +22,12 @@ export function CustomersTable() {
 
     useEffect(() => {
         fetchCustomers().then(data => setCustomers(data))
+
+        const interval = setInterval(() => {
+            fetchCustomers()
+        }, 1000)
+
+        return () => clearInterval(interval)
     }, [])
 
     async function fetchCustomers() {
@@ -38,7 +44,7 @@ export function CustomersTable() {
 
     const handleDelete = (employeeId: string, customerId: string) => {
         // TODO add warning if customer has a booked cleaning job
-        setCustomers(customers.filter(t => t.id !== customerId))
+        setCustomers(customers.filter(t => t.id !== customerId))  // <-- this deletes customers from frontend even if they're not deleted from backend! fix
         deleteCustomer(employeeId, customerId)
     }
 
@@ -72,7 +78,7 @@ export function CustomersTable() {
                                                 data-bs-target="#updateCustomerModal"
                                             // onClick={() => }
                                             >
-                                                <MdEdit color="#light-pink" size={30} />
+                                                <MdEdit size={30} />
                                             </button>
 
                                         </td>
