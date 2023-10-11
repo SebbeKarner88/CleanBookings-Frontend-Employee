@@ -23,16 +23,15 @@ const schema = z.object({
     phoneNumber: z
         .string(),
     emailAddress: z
-    .string(),
-
-});
+        .string(),
+})
 
 type FormData = z.infer<typeof schema>;
 
 export function FormUpdateCustomer() {
     const { employeeId } = useContext(AuthContext)
-    const [ modalVisible, setModalVisible ] = useState(false)
-    const [ isUpdating, setIsUpdating ] = useState(false)
+    // const [ modalVisible, setModalVisible ] = useState(false)
+    // const [ isUpdating, setIsUpdating ] = useState(false)
     const navigation = useNavigate()
     const location = useLocation()
     const customerId = location.state
@@ -66,115 +65,107 @@ export function FormUpdateCustomer() {
         }).catch(error => console.error(error.message));
     }
 
-/*     async function updateCustomerInfo(customerId: string) {
-        setIsUpdating(true)
-        const response = await updateCustomer(customerId)
-        if (response?.status === 200)
-            setIsUpdating(false)
-    } */
-
     return (
         <>
-        <h1>Updating customer with ID: {customerId}</h1>
+            <h1>Updating customer with ID: {customerId}</h1>
 
-        <form
-            className="my-3 my-md-5 px-4 text-start"
-            onSubmit={handleSubmit(onSubmit)}
-        >
-            <div className="row">
-                <div className="col-md-6">
-                    <FormField
-                        fieldName="firstName"
-                        label="First name"
-                        inputType="text"
-                        fieldError={errors.firstName}
-                        register={register}
-                    />
-                </div>
-                <div className="col-md-6">
-                    <FormField
-                        fieldName="lastName"
-                        label="Last name"
-                        inputType="text"
-                        fieldError={errors.lastName}
-                        customError={errorMessage}
-                        register={register}
-                    />
-                </div>
-            </div>
-            <div className="row">
-            <div className="col-md-5">
-                    <FormField
-                        fieldName="streetAddress"
-                        label="Street address"
-                        inputType="text"
-                        fieldError={errors.streetAdress}
-                        register={register}
-                    />
-                </div>
-                <div className="col-md-2">
-                    <FormField
-                        fieldName="postalCode"
-                        label="Postal code"
-                        inputType="number"
-                        fieldError={errors.postalCode}
-                        customError={errorMessage}
-                        register={register}
-                    />
-                </div>
-                <div className="col-md-5">
-                    <FormField
-                        fieldName="city"
-                        label="City"
-                        inputType="text"
-                        fieldError={errors.city}
-                        customError={errorMessage}
-                        register={register}
-                    />
-                </div>
-            </div>
-            <div className="row">
-            <div className="col-md-6">
-                    <FormField
-                        fieldName="phoneNumber"
-                        label="Phone Number"
-                        inputType="text"
-                        fieldError={errors.phoneNumber}
-                        register={register}
-                    />
-                </div>
-                <div className="col-md-6">
-                    <FormField
-                        fieldName="emailAddress"
-                        label="Email address"
-                        inputType="text"
-                        fieldError={errors.emailAddress}
-                        customError={errorMessage}
-                        register={register}
-                    />
-                </div>
-                <div className="col-md-6">
-                    <FormField
-                        fieldName="customerType"
-                        label="Customer Type"
-                        inputType="text"
-                        fieldError={errors.customerType}
-                        customError={errorMessage}
-                        register={register}
-                    />
-                </div>
-            </div>
-            <button
-                type="submit"
-                className="btn btn-outline-dark w-100"
-                /* onClick={() => {
-                    navigation("/my-pages")
-                }} */
+            <form
+                className="my-3 my-md-5 px-4 text-start"
+                onSubmit={handleSubmit(onSubmit)}
             >
-                Update customer
-            </button>
-        </form>
-
+                <div className="row">
+                    <div className="col-md-6">
+                        <FormField
+                            fieldName="firstName"
+                            label="First name"
+                            inputType="text"
+                            fieldError={errors.firstName}
+                            register={register}
+                        />
+                    </div>
+                    <div className="col-md-6">
+                        <FormField
+                            fieldName="lastName"
+                            label="Last name"
+                            inputType="text"
+                            fieldError={errors.lastName}
+                            customError={errorMessage}
+                            register={register}
+                        />
+                    </div>
+                </div>
+                <div className="row">
+                    <div className="col-md-5">
+                        <FormField
+                            fieldName="streetAddress"
+                            label="Street address"
+                            inputType="text"
+                            fieldError={errors.streetAdress}
+                            register={register}
+                        />
+                    </div>
+                    <div className="col-md-2">
+                        <FormField
+                            fieldName="postalCode"
+                            label="Postal code"
+                            inputType="number"
+                            fieldError={errors.postalCode}
+                            customError={errorMessage}
+                            register={register}
+                        />
+                    </div>
+                    <div className="col-md-5">
+                        <FormField
+                            fieldName="city"
+                            label="City"
+                            inputType="text"
+                            fieldError={errors.city}
+                            customError={errorMessage}
+                            register={register}
+                        />
+                    </div>
+                </div>
+                <div className="row">
+                    <div className="col-md-6">
+                        <FormField
+                            fieldName="phoneNumber"
+                            label="Phone Number"
+                            inputType="text"
+                            fieldError={errors.phoneNumber}
+                            register={register}
+                        />
+                    </div>
+                    <div className="col-md-6">
+                        <FormField
+                            fieldName="emailAddress"
+                            label="Email address"
+                            inputType="text"
+                            fieldError={errors.emailAddress}
+                            customError={errorMessage}
+                            register={register}
+                        />
+                    </div>
+                    <div className="col-md-6">
+                        <FormField
+                            fieldName="customerType"
+                            label="Customer Type"
+                            inputType="text"
+                            fieldError={errors.customerType}
+                            customError={errorMessage}
+                            register={register}
+                        />
+                    </div>
+                </div>
+                <button
+                    type="submit"
+                    className="btn btn-outline-dark w-100"
+                /* onClick={() => {
+                    
+                }} */
+                >
+                    Update customer
+                </button>
+            </form>
         </>
     )
 }

@@ -1,5 +1,4 @@
 import api from "./ApiRootUrl.ts";
-import { Customer } from "../components/tables/customers/CustomersTable.tsx";
 
 export async function getAllJobs(employeeId: string) {
     try {
@@ -116,7 +115,7 @@ export async function deleteJob(
 }
 
 export async function updateCustomer(
-    employeeId: string, 
+    employeeId: string,
     customerId: string,
     firstName: string,
     lastName: string,
@@ -126,21 +125,21 @@ export async function updateCustomer(
     city: string,
     phoneNumber: string,
     emailAdress: string
-    ) {
+) {
     try {
         const response = await api.put(
             "/admin/updateCustomer",
             {
-                    adminId: employeeId,
-                    customerId: customerId,
-                    firstName: firstName,
-                    lastName: lastName,
-                    customerType: customerType,
-                    streetAdress: streetAdress,
-                    postalCode: postalCode,
-                    city: city,
-                    phoneNumber: phoneNumber,
-                    emailAdress: emailAdress
+                adminId: employeeId,
+                customerId: customerId,
+                firstName: firstName,
+                lastName: lastName,
+                customerType: customerType,
+                streetAdress: streetAdress,
+                postalCode: postalCode,
+                city: city,
+                phoneNumber: phoneNumber,
+                emailAdress: emailAdress
             });
         if (response.status == 200) {
             return response;

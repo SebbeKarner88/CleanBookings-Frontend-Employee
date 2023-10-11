@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../../context/AuthContext";
 import { MdDeleteForever, MdEdit } from "react-icons/md";
 import { deleteCustomer, listAllCustomers } from "../../../api/AdminApi";
-import {useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export interface Customer {
     id: string,
@@ -24,7 +24,7 @@ export function CustomersTable() {
 
     useEffect(() => {
         fetchCustomers().then(data => setCustomers(data))
-    }, [updatedList])
+    }, [ updatedList ])
 
     async function fetchCustomers() {
         try {
@@ -43,7 +43,7 @@ export function CustomersTable() {
         if (response?.status === 200)
             setUpdatedList(value => !value)
         else
-            alert("This customer has an active booking and can't be removed.")          
+            alert("This customer has an active booking and can't be removed.")
         // TODO add modal instead of alert
     }
 
@@ -67,34 +67,34 @@ export function CustomersTable() {
                     </thead>
                     <tbody>
                         {customers?.map((customer: Customer) => {
-                                return (
-                                    <tr key={customer.id} className="align-middle">
-                                        <td>{customer.customerType}</td>
-                                        <td>{customer.firstName + ' ' + customer.lastName}</td>
-                                        <td>{customer.streetAddress + ' ' + customer.postalCode + ' ' + customer.city}</td>
-                                        <td>{customer.emailAddress + ' ' + customer.phoneNumber}</td>
-                                        <td>
-                                            <button
-                                                type="button"
-                                                className="btn focus-ring focus-ring-light"
-                                                onClick={() => handleUpdate(customer.id)}
-                                            >
-                                                <MdEdit size={30} />
-                                            </button>
+                            return (
+                                <tr key={customer.id} className="align-middle">
+                                    <td>{customer.customerType}</td>
+                                    <td>{customer.firstName + ' ' + customer.lastName}</td>
+                                    <td>{customer.streetAddress + ' ' + customer.postalCode + ' ' + customer.city}</td>
+                                    <td>{customer.emailAddress + ' ' + customer.phoneNumber}</td>
+                                    <td>
+                                        <button
+                                            type="button"
+                                            className="btn focus-ring focus-ring-light"
+                                            onClick={() => handleUpdate(customer.id)}
+                                        >
+                                            <MdEdit size={30} />
+                                        </button>
 
-                                        </td>
-                                        <td>
-                                            <button
-                                                className="btn focus-ring focus-ring-light"
-                                                type="button"
-                                                aria-label="Press button to delete customer"
-                                                onClick={() => removeCustomer(customer.id)}
-                                            >
-                                                <MdDeleteForever color="#dc3545" size={30} />
-                                            </button>
-                                        </td>
-                                    </tr>
-                                )
+                                    </td>
+                                    <td>
+                                        <button
+                                            className="btn focus-ring focus-ring-light"
+                                            type="button"
+                                            aria-label="Press button to delete customer"
+                                            onClick={() => removeCustomer(customer.id)}
+                                        >
+                                            <MdDeleteForever color="#dc3545" size={30} />
+                                        </button>
+                                    </td>
+                                </tr>
+                            )
                         })}
                     </tbody>
                 </table>
