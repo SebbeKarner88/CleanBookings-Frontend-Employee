@@ -36,11 +36,11 @@ export function CustomersTable() {
         return []
     }
 
-    const handleDelete = (employeeId: string, customerId: string) => {
-        // TODO add warning if customer has a booked cleaning job
-        deleteCustomer(employeeId, customerId)
-        setCustomers(customers.filter(t => t.id !== customerId))  // <-- this deletes customers from frontend even if they're not deleted from backend! fix
-        setUpdatedList(!updatedList)
+    async function removeCustomer(customerId: string) {
+        const response = await deleteCustomer(employeeId, customerId)
+        if (response?.status === 200)
+            setUpdatedList(value => !value)
+        // TODO add logic for showing error message on screen if user has an active booking
     }
 
     return (
@@ -82,7 +82,7 @@ export function CustomersTable() {
                                                 className="btn focus-ring focus-ring-light"
                                                 type="button"
                                                 aria-label="Press button to delete customer"
-                                                onClick={() => handleDelete(employeeId, customer.id)}
+                                                onClick={() => removeCustomer(customer.id)}
                                             >
                                                 <MdDeleteForever color="#dc3545" size={30} />
                                             </button>
