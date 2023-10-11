@@ -26,14 +26,20 @@ export function NavBar() {
                     <span className="navbar-toggler-icon"></span>
                 </button>
                 <div className="collapse navbar-collapse justify-content-md-between" id="navbarNavDropdown">
-                    <h1>Städafint AB</h1>
+                    <h1 className="my-3 my-md-0">Städafint AB</h1>
                     <div>
-                    <button className="btn btn-success">
-                        Add employee
-                    </button>
-                    <button className="btn btn-outline-danger mx-3" onClick={handleLogout}>
-                        Logout
-                    </button>
+                        <ul className="navbar-nav">
+                            <li className="nav-link">
+                                <button className="btn btn-success w-100">
+                                    Add employee
+                                </button>
+                            </li>
+                            <li className="nav-link">
+                                <button className="btn btn-outline-danger w-100" onClick={handleLogout}>
+                                    Logout
+                                </button>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </div>
