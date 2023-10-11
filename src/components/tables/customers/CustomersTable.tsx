@@ -1,9 +1,8 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../../context/AuthContext";
 import { MdDeleteForever, MdEdit } from "react-icons/md";
-import { deleteCustomer, listAllCustomers, updateCustomer } from "../../../api/AdminApi";
-import Modal from 'react-bootstrap/Modal';
-import { Button, Spinner } from "react-bootstrap";
+import { deleteCustomer, listAllCustomers } from "../../../api/AdminApi";
+import {useNavigate} from "react-router-dom";
 
 export interface Customer {
     id: string,
@@ -19,10 +18,9 @@ export interface Customer {
 
 export function CustomersTable() {
     const { employeeId } = useContext(AuthContext)
+    const navigation = useNavigate();
     const [ customers, setCustomers ] = useState<Customer[]>([])
     const [ updatedList, setUpdatedList ] = useState(false)
-    const [ modalVisible, setModalVisible ] = useState(false)
-    const [ isUpdating, setIsUpdating ] = useState(false)
 
     useEffect(() => {
         fetchCustomers().then(data => setCustomers(data))
@@ -49,58 +47,8 @@ export function CustomersTable() {
         // TODO add modal instead of alert
     }
 
-    async function updateCustomerInfo(customerId: string) {
-        setIsUpdating(true)
-        const response = await updateCustomer(employeeId, customerId, customers)
-        if (response?.status === 200)
-            setIsUpdating(false)
-    }
-
-    const updateCustomerModal = (firstName: string, lastName: string, customerId: string) => {
-        return (
-            <Modal
-                show={modalVisible}
-                onHide={() => setModalVisible(false)}
-                fullscreen="md-down"
-                scrollable={true}
-            >
-                <Modal.Header
-                    className="bg-secondary-subtle"
-                    closeButton
-                >
-                    <Modal.Title className="fs-6 fw-bold">
-                        {"Update customer " + firstName + lastName}
-                    </Modal.Title>
-                </Modal.Header>
-                <Modal.Body className="bg-secondary-subtle">
-                    {/* implement form with customer details */}
-                </Modal.Body>
-                <Modal.Footer className="bg-secondary-subtle">
-                    <Button variant="danger" onClick={() => setModalVisible(false)}>
-                        Cancel
-                    </Button>
-                    {
-                        isUpdating
-                            ? <Button variant="primary" disabled>
-                                <Spinner
-                                    as="span"
-                                    animation="border"
-                                    size="sm"
-                                    role="status"
-                                    aria-hidden="true"
-                                    aria-label={"Sending request..."}
-                                />
-                            </Button>
-                            : <Button
-                                variant="primary"
-                                onClick={() => updateCustomerInfo(customerId)}
-                            >
-                                Update customer
-                            </Button>
-                    }
-                </Modal.Footer>
-            </Modal>
-        )
+    const handleUpdate = (customerId: string) => {
+        navigation("/update-customer", { state: customerId })
     }
 
     return (
@@ -129,7 +77,7 @@ export function CustomersTable() {
                                             <button
                                                 type="button"
                                                 className="btn focus-ring focus-ring-light"
-                                                onClick={() => updateCustomerModal(customer.firstName, customer.lastName, customer.id)}
+                                                onClick={() => handleUpdate(customer.id)}
                                             >
                                                 <MdEdit size={30} />
                                             </button>

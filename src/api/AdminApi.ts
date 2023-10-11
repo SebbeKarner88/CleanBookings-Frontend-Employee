@@ -98,7 +98,14 @@ export async function deleteCustomer(employeeId: string, customerId: string) {
 export async function updateCustomer(
     employeeId: string, 
     customerId: string,
-    customer: Customer[]
+    firstName: string,
+    lastName: string,
+    customerType: string,
+    streetAdress: string,
+    postalCode: number,
+    city: string,
+    phoneNumber: string,
+    emailAdress: string
     ) {
     try {
         const response = await api.put(
@@ -106,14 +113,14 @@ export async function updateCustomer(
             {
                     adminId: employeeId,
                     customerId: customerId,
-                    firstname: customer,
-                    lastName: customer,
-                    customerType: customer,
-                    streetAdress: customer,
-                    postalCode: customer,
-                    city: customer,
-                    phoneNumber: customer,
-                    emailAdress: customer
+                    firstName: firstName,
+                    lastName: lastName,
+                    customerType: customerType,
+                    streetAdress: streetAdress,
+                    postalCode: postalCode,
+                    city: city,
+                    phoneNumber: phoneNumber,
+                    emailAdress: emailAdress
             });
         if (response.status == 200) {
             return response;
