@@ -49,8 +49,10 @@ export default function AdminPages() {
              data-bs-theme="dark">
             <NavBar/>
             <p className="text-info my-3 my-md-0 mx-2 mx-md-3">Signed in as: {username.toLowerCase()}</p>
-            <h1 className="text-md-center fw-bold my-3 mx-2">Current jobs</h1>
+            <h1 className="text-md-center fw-bold my-3 mb-md-5 mx-2">Admin Dashboard</h1>
+
             <div className="container">
+                <h2 className="text-md-center fw-bold my-3 mx-2">Current jobs</h2>
                 <StatusFilter selectedStatus={selectedStatus} setSelectedStatus={setSelectedStatus}/>
                 <div className="my-3">
                     {
@@ -66,27 +68,20 @@ export default function AdminPages() {
                 </div>
             </div>
 
-
-        <div className="container-fluid bg-dark min-vh-100 min-vw-100 text-bg-dark p-3 m-0 overflow-scroll"
-                 data-bs-theme="dark">
-                <NavBar/>
-                <p className="text-info my-3 my-md-0 mx-2 mx-md-3">Signed in as: {username.toLowerCase()}</p>
-                <h1 className="text-md-center fw-bold my-3 mx-2">Current jobs</h1>
-                <div className="container">
-                    <StatusFilter selectedStatus={selectedStatus} setSelectedStatus={setSelectedStatus} />
-                    <div className="my-3">
-                        <JobsTable jobs={jobs} statuses={selectedStatus}/>
-                    </div>
-                </div>
-            <h1 className="text-md-center fw-bold my-3 mx-2">Customers</h1>
             <div className="container">
-                <CustomersTable/>
+                <h2 className="text-md-center fw-bold my-3 mx-2">Customers</h2>
+                <div className="my-3">
+                    <CustomersTable/>
+                </div>
             </div>
-            <div style={{ display: 'flex', justifyContent: 'center' }}>
-                <h2>Jobs Per Type</h2>
+
+            <div className="container">
+                <h2 className="text-md-center fw-bold my-3 mx-2">Jobs per type</h2>
+                <div className="my-3">
+                    <EmployeeCleaningsPerType/>
+                </div>
             </div>
-            <EmployeeCleaningsPerType />
-        </div>
+
         </div>
     )
 }

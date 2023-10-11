@@ -1,5 +1,5 @@
 import {useContext} from 'react'
-import {useNavigate} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import {AuthContext} from "../../context/AuthContext.tsx";
 
 export function NavBar() {
@@ -30,9 +30,27 @@ export function NavBar() {
                     <div>
                         <ul className="navbar-nav">
                             <li className="nav-link">
-                                <button className="btn btn-success w-100">
-                                    Add employee
-                                </button>
+                                <div className="dropdown">
+                                    <button className="btn btn-success dropdown-toggle w-100"
+                                            type="button"
+                                            data-bs-toggle="dropdown"
+                                            aria-expanded="false"
+                                    >
+                                        Add
+                                    </button>
+                                    <ul className="dropdown-menu p-3 bg-dark-subtle">
+                                        <li className="dropdown-item">
+                                            <Link to="/register-admin">
+                                                New admin
+                                            </Link>
+                                        </li>
+                                        <li className="dropdown-item">
+                                            <Link to="/register-cleaner">
+                                                New cleaner
+                                            </Link>
+                                        </li>
+                                    </ul>
+                                </div>
                             </li>
                             <li className="nav-link">
                                 <button className="btn btn-outline-danger w-100" onClick={handleLogout}>

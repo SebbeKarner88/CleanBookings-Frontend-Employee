@@ -33,6 +33,7 @@ function App() {
                             : <LoginView />
                     } />
                     <Route path="/gdpr-employee-data" element={<GDPREmployeeData />} />
+                {/*    TODO: Add paths to register-admin & register-cleaner form-view */}
                     <Route path="/employee-cleanings-per-type" element={<EmployeeCleaningsPerType />} />
                 </Routes>
             </BrowserRouter>

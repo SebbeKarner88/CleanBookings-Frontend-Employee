@@ -124,7 +124,7 @@ export function JobsTable({jobs, statuses, setTriggerUpdateOfJobs, setIsLoadingJ
                         <th scope="col">Status</th>
                         <th scope="col">Message</th>
                         <th scope="col">Customer ID</th>
-                        <th className="text-center" scope="col">Employees</th>
+                        <th scope="col">Employees</th>
                         <th className="text-center" scope="col">Delete</th>
                     </tr>
                     </thead>
@@ -157,7 +157,7 @@ export function JobsTable({jobs, statuses, setTriggerUpdateOfJobs, setIsLoadingJ
                                             job.employees.join(", ")
                                         )}
                                     </td>
-                                    <td>
+                                    <td className="text-center">
                                         {
                                             !isApproved &&
                                             <button
