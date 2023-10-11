@@ -18,17 +18,12 @@ interface Customer {
 
 export function CustomersTable() {
     const { employeeId } = useContext(AuthContext)
-    const [ customers, setCustomers ] = useState<Customer[]>([]);
+    const [ customers, setCustomers ] = useState<Customer[]>([])
+    const [ updatedList, setUpdatedList ] = useState(false)
 
     useEffect(() => {
         fetchCustomers().then(data => setCustomers(data))
-
-        const interval = setInterval(() => {
-            fetchCustomers()
-        }, 1000)
-
-        return () => clearInterval(interval)
-    }, [])
+    }, [updatedList])
 
     async function fetchCustomers() {
         try {
@@ -44,8 +39,9 @@ export function CustomersTable() {
 
     const handleDelete = (employeeId: string, customerId: string) => {
         // TODO add warning if customer has a booked cleaning job
-        setCustomers(customers.filter(t => t.id !== customerId))  // <-- this deletes customers from frontend even if they're not deleted from backend! fix
         deleteCustomer(employeeId, customerId)
+        setCustomers(customers.filter(t => t.id !== customerId))  // <-- this deletes customers from frontend even if they're not deleted from backend! fix
+        setUpdatedList(!updatedList)
     }
 
     return (
