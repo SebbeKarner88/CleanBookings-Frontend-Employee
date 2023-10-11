@@ -14,10 +14,10 @@ const schema = z.object({
         .string(),
     customerType: z
         .string(),
-    streetAdress: z
+    streetAddress: z
         .string(),
     postalCode: z
-        .number(),
+        .string(),
     city: z
         .string(),
     phoneNumber: z
@@ -32,7 +32,7 @@ export function FormUpdateCustomer() {
     const { employeeId } = useContext(AuthContext)
     // const [ modalVisible, setModalVisible ] = useState(false)
     // const [ isUpdating, setIsUpdating ] = useState(false)
-    const navigation = useNavigate()
+    // const navigation = useNavigate()
     const location = useLocation()
     const customerId = location.state
     const {
@@ -58,7 +58,8 @@ export function FormUpdateCustomer() {
             data.emailAddress
         ).then(response => {
             if (response?.status == 200) {
-                navigation("/");
+                console.log("Everything went according to plan!")
+                // TODO: add modal when successful ? send back to adminPage ?
             } else {
                 setErrorMessage("Something went wrong, try again.");
             }
@@ -100,7 +101,7 @@ export function FormUpdateCustomer() {
                             fieldName="streetAddress"
                             label="Street address"
                             inputType="text"
-                            fieldError={errors.streetAdress}
+                            fieldError={errors.streetAddress}
                             register={register}
                         />
                     </div>
@@ -108,7 +109,7 @@ export function FormUpdateCustomer() {
                         <FormField
                             fieldName="postalCode"
                             label="Postal code"
-                            inputType="number"
+                            inputType="text"
                             fieldError={errors.postalCode}
                             customError={errorMessage}
                             register={register}

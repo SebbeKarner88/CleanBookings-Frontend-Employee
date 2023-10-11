@@ -132,14 +132,14 @@ export async function updateCustomer(
             {
                 adminId: employeeId,
                 customerId: customerId,
-                firstName: firstName,
-                lastName: lastName,
-                customerType: customerType,
-                streetAdress: streetAdress,
-                postalCode: postalCode,
-                city: city,
-                phoneNumber: phoneNumber,
-                emailAdress: emailAdress
+                ...firstName ? { firstName: firstName } : null,
+                ...lastName ? { lastName: lastName } : null,
+                ...customerType ? { customerType: customerType } : null,
+                ...streetAdress ? { streetAdress: streetAdress } : null,
+                ...postalCode ? { postalCode: postalCode } : null,
+                ...city ? { city: city } : null,
+                ...phoneNumber ? { phoneNumber: phoneNumber } : null,
+                ...emailAdress ? { emailAdress: emailAdress } : null
             });
         if (response.status == 200) {
             return response;
