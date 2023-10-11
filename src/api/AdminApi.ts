@@ -38,6 +38,31 @@ export async function getAllAvailableEmployees(
     }
 }
 
+export async function registerEmployee(
+    firstName: string,
+    lastName: string,
+    phoneNumber: string,
+    role: "ADMIN" | "CLEANER",
+    emailAddress: string
+) {
+    try {
+        const response = await api.post(
+            "/employee",
+            {
+                firstName: firstName,
+                lastName: lastName,
+                phoneNumber: phoneNumber,
+                role: role,
+                emailAddress: emailAddress
+            }
+        );
+        if (response?.status == 201)
+            return response;
+    } catch (error) {
+        console.error(error);
+    }
+}
+
 export async function assignEmployees(
     jobId: string,
     employeeId: string,

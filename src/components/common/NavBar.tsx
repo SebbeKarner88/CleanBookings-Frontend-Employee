@@ -26,7 +26,11 @@ export function NavBar() {
                     <span className="navbar-toggler-icon"></span>
                 </button>
                 <div className="collapse navbar-collapse justify-content-md-between" id="navbarNavDropdown">
-                    <h1 className="my-3 my-md-0">Städafint AB</h1>
+                    <h1 className="my-3 my-md-0">
+                        <Link to="/my-pages" className="link-light">
+                            [Replace with logo]
+                        </Link>
+                    </h1>
                     <div>
                         <ul className="navbar-nav">
                             <li className="nav-link">
@@ -40,12 +44,12 @@ export function NavBar() {
                                     </button>
                                     <ul className="dropdown-menu p-3 bg-dark-subtle">
                                         <li className="dropdown-item">
-                                            <Link to="/register-admin">
+                                            <Link to="/register/new-admin" className="link-light">
                                                 New admin
                                             </Link>
                                         </li>
                                         <li className="dropdown-item">
-                                            <Link to="/register-cleaner">
+                                            <Link to="/register/new-cleaner" className="link-light">
                                                 New cleaner
                                             </Link>
                                         </li>

@@ -11,6 +11,8 @@ import { QueryClient, QueryClientProvider } from "react-query";
 import GDPREmployeeData from "./components/gdpr-management/GDPREmployeeData.tsx";
 import EmployeeCleaningsPerType from "./components/EmployeeCleaningsPerType.tsx";
 import { FormUpdateCustomer } from "./components/forms/FormUpdateCustomer.tsx";
+import RegisterAdminView from "./views/RegisterAdminView.tsx";
+import RegisterCleanerView from "./views/RegisterCleanerView.tsx";
 
 function App() {
     const { isAuthenticated, role } = useContext(AuthContext);
@@ -33,8 +35,13 @@ function App() {
                             : <LoginView />
                     } />
                     <Route path="/gdpr-employee-data" element={<GDPREmployeeData />} />
-                {/*    TODO: Add paths to register-admin & register-cleaner form-view */}
                     <Route path="/employee-cleanings-per-type" element={<EmployeeCleaningsPerType />} />
+                    {isAuthenticated && role == "ADMIN" &&
+                        <>
+                        <Route path="/register/new-admin" element={<RegisterAdminView/>}/>
+                        <Route path="/register/new-cleaner" element={<RegisterCleanerView/>}/>
+                        </>
+                    }
                 </Routes>
             </BrowserRouter>
         </QueryClientProvider>
