@@ -1,4 +1,5 @@
 import api from "./ApiRootUrl.ts";
+import { Customer } from "../components/tables/customers/CustomersTable.tsx";
 
 export async function getAllJobs(employeeId: string) {
     try {
@@ -85,6 +86,34 @@ export async function deleteCustomer(employeeId: string, customerId: string) {
                     adminId: employeeId,
                     customerId: customerId
                 }
+            });
+        if (response.status == 200) {
+            return response;
+        }
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+export async function updateCustomer(
+    employeeId: string, 
+    customerId: string,
+    customer: Customer[]
+    ) {
+    try {
+        const response = await api.put(
+            "/admin/updateCustomer",
+            {
+                    adminId: employeeId,
+                    customerId: customerId,
+                    firstname: customer,
+                    lastName: customer,
+                    customerType: customer,
+                    streetAdress: customer,
+                    postalCode: customer,
+                    city: customer,
+                    phoneNumber: customer,
+                    emailAdress: customer
             });
         if (response.status == 200) {
             return response;
