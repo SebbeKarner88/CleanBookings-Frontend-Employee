@@ -3,7 +3,7 @@ import {MdDeleteForever} from "react-icons/md";
 import SelectEmployees from "./SelectEmployees.tsx";
 import {Dispatch, SetStateAction, useContext, useState} from "react";
 import {AuthContext} from "../../../context/AuthContext.tsx";
-import {assignEmployees} from "../../../api/AdminApi.ts";
+import {assignEmployees, deleteJob} from "../../../api/AdminApi.ts";
 import {Button, Spinner} from "react-bootstrap";
 
 type JobStatus = "OPEN" | "ASSIGNED" | "WAITING_FOR_APPROVAL" | "NOT_APPROVED" | "APPROVED" | "CLOSED";
@@ -32,7 +32,7 @@ export function JobsTable({jobs, statuses, setTriggerUpdateOfJobs, setIsLoadingJ
     const handleClose = () => setShowModal(false);
     const [isAssigning, setIsAssigning] = useState<boolean>(false);
 
-    async function assignSelectedEmployeesToJob() {
+    async function handleAssignEmployees() {
         setIsAssigning(true);
         const response = await assignEmployees(jobId, employeeId, selectedEmployeeIds);
         if (response?.status == 200) {
@@ -40,6 +40,13 @@ export function JobsTable({jobs, statuses, setTriggerUpdateOfJobs, setIsLoadingJ
             setIsLoadingJobsData(() => true);
             setIsAssigning(false);
             handleClose();
+        }
+    }
+
+    async function handleDelete(id: string) {
+        const response = await deleteJob(id, employeeId);
+        if (response?.status == 200) {
+            setTriggerUpdateOfJobs(value => !value);
         }
     }
 
@@ -96,7 +103,7 @@ export function JobsTable({jobs, statuses, setTriggerUpdateOfJobs, setIsLoadingJ
                             </Button>
                             : <Button
                                 variant="primary"
-                                onClick={assignSelectedEmployeesToJob}
+                                onClick={handleAssignEmployees}
                             >
                                 Assign job
                             </Button>
@@ -123,6 +130,8 @@ export function JobsTable({jobs, statuses, setTriggerUpdateOfJobs, setIsLoadingJ
                     </thead>
                     <tbody>
                     {jobs?.map((job: Job) => {
+                        const isApproved: boolean = job.jobStatus == ("APPROVED" || "CLOSED");
+
                         // Check if a status filter is provided and if the job's status is included in the filter
                         if (!statuses || statuses.includes(job.jobStatus as JobStatus)) {
                             return (
@@ -149,13 +158,17 @@ export function JobsTable({jobs, statuses, setTriggerUpdateOfJobs, setIsLoadingJ
                                         )}
                                     </td>
                                     <td>
-                                        <button
-                                            className="btn focus-ring focus-ring-light"
-                                            type="button"
-                                            aria-label="Press button to delete job"
-                                        >
-                                            <MdDeleteForever color="#dc3545" size={30}/>
-                                        </button>
+                                        {
+                                            !isApproved &&
+                                            <button
+                                                className={"btn focus-ring focus-ring-light"}
+                                                type="button"
+                                                aria-label="Press button to delete job"
+                                                onClick={() => handleDelete(job.jobId)}
+                                            >
+                                                <MdDeleteForever color="#dc3545" size={30}/>
+                                            </button>
+                                        }
                                     </td>
                                 </tr>
                             );
