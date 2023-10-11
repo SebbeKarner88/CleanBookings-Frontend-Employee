@@ -32,6 +32,7 @@ export default function Modal({id, title, body, actionButtonLabel, handleActionB
                         <button
                             type="button"
                             className="btn btn-primary"
+                            data-bs-dismiss="modal"
                             onClick={handleActionButton}
                         >
                             {actionButtonLabel}
