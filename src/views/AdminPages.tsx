@@ -6,6 +6,7 @@ import {JobsTable} from "../components/tables/jobs/JobsTable.tsx";
 import StatusFilter from "../components/tables/jobs/StatusFilter.tsx";
 import {CustomersTable} from "../components/tables/customers/CustomersTable.tsx";
 import JobsTablePlaceholder from "../components/tables/jobs/JobsTablePlaceholder.tsx";
+import EmployeeCleaningsPerType from "../components/EmployeeCleaningsPerType.tsx";
 
 type JobStatus = "OPEN" | "ASSIGNED" | "WAITING_FOR_APPROVAL" | "NOT_APPROVED" | "APPROVED" | "CLOSED";
 
@@ -64,10 +65,28 @@ export default function AdminPages() {
                     }
                 </div>
             </div>
+
+
+        <div className="container-fluid bg-dark min-vh-100 min-vw-100 text-bg-dark p-3 m-0 overflow-scroll"
+                 data-bs-theme="dark">
+                <NavBar/>
+                <p className="text-info my-3 my-md-0 mx-2 mx-md-3">Signed in as: {username.toLowerCase()}</p>
+                <h1 className="text-md-center fw-bold my-3 mx-2">Current jobs</h1>
+                <div className="container">
+                    <StatusFilter selectedStatus={selectedStatus} setSelectedStatus={setSelectedStatus} />
+                    <div className="my-3">
+                        <JobsTable jobs={jobs} statuses={selectedStatus}/>
+                    </div>
+                </div>
             <h1 className="text-md-center fw-bold my-3 mx-2">Customers</h1>
             <div className="container">
                 <CustomersTable/>
             </div>
+            <div style={{ display: 'flex', justifyContent: 'center' }}>
+                <h2>Jobs Per Type</h2>
+            </div>
+            <EmployeeCleaningsPerType />
+        </div>
         </div>
     )
 }

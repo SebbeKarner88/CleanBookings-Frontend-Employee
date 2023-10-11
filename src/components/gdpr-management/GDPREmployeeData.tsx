@@ -42,7 +42,8 @@ const GDPREmployeeData: React.FC = () => {
     };
 
     return (
-        <div>
+        <div className="container-fluid bg-dark min-vh-100 min-vw-100 text-bg-dark p-3 m-0 overflow-scroll" data-bs-theme="dark">
+            <div className="text-center">
             <h2>Employee Data</h2>
             {employeeData ? (
                 <div>
@@ -60,9 +61,11 @@ const GDPREmployeeData: React.FC = () => {
                 <p>Loading employee data...</p>
             )}
 
+
             <Button variant="primary" onClick={handleShowPrivacyModal}>
                 Privacy Policy
             </Button>
+            </div>
 
             {/* Privacy Policy Modal */}
             <Modal show={showPrivacyModal} onHide={handleClosePrivacyModal}>

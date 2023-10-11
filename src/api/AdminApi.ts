@@ -95,6 +95,26 @@ export async function deleteCustomer(employeeId: string, customerId: string) {
     }
 }
 
+export async function deleteJob(
+    jobId: string,
+    employeeId: string
+) {
+    try {
+        const response = await api.delete(
+            `/job/${jobId}`,
+            {
+                params: {
+                    employeeId: employeeId
+                }
+            });
+        if (response.status == 200) {
+            return response;
+        }
+    } catch (error) {
+        console.error(error);
+    }
+}
+
 export async function updateCustomer(
     employeeId: string, 
     customerId: string,

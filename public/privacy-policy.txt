@@ -1,0 +1,123 @@
+
+Denna integritetspolicy förklarar hur Städafint AB samlar personuppgifter om dig och hur vi använder dina uppgifter. Denna integritetspolicy gäller alla Städafints kunder och slutanvändare av våra digitala tjänster, så som Städafint-appen.
+
+Om du har några frågor om denna integritetspolicy eller sättet vi behandlar dina personuppgifter på, vänligen kontakta os på **info@stadafint.se**
+
+**1. Insamling av personuppgifter**
+
+Personuppgifterna som vi behandlar är till största del inhämtade direkt från dig. Dina personuppgifter inhämtas i följande situationer:
+
+*När du beställer tjänster från oss.* När du beställer tjänster från oss, samlar vi in dina kontaktuppgifter och detaljer gällande beställningen, så som information om inköpet, andra beställningar och ytterligare information om din boplats och dina förväntningar.
+
+*När du kontaktar oss.* Vi samlar informationen när du kontaktar oss. Vi samlar in data om meddelanden och feedback som vi mottar. Vi monitorerar även kommunikationskanalerna som används.
+
+*När vi kontaktar dig eller när du mottar våra marknadsföringsmeddelanden.* Vi samlar in personuppgifter när vi kontaktar dig via olika kanaler eller når ut till dig via våra annonseringspartners. Vi utför även olika undersökningar för våra kunder för att säkerställa att våra tjänster uppfyller de standarder vi kräver. Vi samlar också in Dina personuppgifter för att analysera effektiviteten av våra reklam- och försäljningskampanjer.
+
+*När du använder våra digitala tjänster.* Vi använder informationskapslar och liknande teknologier för att kartlägga hur många besökare vår webbsida har och vilken information som visas, samt annan metrik.
+
+<span style="text-decoration: underline;">Externa datakällor.</span> Vi inhämtar data från externa källor till vårt säljteam för att kontakta Dig och presentera våra tjänster. Ibland får vi dina kontaktuppgifter genom en kampanj, som, till exempel, berätta-för-en-vän eller via tävlingar i sociala medier eller på vår hemsida.
+
+**2. Behandling av personuppgifter**
+	
+Vi behandlar olika kategorier av personuppgifter för olika ändamål. Till exempel, personuppgifter som vi behandlar består av följande kategorier:
+
+- -Din grundläggande kontaktinformation, som ditt förnamn, efternamn, adress, koordinater, telefonnummer och e-postadress.
+
+- -Information om dina inköp, beställningar och avtal, som ditt kundnummer, faktureringsuppgifter, betalningsuppgifter, inköpsuppgifter, inköpshistoria, dina förfrågningar till vårt team, din feedback om våra tjänster och eventuell information om ditt deltagande i våra tävlingar eller undersökningar.
+
+- -Information som vi får från ditt användande när du registrerat dig på vår webbsida eller Städafint-app, som användarnamn, lösenord, registreringar, och statistik relaterad till våra nyhetsbrev, dina handlingar och använda rabatter.
+
+Annan användardata knuten till våra tjänster och marknadsföringskampanjer, som profilinformation, dina intressen, olika samtycken och annan information som vi inhämtat när du gett ditt samtycke till sådan insamling.
+
+Vi samlar in viss information automatiskt när du använder våra tjänster, så som Städafints webbsidor och mobilappar. Informationen vi samlar in är, till exempel, hur länge du stannar på vår webbsida, när du besöker den, från vilken webbsida du kom och hur du använder sådana tjänster. Denna information inkluderar de besökta sidorna och vi använder sådan data för att göra vår marknadsföring mer relevant för dig.
+
+De tekniska data som vi samlar in från webbsidan och appen gäller vilka enheter du använder, som versionen av din nätläsare, enhetens modell, ID för informationskapslar, IP-adresser och operativsystem. Denna information samlas in automatiskt via serverförfrågningar när du använder våra tjänster.
+
+**3. Databehandlingens ändamål**
+	
+När databehandlingen är nödvändig för att kunna genomföra ett kontrakt vari du är en part, eller för att kunna vidta åtgärder på din begäran innan du ingår i ett sådant kontrakt. När Du beställer tjänster från oss, behandlar vi personuppgifter som vi behöver för att kunna utföra våra kontraktsenliga skyldigheter. Till exempel, behöver vi dina faktureringsuppgifter och din adress för att kunna genomföra den beställda tjänsten.
+
+När databehandlingen är nödvändig för att kunna uppfylla lagliga skyldigheter som åläggs oss. Uppgifter relaterade till fakturering lagras för redovisning och beskattning. I dessa fall är vi förpliktigade att uppfylla lagliga skyldigheter som kräver att vi behandlar personuppgifter.
+
+När du har gett oss ditt samtycke till att behandla dina personuppgifter. Till exempel, för att skicka dig ett nyhetsbrev, behöver vi ditt samtycke för att kunna göra det. Med ditt samtycke skickar vi dig riktad reklam och delar dina uppgifter med våra utvalda affärspartners för att genomföra olika marknadsföringskampanjer.
+
+När databehandlingen är nödvändig för legitima intressen som vi, våra affärspartners eller tredje parter bedriver. När vi förlitar oss på legitima intressen, har vi en kundrelation med dig och vi säkerställer att databehandlingen är nödvändig och proportionell.
+
+* -Samla in statistik och göra analyser. Vi mäter effektiviteten av våra kampanjer i olika medier och följer noggrant nya beställningar av tjänster som görs via olika kampanjer. Detta gör det möjligt för oss att förutse våra försäljningar och utveckla våra tjänster för att bättre bemöta våra kunders behov.
+
+* -Utveckling av nya tjänster. När vi samlar in data om dina intressen och sammankopplar dem med din profil, kan vi utveckla bättre tjänstemodeller för våra kunder och rekommendera nya tjänster som kan vara i Ditt intresse.
+
+* -Skydda personuppgifter och förebygga bedrägerier och missbruk. För att förebygga illvillig åverkan mot dina personuppgifter, samlar vi in loggar om användningen av våra tjänster, till exempel, från vilka IP-adresser våra tjänster används. Med hjälp av dessa loggfiler, försöker vi upptäcka, till exempel, avvikande användning av våra tjänster för att förhindra olaglig åtkomst åt personuppgifter från illvilliga tredje parter.
+
+* -Kundtjänst och kundkommunikation. Vi behandlar dina personuppgifter för att besvara olika förfrågningar och anmodanden från dig, till exempel, når du kontakter vår kundtjänst genom olika kanaler. Naturligtvis kommer vi även att behandla dina kontaktuppgifter när vi meddelar dig om nya produkter och tjänster.
+
+* -Elektronisk direktmarknadsföring i vissa situationer. Vi kommer att skicka dig meddelanden med direktmarknadsföring, till exempel, när sådan marknadsföring är relaterad till din position som en potentiell beslutsfattare i ett företag eller för att marknadsföra liknande produkter eller tjänster som du tidigare köpt hos oss.
+
+**4. Delning av personuppgifter med tredje parter**
+	
+Även fast vi gör mycket själva, använder vi även tjänsteleverantörer utanför Städafint för att behandla personuppgifter. Nedanför hittar du en lista över kategorier av tredje parter med vilka dina personuppgifter kan komma att delas. Vi strävar efter att ingå avtal med alla mottagare för att säkerställa att dina personuppgifter endast används på våra vägnar.
+
+* -Marknadsföringspartners. Vi överför personlig information till olika marknadsföringspartners för marknadsföringsändamål. Till exempel kör vi marknadsföringskampanjer där vi överför information relaterad till målgrupper inom marknadsföringssegment till system som hanteras av våra partners.
+
+* -Säljpartners. Vi använder oss av externa säljpartners för att till exempel genomföra försäljningssamtal till våra existerande kunder och kunder vars prenumeration håller på att gå ut.
+
+* -IT-system och datacenterleverantörer. I våra verksamheter använder vi olika IT-system och datacentertjänster. Till exempel använder vi ett e-postsystem som hanteras av Google och datacenter som ombesörjs av Google.
+
+* -Leverantörer av sociala medier. Vi använder funktioner inom sociala medier i våra online-tjänster varigenom dina personuppgifter kan komma att hamna hos leverantörer av dessa funktioner, så som Facebook och Google.
+
+* -Andra tjänsteleverantörer och underleverantörer. I tillägg till ovannämnda kategorier, använder vi oss även av andra tjänsteleverantörer, såväl som underleverantörer med vilka dina personuppgifter kan komma att delas. Sådana aktörer som bedriver verksamhet utanför Städafint, kan till exempel vara leverantörer av städtjänster, konsulter och företag som tillhandahåller marknadsundersökningar och kundundersökningar.
+
+* -Andra situationer där dina personuppgifter kan komma att avslöjas. Vi kan komma att avslöja dina personuppgifter utanför Städafint i andra, mer ovanliga situationer som när vi samlar in fordringar, granskar potentiella brott mot våra villkor eller för att försvara rättsanspråk.
+
+Vi kan även komma att avslöja dina personuppgifter om det krävs av behöriga myndigheter under gällande lag. Dessa myndigheter inkluderar, till exempel, skattemyndigheter, polisen, kronofogden eller tillsynsmyndigheter.
+
+I tillägg, om vi säljer, fusionerar eller på annat vis omorganiserar vår affärsverksamhet, kan dina personuppgifter komma att avslöjas för potentiella köpare eller deras rådgivare i syfte att utföra dessa anskaffningar.
+
+Vi använder Googles tjänster på våra Digitala tjänster för att analysera användningen av våra Digitala tjänster och för att bedriva marknadsföring utanför våra tjänster. Google använder informationskapslar och liknande teknologier för att samla in och ta emot personuppgifter för personriktad reklam och mätningar. Läs hur Google samlar och använder personuppgifter:** https://policies.google.com/technologies/partner-sites
+**
+
+**5. Överföring av personuppgifter utanför det Europeiska** 
+	**ekonomiska samarbetsområdet**
+	
+Några av våra partners och IT-systemen och datacenter som vi använder oss av befinner sig utanför det Europeiska ekonomiska samarbetsområdet. Därför överförs dina personuppgifter utanför EES. I dessa situationer, ämnar vi att vidta nödvändiga åtgärder för att säkerställa den höga nivå av skydd som krävs av den europeiska dataskyddslagen efter överföringen.
+
+Åtgärderna som vi har implementerat inkluderar, t.ex., användningen av standard kontraktsenliga klausuler som godkänts och tillhandahålls av EU-kommissionen som en del av avtalen vi ingår med mottagare av personuppgifter i tredjepartsländer.
+
+Läs mer om EU-kommissionens standardarder för kontraktsenliga klausuler här:** https://ec.europa.eu/info/law/law-topic/data-protection/international-dimension-data-protection/standard-contractual-clauses-scc_en
+**
+
+**6. Hur länge behåller vi dina personuppgifter?**
+	
+Vi behåller dina persongifter endast så långe som det är nödvändigt för att genomföra varje ändamål av databehandlingen. Vanligen behandlar vi dina personuppgifter så länge som du har en kundrelation med oss.
+
+Som företag måste vi uppfylla en mängd olika lagar som kan komma att kräva att vi behandlar eller behåller dina personuppgifter även efter avslutandet av din kundrelation. I sådana fall, anges längden för lagringsperioden av dina personuppgifter i gällande lag. Till exempel, redovisningslagen kräver att vi lagrar dokument och andra redovisningshandlingar i minst sex år från slutet av året då räkenskapsåret avslutades.
+
+Om du har gett oss ditt samtycke till att motta marknadsföring, kommer vi att lagra, så länge som vi har ett giltigt samtycke, viss information som ditt namn, e-postadress och telefonnummer, som överförs till vårt marknadsföringsregister, även om din kundrelation med oss har avslutats.
+
+Om du har nekat marknadsföring, kommer vi att lagra information om ditt nekande och dina nödvändiga personuppgifter för att säkerställa att vi är följsamma med ditt beslut.
+
+Vänligen notera att istället för att radera dina personuppgifter, kan det hända att vi anonymiserar dina personuppgifter på ett sätt så uppgifterna inte längre kan härledas till dig.
+
+**7. Dina rättigheter som kund**
+	
+Dataskyddslagar garanterar dig vissa rättigheter gällande behandlingen av dina personuppgifter. Vänligen notera att dessa rättigheter som garanteras i enlighet med lag, inte alltid är helt obegränsade. Till exempel, kan vi inte, på din förfrågan, radera alla dina personuppgifter, eftersom lagringen av dina personuppgifter kan vara ett lagligt krav som vi måste uppfylla. Till exempel, redovisningslagstiftning kräver att vi lagrar vissa dokument som innehåller personuppgifter.
+
+För att utöva din rättigheter, vänligen kontakta oss på email(a)address.com. För att förhindra att dina personuppgifter hamnar i orätta händer, vänligen var beredd på att styrka din identitet i samband med dina förfrågningar.
+
+* -Rätt till åtkomst. Du har rätt att få en bekräftelse av oss om dina personuppgifter blir behandlade eller inte, och, där det är tillfälle, tillgång till personuppgifterna och en kopia på personuppgifterna som behandlas.
+
+* -Rätt att korrigera information. Naturligtvis ämnar vi att säkerställa att personuppgifterna som behandlas är korrekta och uppdaterade. Om du upptäcker att personuppgifter om dig är inkorrekta, ofullständiga eller inaktuella, kan du alltid be oss om att korrigera informationen.
+
+* -Rätt att bli bortglömd. I vissa omständigheter kan det hända att du ber oss om att radera personlig information om dig. Vänligen notera, att vi kanske inte har möjlighet att radera information för vilken det finns ett berättigat behov av att lagra det, så som ett specifikt lagligt krav.
+
+* -Rätt att motsätta dig behandlingen av personuppgifter. Du har rätt att neka till behandlingen av dina personuppgifter i särskilda situationer. Det betyder däremot inte att du har en allmän rätt att neka all behandling, men tillämpas till exempel i situationer där behandlingen av dina personuppgifter baseras på legitima intressen. I tillägg har du alltid rätt att neka till behandlingen av dina personuppgifter för direktmarknadsföringsändamål.
+
+* -Rätt att begränsa behandlingen av dina personuppgifter. I särskilda situationer kan det hända att du ber oss om att begränsa behandlingen av dina personuppgifter. Du har den rätten, till exempel, när du bestrider noggrannheten av dina personuppgifter. På din anmodan, kommer vi att begränsa behandlingen av dina personuppgifter till de data som du önskar att begränsa dem till.
+
+* -Rätt till dataportabilitet. Du kan begära att vi överför dina personuppgifter till en annan controller. Vänligen notera, att en sådan rättighet endast avser information som behandlas på ett automatiserat sätt, som du har delgett oss och databehandlingen är baserad på ditt samtycke eller kontrakt.
+
+* -Rätt att inlämna ett klagomål till en tillsynsmyndighet. Om du misstänker att vi har behandlat dina personuppgifter på ett olagligt sätt, har du alltid rätt att lämna in ett klagomål till tillsynsmyndigheten för behandling av personuppgifter.
+
+**8. Uppdateringar av denna integritetspolicy**
+	
+Eftersom vi kontinuerligt utvecklar våra tjänster, kan vi komma att ändra eller uppdatera innehåll i denna integritetspolicy. Ändringar kan även baseras på ändringar i gällande lagstiftning.
