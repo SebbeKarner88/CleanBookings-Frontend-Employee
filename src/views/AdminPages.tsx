@@ -52,7 +52,7 @@ export default function AdminPages() {
             <h1 className="text-md-center fw-bold my-3 mb-md-5 mx-2">Admin Dashboard</h1>
 
             <div className="container">
-                <h2 className="text-md-center fw-bold my-3 mx-2">Current jobs</h2>
+                <h2 className="text-md-center fw-bold my-3">Current jobs</h2>
                 <StatusFilter selectedStatus={selectedStatus} setSelectedStatus={setSelectedStatus}/>
                 <div className="my-3">
                     {
@@ -69,14 +69,14 @@ export default function AdminPages() {
             </div>
 
             <div className="container">
-                <h2 className="text-md-center fw-bold my-3 mx-2">Customers</h2>
+                <h2 className="text-md-center fw-bold my-3">Customers</h2>
                 <div className="my-3">
                     <CustomersTable/>
                 </div>
             </div>
 
             <div className="container">
-                <h2 className="text-md-center fw-bold my-3 mx-2">Jobs per type</h2>
+                <h2 className="text-md-center fw-bold my-3">Jobs per type</h2>
                 <div className="my-3">
                     <EmployeeCleaningsPerType/>
                 </div>
