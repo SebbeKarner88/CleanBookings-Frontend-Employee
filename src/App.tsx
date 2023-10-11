@@ -9,6 +9,7 @@ import AdminPages from "./views/AdminPages.tsx";
 import CleanerPages from "./views/CleanerPages.tsx";
 import {QueryClient, QueryClientProvider} from "react-query";
 import GDPREmployeeData from "./components/gdpr-management/GDPREmployeeData.tsx";
+import EmployeeCleaningsPerType from "./components/EmployeeCleaningsPerType.tsx";
 
 function App() {
     const {isAuthenticated, role} = useContext(AuthContext);
@@ -26,6 +27,7 @@ function App() {
                                 ? <CleanerPages/>
                                 : <LoginView/>}/>
                     <Route path="/gdpr-employee-data" element={<GDPREmployeeData />} />
+                    <Route path="/employee-cleanings-per-type" element={<EmployeeCleaningsPerType />} />
                 </Routes>
             </BrowserRouter>
         </QueryClientProvider>

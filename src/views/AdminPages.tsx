@@ -4,6 +4,7 @@ import {AuthContext} from "../context/AuthContext.tsx";
 import {getAllJobs} from "../api/AdminApi.ts";
 import {JobsTable} from "../components/tables/jobs/JobsTable.tsx";
 import StatusFilter from "../components/tables/jobs/StatusFilter.tsx";
+import EmployeeCleaningsPerType from "../components/EmployeeCleaningsPerType.tsx";
 
 type JobStatus = "OPEN" | "ASSIGNED" | "WAITING_FOR_APPROVAL" | "NOT_APPROVED" | "APPROVED" | "CLOSED";
 
@@ -37,7 +38,8 @@ export default function AdminPages() {
     }
 
     return (
-            <div className="container-fluid bg-dark min-vh-100 min-vw-100 text-bg-dark p-3 m-0 overflow-scroll"
+
+        <div className="container-fluid bg-dark min-vh-100 min-vw-100 text-bg-dark p-3 m-0 overflow-scroll"
                  data-bs-theme="dark">
                 <NavBar/>
                 <p className="text-info my-3 my-md-0 mx-2 mx-md-3">Signed in as: {username.toLowerCase()}</p>
@@ -46,8 +48,12 @@ export default function AdminPages() {
                     <StatusFilter selectedStatus={selectedStatus} setSelectedStatus={setSelectedStatus} />
                     <div className="my-3">
                         <JobsTable jobs={jobs} statuses={selectedStatus}/>
+                    </div>
                 </div>
+            <div style={{ display: 'flex', justifyContent: 'center' }}>
+                <h2>Jobs Per Type</h2>
             </div>
+            <EmployeeCleaningsPerType />
         </div>
     )
 }
