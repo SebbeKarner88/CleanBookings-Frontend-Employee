@@ -63,6 +63,9 @@ export default function AdminPages() {
                                 setIsLoadingJobsData={setIsLoadingJobsData}
                             />
                     }
+                </div>
+            </div>
+
 
         <div className="container-fluid bg-dark min-vh-100 min-vw-100 text-bg-dark p-3 m-0 overflow-scroll"
                  data-bs-theme="dark">
@@ -75,14 +78,15 @@ export default function AdminPages() {
                         <JobsTable jobs={jobs} statuses={selectedStatus}/>
                     </div>
                 </div>
-            <div style={{ display: 'flex', justifyContent: 'center' }}>
-                <h2>Jobs Per Type</h2>
-            </div>
             <h1 className="text-md-center fw-bold my-3 mx-2">Customers</h1>
             <div className="container">
                 <CustomersTable/>
             </div>
+            <div style={{ display: 'flex', justifyContent: 'center' }}>
+                <h2>Jobs Per Type</h2>
+            </div>
             <EmployeeCleaningsPerType />
+        </div>
         </div>
     )
 }
