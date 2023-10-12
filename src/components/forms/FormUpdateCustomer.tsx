@@ -6,13 +6,12 @@ import { AuthContext } from "../../context/AuthContext";
 import { FieldValues, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { FormField } from "./FormField";
+import { Button, Modal } from "react-bootstrap";
 
 const schema = z.object({
     firstName: z
         .string(),
     lastName: z
-        .string(),
-    customerType: z
         .string(),
     streetAddress: z
         .string(),
@@ -32,9 +31,9 @@ export function FormUpdateCustomer() {
     const { employeeId } = useContext(AuthContext)
     const [ modalVisible, setModalVisible ] = useState(false)
     // const [ isUpdating, setIsUpdating ] = useState(false)
-    // const navigation = useNavigate()
+    const navigation = useNavigate()
     const location = useLocation()
-    const data = location.state
+    const values = location.state
     const {
         register,
         handleSubmit,
@@ -47,10 +46,9 @@ export function FormUpdateCustomer() {
     function onSubmit(data: FieldValues) {
         updateCustomer(
             employeeId,
-            data.customerId,
+            values.customerId,
             data.firstName,
             data.lastName,
-            data.customerType,
             data.streetAddress,
             data.postalCode,
             data.city,
@@ -59,7 +57,7 @@ export function FormUpdateCustomer() {
         ).then(response => {
             if (response?.status == 200) {
                 console.log("Everything went according to plan!")
-                // TODO: add modal when successful ? send back to adminPage ?
+                setModalVisible(true)
             } else {
                 setErrorMessage("Something went wrong, try again.");
             }
@@ -68,8 +66,8 @@ export function FormUpdateCustomer() {
 
     return (
         <>
-            <h1>Updating customer {data.firstName + " " + data.lastName}</h1>
-            <h3>Customer ID: {data.customerId}</h3>
+            <h1>Updating customer {values.firstName + " " + values.lastName}</h1>
+            <h3>Customer ID: {values.customerId}</h3>
             <form
                 className="my-3 my-md-5 px-4 text-start"
                 onSubmit={handleSubmit(onSubmit)}
@@ -80,7 +78,7 @@ export function FormUpdateCustomer() {
                             fieldName="firstName"
                             label="First name"
                             inputType="text"
-                            placeholder={data.firstName}
+                            placeholder={values.firstName}
                             fieldError={errors.firstName}
                             register={register}
                         />
@@ -90,7 +88,7 @@ export function FormUpdateCustomer() {
                             fieldName="lastName"
                             label="Last name"
                             inputType="text"
-                            placeholder={data.lastName}
+                            placeholder={values.lastName}
                             fieldError={errors.lastName}
                             customError={errorMessage}
                             register={register}
@@ -103,7 +101,7 @@ export function FormUpdateCustomer() {
                             fieldName="streetAddress"
                             label="Street address"
                             inputType="text"
-                            placeholder={data.streetAddress}
+                            placeholder={values.streetAddress}
                             fieldError={errors.streetAddress}
                             register={register}
                         />
@@ -113,7 +111,7 @@ export function FormUpdateCustomer() {
                             fieldName="postalCode"
                             label="Postal code"
                             inputType="text"
-                            placeholder={data.postalCode}
+                            placeholder={values.postalCode}
                             fieldError={errors.postalCode}
                             customError={errorMessage}
                             register={register}
@@ -124,7 +122,7 @@ export function FormUpdateCustomer() {
                             fieldName="city"
                             label="City"
                             inputType="text"
-                            placeholder={data.city}
+                            placeholder={values.city}
                             fieldError={errors.city}
                             customError={errorMessage}
                             register={register}
@@ -137,7 +135,7 @@ export function FormUpdateCustomer() {
                             fieldName="phoneNumber"
                             label="Phone Number"
                             inputType="text"
-                            placeholder={data.phoneNumber}
+                            placeholder={values.phoneNumber}
                             fieldError={errors.phoneNumber}
                             register={register}
                         />
@@ -147,35 +145,58 @@ export function FormUpdateCustomer() {
                             fieldName="emailAddress"
                             label="Email address"
                             inputType="text"
-                            placeholder={data.emailAddress}
+                            placeholder={values.emailAddress}
                             fieldError={errors.emailAddress}
                             customError={errorMessage}
                             register={register}
                         />
                     </div>
-                    <div className="col-md-6">
+                    {/* <div className="col-md-6">
                         <FormField
                             fieldName="customerType"
-                            label="Customer Type"
-                            inputType="text"
-                            placeholder={data.customerType}
+                            label="Type of account"
+                            inputType="radio"
+                            options={[ "PRIVATE", "BUSINESS" ]}
                             fieldError={errors.customerType}
-                            customError={errorMessage}
                             register={register}
-                        />
-                    </div>
+                        /> 
+                    </div>*/}
                 </div>
                 <button
                     type="submit"
                     className="btn btn-outline-dark w-100"
-                    onClick={() => {
-                        setModalVisible(true)
-
-                    }}
                 >
                     Update customer
                 </button>
             </form>
+            <Modal
+                show={modalVisible}
+                onHide={() => setModalVisible(!modalVisible)}
+                fullscreen="md-down"
+            >
+                <Modal.Header
+                    className="bg-secondary-subtle"
+                    closeButton
+                >
+                    <Modal.Title className="fs-6 fw-bold">
+                        {"Update successful!"}
+                    </Modal.Title>
+                </Modal.Header>
+                <Modal.Body className="bg-secondary-subtle">
+                    <p>Customer with ID {values.customerId} has been updated.</p>
+                </Modal.Body>
+                <Modal.Footer className="bg-secondary-subtle">
+                    <Button
+                        variant="primary"
+                        onClick={() => {
+                            setModalVisible(!modalVisible)
+                            navigation("/my-pages")
+                        }}
+                    >
+                        Return to My Pages
+                    </Button>
+                </Modal.Footer>
+            </Modal>
         </>
     )
 }

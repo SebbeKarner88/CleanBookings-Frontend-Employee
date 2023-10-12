@@ -52,9 +52,8 @@ export function CustomersTable() {
         }
     }
 
-
-    const handleUpdate = (data: object) => {
-        navigation("/update-customer", { state: data })
+    const handleUpdate = (values: object) => {
+        navigation("/update-customer", { state: values })
     }
 
     return (
@@ -84,11 +83,11 @@ export function CustomersTable() {
                                             type="button"
                                             className="btn focus-ring focus-ring-light"
                                             onClick={() => {
-                                                const data = { customerId: customer.id, firstName: customer.firstName,
+                                                const values = { customerId: customer.id, firstName: customer.firstName,
                                                 lastName: customer.lastName, customerType: customer.customerType,
                                                 streetAddress: customer.streetAddress, postalCode: customer.postalCode,
                                                 city: customer.city, phoneNumber: customer.phoneNumber, emailAddress: customer.emailAddress}
-                                                handleUpdate(data)
+                                                handleUpdate(values)
                                             }}
                                         >
                                             <MdEdit size={30} />
