@@ -1,5 +1,5 @@
-import { FieldError, FieldValues, Path, UseFormRegister } from "react-hook-form";
-import { HTMLInputTypeAttribute } from "react";
+import {FieldError, FieldValues, Path, UseFormRegister} from "react-hook-form";
+import {HTMLInputTypeAttribute} from "react";
 
 interface IFormField<T extends FieldValues> {
     fieldError: FieldError | undefined;
@@ -11,21 +11,22 @@ interface IFormField<T extends FieldValues> {
     options?: string[] | null;
     labelDescription?: string;
     placeholder?: string
-    value?: string
+    defaultValue?: string
     checked?: boolean
 }
 
 export function FormField<T extends FieldValues>({
-    fieldError,
-    customError,
-    register,
-    label,
-    fieldName,
-    inputType,
-    options,
-    labelDescription,
-    placeholder
-}: IFormField<T>) {
+                                                     fieldError,
+                                                     customError,
+                                                     register,
+                                                     label,
+                                                     fieldName,
+                                                     inputType,
+                                                     options,
+                                                     labelDescription,
+                                                     placeholder,
+                                                     defaultValue
+                                                 }: IFormField<T>) {
     return (
         <>
             <div className="mb-3">
@@ -51,6 +52,7 @@ export function FormField<T extends FieldValues>({
                                 className={fieldError || customError != undefined ? "form-control is-invalid" : "form-control"}
                                 id={fieldName}
                                 placeholder={placeholder}
+                                defaultValue={defaultValue}
                             />
                         )}
             </div>

@@ -144,11 +144,11 @@ export async function updateCustomer(
     customerId: string,
     firstName: string,
     lastName: string,
-    streetAdress: string,
+    streetAddress: string,
     postalCode: number,
     city: string,
     phoneNumber: string,
-    emailAdress: string
+    emailAddress: string
 ) {
     try {
         const response = await api.put(
@@ -158,11 +158,11 @@ export async function updateCustomer(
                 customerId: customerId,
                 ...firstName ? { firstName: firstName } : null,
                 ...lastName ? { lastName: lastName } : null,
-                ...streetAdress ? { streetAdress: streetAdress } : null,
+                ...streetAddress ? { streetAddress: streetAddress } : null,
                 ...postalCode ? { postalCode: postalCode } : null,
                 ...city ? { city: city } : null,
                 ...phoneNumber ? { phoneNumber: phoneNumber } : null,
-                ...emailAdress ? { emailAdress: emailAdress } : null
+                ...emailAddress ? { emailAddress: emailAddress } : null
             });
         if (response.status == 200) {
             return response;
