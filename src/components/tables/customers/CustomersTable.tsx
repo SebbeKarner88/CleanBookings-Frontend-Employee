@@ -53,8 +53,8 @@ export function CustomersTable() {
     }
 
 
-    const handleUpdate = (customerId: string) => {
-        navigation("/update-customer", { state: customerId })
+    const handleUpdate = (data: object) => {
+        navigation("/update-customer", { state: data })
     }
 
     return (
@@ -83,7 +83,13 @@ export function CustomersTable() {
                                         <button
                                             type="button"
                                             className="btn focus-ring focus-ring-light"
-                                            onClick={() => handleUpdate(customer.id)}
+                                            onClick={() => {
+                                                const data = { customerId: customer.id, firstName: customer.firstName,
+                                                lastName: customer.lastName, customerType: customer.customerType,
+                                                streetAddress: customer.streetAddress, postalCode: customer.postalCode,
+                                                city: customer.city, phoneNumber: customer.phoneNumber, emailAddress: customer.emailAddress}
+                                                handleUpdate(data)
+                                            }}
                                         >
                                             <MdEdit size={30} />
                                         </button>
@@ -114,27 +120,27 @@ export function CustomersTable() {
                 fullscreen="md-down"
             >
                 <Modal.Header
-                className="bg-secondary-subtle"
-                closeButton
-            >
-                <Modal.Title className="fs-6 fw-bold">
-                    {"Customer ID: " + customerId}
-                </Modal.Title>
-            </Modal.Header>
-            <Modal.Body className="bg-secondary-subtle">
-                <p>Are you sure you want to delete this customer?</p>
-            </Modal.Body>
-            <Modal.Footer className="bg-secondary-subtle">
-                <Button variant="danger" onClick={handleCloseModal}>
-                    Cancel
-                </Button>
-                <Button
-                    variant="primary"
-                    onClick={() => removeCustomer(customerId)}
+                    className="bg-secondary-subtle"
+                    closeButton
                 >
-                    Delete customer
-                </Button>
-            </Modal.Footer>
+                    <Modal.Title className="fs-6 fw-bold">
+                        {"Customer ID: " + customerId}
+                    </Modal.Title>
+                </Modal.Header>
+                <Modal.Body className="bg-secondary-subtle">
+                    <p>Are you sure you want to delete this customer?</p>
+                </Modal.Body>
+                <Modal.Footer className="bg-secondary-subtle">
+                    <Button variant="danger" onClick={handleCloseModal}>
+                        Cancel
+                    </Button>
+                    <Button
+                        variant="primary"
+                        onClick={() => removeCustomer(customerId)}
+                    >
+                        Delete customer
+                    </Button>
+                </Modal.Footer>
             </Modal>
         </>
     )

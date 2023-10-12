@@ -30,11 +30,11 @@ type FormData = z.infer<typeof schema>;
 
 export function FormUpdateCustomer() {
     const { employeeId } = useContext(AuthContext)
-    // const [ modalVisible, setModalVisible ] = useState(false)
+    const [ modalVisible, setModalVisible ] = useState(false)
     // const [ isUpdating, setIsUpdating ] = useState(false)
     // const navigation = useNavigate()
     const location = useLocation()
-    const customerId = location.state
+    const data = location.state
     const {
         register,
         handleSubmit,
@@ -47,7 +47,7 @@ export function FormUpdateCustomer() {
     function onSubmit(data: FieldValues) {
         updateCustomer(
             employeeId,
-            customerId,
+            data.customerId,
             data.firstName,
             data.lastName,
             data.customerType,
@@ -68,7 +68,7 @@ export function FormUpdateCustomer() {
 
     return (
         <>
-            <h1>Updating customer with ID: {customerId}</h1>
+            <h1>Updating customer {data.firstName + " " + data.lastName}</h1>
 
             <form
                 className="my-3 my-md-5 px-4 text-start"
@@ -80,6 +80,7 @@ export function FormUpdateCustomer() {
                             fieldName="firstName"
                             label="First name"
                             inputType="text"
+                            placeholder={data.firstName}
                             fieldError={errors.firstName}
                             register={register}
                         />
@@ -160,9 +161,10 @@ export function FormUpdateCustomer() {
                 <button
                     type="submit"
                     className="btn btn-outline-dark w-100"
-                /* onClick={() => {
-                    
-                }} */
+                    onClick={() => {
+                        setModalVisible(true)
+
+                    }}
                 >
                     Update customer
                 </button>
