@@ -30,7 +30,6 @@ type FormData = z.infer<typeof schema>;
 export function FormUpdateCustomer() {
     const { employeeId } = useContext(AuthContext)
     const [ modalVisible, setModalVisible ] = useState(false)
-    // const [ isUpdating, setIsUpdating ] = useState(false)
     const navigation = useNavigate()
     const location = useLocation()
     const values = location.state
@@ -151,16 +150,6 @@ export function FormUpdateCustomer() {
                             register={register}
                         />
                     </div>
-                    {/* <div className="col-md-6">
-                        <FormField
-                            fieldName="customerType"
-                            label="Type of account"
-                            inputType="radio"
-                            options={[ "PRIVATE", "BUSINESS" ]}
-                            fieldError={errors.customerType}
-                            register={register}
-                        /> 
-                    </div>*/}
                 </div>
                 <button
                     type="submit"
