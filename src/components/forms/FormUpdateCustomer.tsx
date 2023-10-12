@@ -1,6 +1,6 @@
 import { useContext, useState } from "react"
 import { updateCustomer } from "../../api/AdminApi"
-import { useLocation } from "react-router-dom"
+import { useLocation, useNavigate } from "react-router-dom"
 import { z } from "zod";
 import { AuthContext } from "../../context/AuthContext";
 import { FieldValues, useForm } from "react-hook-form";
@@ -55,7 +55,6 @@ export function FormUpdateCustomer() {
             data.emailAddress
         ).then(response => {
             if (response?.status == 200) {
-                console.log("Everything went according to plan!")
                 setModalVisible(true)
             } else {
                 setErrorMessage("Something went wrong, try again.");
@@ -77,7 +76,7 @@ export function FormUpdateCustomer() {
                             fieldName="firstName"
                             label="First name"
                             inputType="text"
-                            placeholder={values.firstName}
+                            defaultValue={values.firstName}
                             fieldError={errors.firstName}
                             register={register}
                         />
@@ -87,7 +86,7 @@ export function FormUpdateCustomer() {
                             fieldName="lastName"
                             label="Last name"
                             inputType="text"
-                            placeholder={values.lastName}
+                            defaultValue={values.lastName}
                             fieldError={errors.lastName}
                             customError={errorMessage}
                             register={register}
@@ -100,7 +99,7 @@ export function FormUpdateCustomer() {
                             fieldName="streetAddress"
                             label="Street address"
                             inputType="text"
-                            placeholder={values.streetAddress}
+                            defaultValue={values.streetAddress}
                             fieldError={errors.streetAddress}
                             register={register}
                         />
@@ -110,7 +109,7 @@ export function FormUpdateCustomer() {
                             fieldName="postalCode"
                             label="Postal code"
                             inputType="text"
-                            placeholder={values.postalCode}
+                            defaultValue={values.postalCode}
                             fieldError={errors.postalCode}
                             customError={errorMessage}
                             register={register}
@@ -121,7 +120,7 @@ export function FormUpdateCustomer() {
                             fieldName="city"
                             label="City"
                             inputType="text"
-                            placeholder={values.city}
+                            defaultValue={values.city}
                             fieldError={errors.city}
                             customError={errorMessage}
                             register={register}
@@ -134,7 +133,7 @@ export function FormUpdateCustomer() {
                             fieldName="phoneNumber"
                             label="Phone Number"
                             inputType="text"
-                            placeholder={values.phoneNumber}
+                            defaultValue={values.phoneNumber}
                             fieldError={errors.phoneNumber}
                             register={register}
                         />
@@ -144,7 +143,7 @@ export function FormUpdateCustomer() {
                             fieldName="emailAddress"
                             label="Email address"
                             inputType="text"
-                            placeholder={values.emailAddress}
+                            defaultValue={values.emailAddress}
                             fieldError={errors.emailAddress}
                             customError={errorMessage}
                             register={register}
@@ -156,6 +155,13 @@ export function FormUpdateCustomer() {
                     className="btn btn-outline-dark w-100"
                 >
                     Update customer
+                </button>
+                <button
+                type="button"
+                className="btn btn-outline-danger w-100 mt-3"
+                onClick={() => navigation("/my-pages")}
+                >
+                    Cancel
                 </button>
             </form>
             <Modal
