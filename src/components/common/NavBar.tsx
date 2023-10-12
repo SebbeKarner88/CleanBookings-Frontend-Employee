@@ -1,13 +1,13 @@
 import {useContext} from 'react'
-import {useNavigate} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import {AuthContext} from "../../context/AuthContext.tsx";
 
 export function NavBar() {
     const {
         setIsAuthenticated,
         setEmployeeId,
-        setRole,
-        role
+        role,
+        setRole
     } = useContext(AuthContext);
     const navigation = useNavigate();
 
@@ -25,16 +25,45 @@ export function NavBar() {
                     <span className="navbar-toggler-icon"></span>
                 </button>
                 <div className="collapse navbar-collapse justify-content-md-between" id="navbarNavDropdown">
-                    <h1 className="my-3 my-md-0">Städafint AB</h1>
+                    <h1 className="my-3 my-md-0">
+                        <Link to="/my-pages" className="link-light">
+                            [Replace with logo]
+                        </Link>
+                    </h1>
                     <div>
                         <ul className="navbar-nav">
-                            {role === 'ADMIN' && (
+                            {/*{role === 'ADMIN' && (*/}
+                            {/*    <li className="nav-link">*/}
+                            {/*        <button className="btn btn-success w-100">*/}
+                            {/*            Add employee*/}
+                            {/*        </button>*/}
+                            {/*    </li>*/}
+                            {/*)}*/}
+                            { role == "ADMIN" &&
                                 <li className="nav-link">
-                                    <button className="btn btn-success w-100">
-                                        Add employee
+                                <div className="dropdown">
+                                    <button className="btn btn-success dropdown-toggle w-100"
+                                            type="button"
+                                            data-bs-toggle="dropdown"
+                                            aria-expanded="false"
+                                    >
+                                        Add
                                     </button>
-                                </li>
-                            )}
+                                    <ul className="dropdown-menu p-3 bg-dark-subtle">
+                                        <li className="dropdown-item">
+                                            <Link to="/register/new-admin" className="link-light">
+                                                New admin
+                                            </Link>
+                                        </li>
+                                        <li className="dropdown-item">
+                                            <Link to="/register/new-cleaner" className="link-light">
+                                                New cleaner
+                                            </Link>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                            }
                             <li className="nav-link">
                                 <button className="btn btn-outline-danger w-100" onClick={handleLogout}>
                                     Logout
@@ -45,5 +74,5 @@ export function NavBar() {
                 </div>
             </div>
         </nav>
-    );
+    )
 }

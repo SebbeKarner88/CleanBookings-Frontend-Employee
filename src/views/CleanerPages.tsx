@@ -18,6 +18,8 @@ interface Job {
     customerId: string,
     employees: string[]
 }
+
+
 export default function CleanerPages() {
     const {employeeId, username} = useContext(AuthContext);
     const [jobs, setJobs] = useState<Job[]>();
@@ -46,14 +48,6 @@ export default function CleanerPages() {
 
 
     return (
-        // <div className="container-fluid bg-dark vh-100 text-bg-dark p-0 m-0">
-        //     <NavBar/>
-        //     <p className="text-info my-3 my-md-0 mx-2 mx-md-3">Signed in as: {username.toLowerCase()}</p>
-        //     <h1 className="text-bg-dark text-center">Hey cleaner!</h1>
-        //     <div style={{ display: 'flex', justifyContent: 'center' }}>
-        //         <h2>Jobs Per Type</h2>
-        //     </div>
-        //     <EmployeeCleaningsPerType />
         <div className="container-fluid bg-dark min-vh-100 min-vw-100 text-bg-dark p-3 m-0 overflow-scroll"
              data-bs-theme="dark">
             <NavBar/>
@@ -75,7 +69,27 @@ export default function CleanerPages() {
                 </div>
             </div>
 
-            <div style={{ display: 'flex', justifyContent: 'center' }}>
+            <h1 className="text-md-center fw-bold my-3 mb-md-5 mx-2">Cleaner Dashboard</h1>
+
+            <div className="container">
+                <h2 className="text-md-center fw-bold my-3">My assignments</h2>
+                <StatusFilter selectedStatus={selectedStatus} setSelectedStatus={setSelectedStatus}/>
+                <div className="my-3">
+                    {
+                        isLoadingJobsData
+                            ? <JobsTablePlaceholderCleaner/>
+                            : <JobsTableCleaner
+                                jobs={jobs}
+                                statuses={selectedStatus}
+                                setTriggerUpdateOfJobs={setTriggerUpdateOfJobs}
+                                setIsLoadingJobsData={setIsLoadingJobsData}
+                            />
+                    }
+                </div>
+            </div>
+
+
+            <div style={{display: 'flex', justifyContent: 'center'}}>
                 <h2>Jobs Per Type</h2>
             </div>
             <div>
