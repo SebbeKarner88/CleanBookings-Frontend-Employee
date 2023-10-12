@@ -69,7 +69,7 @@ export function FormUpdateCustomer() {
     return (
         <>
             <h1>Updating customer {data.firstName + " " + data.lastName}</h1>
-
+            <h3>Customer ID: {data.customerId}</h3>
             <form
                 className="my-3 my-md-5 px-4 text-start"
                 onSubmit={handleSubmit(onSubmit)}
@@ -90,6 +90,7 @@ export function FormUpdateCustomer() {
                             fieldName="lastName"
                             label="Last name"
                             inputType="text"
+                            placeholder={data.lastName}
                             fieldError={errors.lastName}
                             customError={errorMessage}
                             register={register}
@@ -102,6 +103,7 @@ export function FormUpdateCustomer() {
                             fieldName="streetAddress"
                             label="Street address"
                             inputType="text"
+                            placeholder={data.streetAddress}
                             fieldError={errors.streetAddress}
                             register={register}
                         />
@@ -111,6 +113,7 @@ export function FormUpdateCustomer() {
                             fieldName="postalCode"
                             label="Postal code"
                             inputType="text"
+                            placeholder={data.postalCode}
                             fieldError={errors.postalCode}
                             customError={errorMessage}
                             register={register}
@@ -121,6 +124,7 @@ export function FormUpdateCustomer() {
                             fieldName="city"
                             label="City"
                             inputType="text"
+                            placeholder={data.city}
                             fieldError={errors.city}
                             customError={errorMessage}
                             register={register}
@@ -133,6 +137,7 @@ export function FormUpdateCustomer() {
                             fieldName="phoneNumber"
                             label="Phone Number"
                             inputType="text"
+                            placeholder={data.phoneNumber}
                             fieldError={errors.phoneNumber}
                             register={register}
                         />
@@ -142,6 +147,7 @@ export function FormUpdateCustomer() {
                             fieldName="emailAddress"
                             label="Email address"
                             inputType="text"
+                            placeholder={data.emailAddress}
                             fieldError={errors.emailAddress}
                             customError={errorMessage}
                             register={register}
@@ -152,6 +158,7 @@ export function FormUpdateCustomer() {
                             fieldName="customerType"
                             label="Customer Type"
                             inputType="text"
+                            placeholder={data.customerType}
                             fieldError={errors.customerType}
                             customError={errorMessage}
                             register={register}
