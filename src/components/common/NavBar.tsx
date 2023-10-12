@@ -1,5 +1,5 @@
 import {useContext} from 'react'
-import {Link, useNavigate} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 import {AuthContext} from "../../context/AuthContext.tsx";
 
 export function NavBar() {
@@ -21,9 +21,7 @@ export function NavBar() {
     return (
         <nav className="navbar navbar-expand-lg" data-bs-theme="dark">
             <div className="container-fluid">
-                <button className="navbar-toggler" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
-                        aria-label="Toggle navigation">
+                <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
                 </button>
                 <div className="collapse navbar-collapse justify-content-md-between" id="navbarNavDropdown">
@@ -34,6 +32,13 @@ export function NavBar() {
                     </h1>
                     <div>
                         <ul className="navbar-nav">
+                            {role === 'ADMIN' && (
+                                <li className="nav-link">
+                                    <button className="btn btn-success w-100">
+                                        Add employee
+                                    </button>
+                                </li>
+                            )}
                             { role == "ADMIN" &&
                                 <li className="nav-link">
                                 <div className="dropdown">

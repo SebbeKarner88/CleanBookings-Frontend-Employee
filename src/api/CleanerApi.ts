@@ -1,5 +1,18 @@
 import api from "./ApiRootUrl.ts";
 
+
+export async function getAllJobsCleaner(employeeId: string) {
+    try {
+        const response = await api.get(
+            "/cleaner/jobs",
+            {
+                params: {
+                    employeeId: employeeId,
+                }
+            });
+        if (response.status == 200) {
+            return response;
+        }
 export async function getJobsByCleanerId(employeeId: string) {
     try {
         const response = await api.get(
@@ -34,3 +47,4 @@ export async function executedCleaningRequest(
         console.error(error);
     }
 }
+
