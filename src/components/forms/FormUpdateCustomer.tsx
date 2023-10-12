@@ -46,13 +46,13 @@ export function FormUpdateCustomer() {
         updateCustomer(
             employeeId,
             values.customerId,
-            data.firstName,
-            data.lastName,
-            data.streetAddress,
-            data.postalCode,
-            data.city,
-            data.phoneNumber,
-            data.emailAddress
+            data.firstName != values.firstName ? data.firstName : null,
+            data.lastName != values.lastName ? data.lastName : null,
+            data.streetAddress != values.streetAddress ? data.streetAddress : null,
+            data.postalCode != values.postalCode ? data.postalCode : null,
+            data.city != values.city ? data.city : null,
+            data.phoneNumber != values.phoneNumber ? data.phoneNumber : null,
+            data.emailAddress != values.emailAddress ? data.emailAddress : null
         ).then(response => {
             if (response?.status == 200) {
                 setModalVisible(true)

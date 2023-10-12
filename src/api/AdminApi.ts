@@ -142,13 +142,13 @@ export async function deleteJob(
 export async function updateCustomer(
     employeeId: string,
     customerId: string,
-    firstName: string,
-    lastName: string,
-    streetAddress: string,
-    postalCode: number,
-    city: string,
-    phoneNumber: string,
-    emailAddress: string
+    firstName?: string,
+    lastName?: string,
+    streetAddress?: string,
+    postalCode?: number,
+    city?: string,
+    phoneNumber?: string,
+    emailAddress?: string
 ) {
     try {
         const response = await api.put(
@@ -156,13 +156,13 @@ export async function updateCustomer(
             {
                 adminId: employeeId,
                 customerId: customerId,
-                ...firstName ? { firstName: firstName } : null,
-                ...lastName ? { lastName: lastName } : null,
-                ...streetAddress ? { streetAddress: streetAddress } : null,
-                ...postalCode ? { postalCode: postalCode } : null,
-                ...city ? { city: city } : null,
-                ...phoneNumber ? { phoneNumber: phoneNumber } : null,
-                ...emailAddress ? { emailAddress: emailAddress } : null
+                firstName: firstName,
+                lastName: lastName,
+                streetAddress: streetAddress,
+                postCode: postalCode,
+                city: city,
+                phoneNumber: phoneNumber,
+                emailAddress: emailAddress
             });
         if (response.status == 200) {
             return response;
