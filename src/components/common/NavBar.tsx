@@ -6,6 +6,7 @@ export function NavBar() {
     const {
         setIsAuthenticated,
         setEmployeeId,
+        role,
         setRole
     } = useContext(AuthContext);
     const navigation = useNavigate();
@@ -33,7 +34,8 @@ export function NavBar() {
                     </h1>
                     <div>
                         <ul className="navbar-nav">
-                            <li className="nav-link">
+                            { role == "ADMIN" &&
+                                <li className="nav-link">
                                 <div className="dropdown">
                                     <button className="btn btn-success dropdown-toggle w-100"
                                             type="button"
@@ -56,6 +58,7 @@ export function NavBar() {
                                     </ul>
                                 </div>
                             </li>
+                            }
                             <li className="nav-link">
                                 <button className="btn btn-outline-danger w-100" onClick={handleLogout}>
                                     Logout

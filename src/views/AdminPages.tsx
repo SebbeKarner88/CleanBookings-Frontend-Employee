@@ -2,7 +2,7 @@ import {NavBar} from "../components/common/NavBar.tsx";
 import {useContext, useEffect, useState} from "react";
 import {AuthContext} from "../context/AuthContext.tsx";
 import {getAllJobs} from "../api/AdminApi.ts";
-import {JobsTable} from "../components/tables/jobs/JobsTable.tsx";
+import {AdminJobsTable} from "../components/tables/jobs/AdminJobsTable.tsx";
 import StatusFilter from "../components/tables/jobs/StatusFilter.tsx";
 import {CustomersTable} from "../components/tables/customers/CustomersTable.tsx";
 import JobsTablePlaceholder from "../components/tables/jobs/JobsTablePlaceholder.tsx";
@@ -58,7 +58,7 @@ export default function AdminPages() {
                     {
                         isLoadingJobsData
                             ? <JobsTablePlaceholder/>
-                            : <JobsTable
+                            : <AdminJobsTable
                                 jobs={jobs}
                                 statuses={selectedStatus}
                                 setTriggerUpdateOfJobs={setTriggerUpdateOfJobs}

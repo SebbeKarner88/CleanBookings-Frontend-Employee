@@ -23,7 +23,7 @@ interface Job {
     employees: string[]
 }
 
-export function JobsTable({jobs, statuses, setTriggerUpdateOfJobs, setIsLoadingJobsData}: IJobsTable) {
+export function AdminJobsTable({jobs, statuses, setTriggerUpdateOfJobs, setIsLoadingJobsData}: IJobsTable) {
     const {employeeId} = useContext(AuthContext);
     const [jobId, setJobId] = useState<string>("");
     const [selectedEmployeeIds, setSelectedEmployeeIds] = useState<string[]>([]);

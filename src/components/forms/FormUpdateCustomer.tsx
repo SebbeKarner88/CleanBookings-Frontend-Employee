@@ -1,6 +1,6 @@
 import { useContext, useState } from "react"
 import { updateCustomer } from "../../api/AdminApi"
-import { useLocation, useNavigate } from "react-router-dom"
+import { useLocation } from "react-router-dom"
 import { z } from "zod";
 import { AuthContext } from "../../context/AuthContext";
 import { FieldValues, useForm } from "react-hook-form";
