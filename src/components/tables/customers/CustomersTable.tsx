@@ -3,6 +3,7 @@ import { AuthContext } from "../../../context/AuthContext";
 import { MdDeleteForever, MdEdit } from "react-icons/md";
 import { deleteCustomer, listAllCustomers } from "../../../api/AdminApi";
 import { useNavigate } from "react-router-dom";
+import { Button, Modal } from "react-bootstrap";
 
 export interface Customer {
     id: string,
@@ -21,6 +22,9 @@ export function CustomersTable() {
     const navigation = useNavigate();
     const [ customers, setCustomers ] = useState<Customer[]>([])
     const [ updatedList, setUpdatedList ] = useState(false)
+    const [ modalVisible, setModalVisible ] = useState(false)
+    const [ customerId, setCustomerId ] = useState("")
+    const handleCloseModal = () => setModalVisible(false)
 
     useEffect(() => {
         fetchCustomers().then(data => setCustomers(data))
@@ -40,12 +44,14 @@ export function CustomersTable() {
 
     async function removeCustomer(customerId: string) {
         const response = await deleteCustomer(employeeId, customerId)
-        if (response?.status === 200)
+        if (response?.status === 200) {
             setUpdatedList(value => !value)
-        else
+            handleCloseModal()
+        } else {
             alert("This customer has an active booking and can't be removed.")
-        // TODO add modal instead of alert
+        }
     }
+
 
     const handleUpdate = (customerId: string) => {
         navigation("/update-customer", { state: customerId })
@@ -88,7 +94,10 @@ export function CustomersTable() {
                                             className="btn focus-ring focus-ring-light"
                                             type="button"
                                             aria-label="Press button to delete customer"
-                                            onClick={() => removeCustomer(customer.id)}
+                                            onClick={() => {
+                                                setCustomerId(customer.id)
+                                                setModalVisible(true)
+                                            }}
                                         >
                                             <MdDeleteForever color="#dc3545" size={30} />
                                         </button>
@@ -99,6 +108,34 @@ export function CustomersTable() {
                     </tbody>
                 </table>
             </div>
+            <Modal
+                show={modalVisible}
+                onHide={handleCloseModal}
+                fullscreen="md-down"
+            >
+                <Modal.Header
+                className="bg-secondary-subtle"
+                closeButton
+            >
+                <Modal.Title className="fs-6 fw-bold">
+                    {"Customer ID: " + customerId}
+                </Modal.Title>
+            </Modal.Header>
+            <Modal.Body className="bg-secondary-subtle">
+                <p>Are you sure you want to delete this customer?</p>
+            </Modal.Body>
+            <Modal.Footer className="bg-secondary-subtle">
+                <Button variant="danger" onClick={handleCloseModal}>
+                    Cancel
+                </Button>
+                <Button
+                    variant="primary"
+                    onClick={() => removeCustomer(customerId)}
+                >
+                    Delete customer
+                </Button>
+            </Modal.Footer>
+            </Modal>
         </>
     )
 }
