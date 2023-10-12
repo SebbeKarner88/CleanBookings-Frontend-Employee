@@ -55,7 +55,6 @@ export function FormUpdateCustomer() {
             data.emailAddress
         ).then(response => {
             if (response?.status == 200) {
-                console.log("Everything went according to plan!")
                 setModalVisible(true)
             } else {
                 setErrorMessage("Something went wrong, try again.");
