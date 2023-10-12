@@ -1,5 +1,4 @@
 import api from "./ApiRootUrl.ts";
-import { Customer } from "../components/tables/customers/CustomersTable.tsx";
 
 export async function getAllJobs(employeeId: string) {
     try {
@@ -34,6 +33,31 @@ export async function getAllAvailableEmployees(
         if (response.status == 200) {
             return response;
         }
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+export async function registerEmployee(
+    firstName: string,
+    lastName: string,
+    phoneNumber: string,
+    role: "ADMIN" | "CLEANER",
+    emailAddress: string
+) {
+    try {
+        const response = await api.post(
+            "/employee",
+            {
+                firstName: firstName,
+                lastName: lastName,
+                phoneNumber: phoneNumber,
+                role: role,
+                emailAddress: emailAddress
+            }
+        );
+        if (response?.status == 201)
+            return response;
     } catch (error) {
         console.error(error);
     }
@@ -116,24 +140,29 @@ export async function deleteJob(
 }
 
 export async function updateCustomer(
-    employeeId: string, 
+    employeeId: string,
     customerId: string,
-    customer: Customer[]
-    ) {
+    firstName: string,
+    lastName: string,
+    streetAdress: string,
+    postalCode: number,
+    city: string,
+    phoneNumber: string,
+    emailAdress: string
+) {
     try {
         const response = await api.put(
             "/admin/updateCustomer",
             {
-                    adminId: employeeId,
-                    customerId: customerId,
-                    firstname: customer,
-                    lastName: customer,
-                    customerType: customer,
-                    streetAdress: customer,
-                    postalCode: customer,
-                    city: customer,
-                    phoneNumber: customer,
-                    emailAdress: customer
+                adminId: employeeId,
+                customerId: customerId,
+                ...firstName ? { firstName: firstName } : null,
+                ...lastName ? { lastName: lastName } : null,
+                ...streetAdress ? { streetAdress: streetAdress } : null,
+                ...postalCode ? { postalCode: postalCode } : null,
+                ...city ? { city: city } : null,
+                ...phoneNumber ? { phoneNumber: phoneNumber } : null,
+                ...emailAdress ? { emailAdress: emailAdress } : null
             });
         if (response.status == 200) {
             return response;

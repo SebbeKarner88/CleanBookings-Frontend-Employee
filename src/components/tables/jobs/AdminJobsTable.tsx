@@ -1,10 +1,9 @@
-import Modal from 'react-bootstrap/Modal';
 import {MdDeleteForever} from "react-icons/md";
-import SelectEmployees from "./SelectEmployees.tsx";
 import {Dispatch, SetStateAction, useContext, useState} from "react";
 import {AuthContext} from "../../../context/AuthContext.tsx";
 import {assignEmployees, deleteJob} from "../../../api/AdminApi.ts";
-import {Button, Spinner} from "react-bootstrap";
+import DeleteJobModal from "../../modals/DeleteJobModal.tsx";
+import AssignEmployeesModal from "../../modals/AssignEmployeesModal.tsx";
 
 type JobStatus = "OPEN" | "ASSIGNED" | "WAITING_FOR_APPROVAL" | "NOT_APPROVED" | "APPROVED" | "CLOSED";
 
@@ -24,12 +23,14 @@ interface Job {
     employees: string[]
 }
 
-export function JobsTable({jobs, statuses, setTriggerUpdateOfJobs, setIsLoadingJobsData}: IJobsTable) {
+export function AdminJobsTable({jobs, statuses, setTriggerUpdateOfJobs, setIsLoadingJobsData}: IJobsTable) {
     const {employeeId} = useContext(AuthContext);
     const [jobId, setJobId] = useState<string>("");
     const [selectedEmployeeIds, setSelectedEmployeeIds] = useState<string[]>([]);
-    const [showModal, setShowModal] = useState<boolean>(false);
-    const handleClose = () => setShowModal(false);
+    const [showAssignModal, setShowAssignModal] = useState<boolean>(false);
+    const [showDeleteModal, setShowDeleteModal] = useState<boolean>(false);
+    const handleCloseAssignModal = () => setShowAssignModal(false);
+    const handleCloseDeleteModal = () => setShowDeleteModal(false);
     const [isAssigning, setIsAssigning] = useState<boolean>(false);
 
     async function handleAssignEmployees() {
@@ -39,14 +40,15 @@ export function JobsTable({jobs, statuses, setTriggerUpdateOfJobs, setIsLoadingJ
             setTriggerUpdateOfJobs(value => !value);
             setIsLoadingJobsData(() => true);
             setIsAssigning(false);
-            handleClose();
+            handleCloseAssignModal();
         }
     }
 
-    async function handleDelete(id: string) {
-        const response = await deleteJob(id, employeeId);
+    async function handleDelete() {
+        const response = await deleteJob(jobId, employeeId);
         if (response?.status == 200) {
             setTriggerUpdateOfJobs(value => !value);
+            handleCloseDeleteModal();
         }
     }
 
@@ -63,56 +65,6 @@ export function JobsTable({jobs, statuses, setTriggerUpdateOfJobs, setIsLoadingJ
         return className;
     }
 
-    function AssignEmployeesModal() {
-        return (
-            <Modal
-                show={showModal}
-                onHide={handleClose}
-                fullscreen="md-down"
-                scrollable={true}
-            >
-                <Modal.Header
-                    className="bg-secondary-subtle"
-                    closeButton
-                >
-                    <Modal.Title className="fs-6 fw-bold">
-                        {"Job ID: " + jobId}
-                    </Modal.Title>
-                </Modal.Header>
-                <Modal.Body className="bg-secondary-subtle">
-                    <SelectEmployees
-                        jobId={jobId}
-                        setSelectedEmployeeIds={setSelectedEmployeeIds}
-                    />
-                </Modal.Body>
-                <Modal.Footer className="bg-secondary-subtle">
-                    <Button variant="danger" onClick={handleClose}>
-                        Cancel
-                    </Button>
-                    {
-                        isAssigning
-                            ? <Button variant="primary" disabled>
-                                <Spinner
-                                    as="span"
-                                    animation="border"
-                                    size="sm"
-                                    role="status"
-                                    aria-hidden="true"
-                                    aria-label={"Sending request..."}
-                                />
-                            </Button>
-                            : <Button
-                                variant="primary"
-                                onClick={handleAssignEmployees}
-                            >
-                                Assign job
-                            </Button>
-                    }
-                </Modal.Footer>
-            </Modal>
-        )
-    }
-
     return (
         <>
             <div className="table-responsive">
@@ -124,7 +76,7 @@ export function JobsTable({jobs, statuses, setTriggerUpdateOfJobs, setIsLoadingJ
                         <th scope="col">Status</th>
                         <th scope="col">Message</th>
                         <th scope="col">Customer ID</th>
-                        <th className="text-center" scope="col">Employees</th>
+                        <th scope="col">Employees</th>
                         <th className="text-center" scope="col">Delete</th>
                     </tr>
                     </thead>
@@ -148,7 +100,7 @@ export function JobsTable({jobs, statuses, setTriggerUpdateOfJobs, setIsLoadingJ
                                                 className="btn btn-primary"
                                                 onClick={() => {
                                                     setJobId(job.jobId);
-                                                    setShowModal(true);
+                                                    setShowAssignModal(true);
                                                 }}
                                             >
                                                 Assign employee(s)
@@ -157,14 +109,17 @@ export function JobsTable({jobs, statuses, setTriggerUpdateOfJobs, setIsLoadingJ
                                             job.employees.join(", ")
                                         )}
                                     </td>
-                                    <td>
+                                    <td className="text-center">
                                         {
                                             !isApproved &&
                                             <button
                                                 className={"btn focus-ring focus-ring-light"}
                                                 type="button"
                                                 aria-label="Press button to delete job"
-                                                onClick={() => handleDelete(job.jobId)}
+                                                onClick={() => {
+                                                    setJobId(job.jobId);
+                                                    setShowDeleteModal(true);
+                                                }}
                                             >
                                                 <MdDeleteForever color="#dc3545" size={30}/>
                                             </button>
@@ -179,10 +134,20 @@ export function JobsTable({jobs, statuses, setTriggerUpdateOfJobs, setIsLoadingJ
                     </tbody>
                 </table>
             </div>
-            {
-                jobId &&
-                AssignEmployeesModal()
-            }
+            <AssignEmployeesModal
+                jobId={jobId}
+                onShow={showAssignModal}
+                onClose={handleCloseAssignModal}
+                setSelectedEmployeeIds={setSelectedEmployeeIds}
+                handleAssign={handleAssignEmployees}
+                isAssigning={isAssigning}
+            />
+            <DeleteJobModal
+                jobId={jobId}
+                onShow={showDeleteModal}
+                onClose={handleCloseDeleteModal}
+                handleDelete={handleDelete}
+            />
         </>
 
     )
