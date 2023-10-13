@@ -154,7 +154,7 @@ export function FormUpdateCustomer() {
                 </div>
                 <button
                     type="submit"
-                    className="btn btn-outline-dark w-100"
+                    className="btn btn-outline-light w-100"
                 >
                     Update customer
                 </button>
