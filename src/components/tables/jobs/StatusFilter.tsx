@@ -6,8 +6,8 @@ import CheckAllBox from "./CheckAllBox.tsx";
 type JobStatus = "OPEN" | "ASSIGNED" | "WAITING_FOR_APPROVAL" | "NOT_APPROVED" | "APPROVED" | "CLOSED";
 
 interface IStatusFilter {
-    selectedStatus: string[],
-    setSelectedStatus: Dispatch<SetStateAction<string[]>>
+    selectedStatus: JobStatus[],
+    setSelectedStatus: Dispatch<SetStateAction<JobStatus[]>>
 }
 
 export default function StatusFilter({selectedStatus, setSelectedStatus}: IStatusFilter) {

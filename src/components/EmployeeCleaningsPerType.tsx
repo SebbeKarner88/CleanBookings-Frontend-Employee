@@ -38,7 +38,7 @@ const EmployeeCleaningsPerType: React.FC = () => {
     const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
 
     return (
-        <div className="container-fluid bg-dark min-vh-100 min-vw-100 text-bg-dark p-3 m-0 overflow-scroll" data-bs-theme="dark">
+        <div className="container">
             {/* Status selection field */}
             <div className="form-group">
                 <label htmlFor="statusSelect">Select Job Status:</label>

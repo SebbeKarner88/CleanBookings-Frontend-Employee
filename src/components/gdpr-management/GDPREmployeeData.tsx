@@ -42,7 +42,7 @@ const GDPREmployeeData: React.FC = () => {
     };
 
     return (
-        <div className="container-fluid bg-dark min-vh-100 min-vw-100 text-bg-dark p-3 m-0 overflow-scroll" data-bs-theme="dark">
+        <div className="container">
             <div className="text-center">
             <h2>Employee Data</h2>
             {employeeData ? (
