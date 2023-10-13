@@ -64,6 +64,8 @@ export function FormUpdateCustomer() {
 
     return (
         <>
+        <div className="container-fluid bg-dark min-vh-100 min-vw-100 text-bg-dark p-3 m-0 overflow-scroll"
+             data-bs-theme="dark">
             <h1>Updating customer {values.firstName + " " + values.lastName}</h1>
             <h3>Customer ID: {values.customerId}</h3>
             <form
@@ -192,6 +194,7 @@ export function FormUpdateCustomer() {
                     </Button>
                 </Modal.Footer>
             </Modal>
+            </div>
         </>
     )
 }
