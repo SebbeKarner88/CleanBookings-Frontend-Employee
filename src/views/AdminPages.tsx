@@ -7,6 +7,8 @@ import StatusFilter from "../components/tables/jobs/StatusFilter.tsx";
 import {CustomersTable} from "../components/tables/customers/CustomersTable.tsx";
 import JobsTablePlaceholder from "../components/tables/jobs/JobsTablePlaceholder.tsx";
 import EmployeeCleaningsPerType from "../components/EmployeeCleaningsPerType.tsx";
+import {PaymentForm} from "../components/forms/PaymentForm";
+import {InvoiceForm} from "../components/forms/InvoiceForm";
 
 type JobStatus = "OPEN" | "ASSIGNED" | "WAITING_FOR_APPROVAL" | "NOT_APPROVED" | "APPROVED" | "CLOSED";
 
@@ -82,7 +84,20 @@ export default function AdminPages() {
                     <EmployeeCleaningsPerType/>
                 </div>
             </div>
-
+            {/*Detta är bara en tillfällig länk för att se hur det såg ut*/}
+            <div className="container">
+                <h2 className="text-md-center fw-bold my-3">Invoices</h2>
+                <div className="my-3">
+                    <InvoiceForm/>
+                </div>
+            </div>
+            {/*Detta är bara en tillfällig länk för att se hur det såg ut*/}
+            <div className="container">
+                <h2 className="text-md-center fw-bold my-3">Payments</h2>
+                <div className="my-3">
+                    <PaymentForm/>
+                </div>
+            </div>
         </div>
     )
 }
