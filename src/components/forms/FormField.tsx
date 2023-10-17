@@ -10,9 +10,9 @@ interface IFormField<T extends FieldValues> {
     inputType: HTMLInputTypeAttribute;
     options?: string[] | null;
     labelDescription?: string;
-    placeholder?: string
-    defaultValue?: string
-    checked?: boolean
+    placeholder?: string;
+    defaultValue?: string;
+    checked?: boolean;
 }
 
 export function FormField<T extends FieldValues>({

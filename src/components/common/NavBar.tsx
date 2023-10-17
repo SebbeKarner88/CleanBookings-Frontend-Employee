@@ -32,13 +32,6 @@ export function NavBar() {
                     </h1>
                     <div>
                         <ul className="navbar-nav">
-                            {/*{role === 'ADMIN' && (*/}
-                            {/*    <li className="nav-link">*/}
-                            {/*        <button className="btn btn-success w-100">*/}
-                            {/*            Add employee*/}
-                            {/*        </button>*/}
-                            {/*    </li>*/}
-                            {/*)}*/}
                             { role == "ADMIN" &&
                                 <li className="nav-link">
                                 <div className="dropdown">
