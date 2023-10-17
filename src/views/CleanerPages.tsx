@@ -4,7 +4,7 @@ import {AuthContext} from "../context/AuthContext.tsx";
 import GDPREmployeeData from "../components/gdpr-management/GDPREmployeeData.tsx";
 import EmployeeCleaningsPerType from "../components/EmployeeCleaningsPerType.tsx";
 import {getJobsByCleanerId} from "../api/CleanerApi.ts";
-import StatusFilter from "../components/tables/jobs/StatusFilter.tsx";
+import StatusFilter from "../components/tables/jobs/statusfilter/StatusFilter.tsx";
 import {CleanerJobsTable} from "../components/tables/jobs/CleanerJobsTable.tsx";
 import JobsTablePlaceholder from "../components/tables/jobs/JobsTablePlaceholder.tsx";
 

@@ -5,7 +5,7 @@ import { z } from "zod";
 import { AuthContext } from "../../context/AuthContext";
 import { FieldValues, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { FormField } from "./FormField";
+import { FormField } from "./input/FormField.tsx";
 import { Button, Modal } from "react-bootstrap";
 
 const schema = z.object({

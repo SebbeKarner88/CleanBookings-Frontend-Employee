@@ -1,7 +1,7 @@
-import {NavBar} from "../components/common/NavBar.tsx";
+import {NavBar} from "../../components/common/NavBar.tsx";
 import {useContext} from "react";
-import {AuthContext} from "../context/AuthContext.tsx";
-import FormRegisterEmployee from "../components/forms/FormRegisterEmployee.tsx";
+import {AuthContext} from "../../context/AuthContext.tsx";
+import FormRegisterEmployee from "../../components/forms/FormRegisterEmployee.tsx";
 
 export default function RegisterAdminView() {
     const {username} = useContext(AuthContext);

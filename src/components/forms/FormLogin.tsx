@@ -3,7 +3,7 @@ import {z} from "zod";
 import {FieldValues, useForm} from "react-hook-form";
 import {zodResolver} from "@hookform/resolvers/zod";
 import {useNavigate} from "react-router-dom";
-import {FormField} from "./FormField.tsx";
+import {FormField} from "./input/FormField.tsx";
 import {AuthContext} from "../../context/AuthContext.tsx";
 import {loginEmployee} from "../../api/EmployeeApi.ts";
 

@@ -11,8 +11,8 @@ import {QueryClient, QueryClientProvider} from "react-query";
 import GDPREmployeeData from "./components/gdpr-management/GDPREmployeeData.tsx";
 import EmployeeCleaningsPerType from "./components/EmployeeCleaningsPerType.tsx";
 import {FormUpdateCustomer} from "./components/forms/FormUpdateCustomer.tsx";
-import RegisterAdminView from "./views/RegisterAdminView.tsx";
-import RegisterCleanerView from "./views/RegisterCleanerView.tsx";
+import RegisterAdminView from "./views/register/RegisterAdminView.tsx";
+import RegisterCleanerView from "./views/register/RegisterCleanerView.tsx";
 
 function App() {
     const {isAuthenticated, role} = useContext(AuthContext);

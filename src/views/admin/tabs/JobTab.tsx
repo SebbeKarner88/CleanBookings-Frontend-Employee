@@ -1,4 +1,4 @@
-import StatusFilter from "../../../components/tables/jobs/StatusFilter.tsx";
+import StatusFilter from "../../../components/tables/jobs/statusfilter/StatusFilter.tsx";
 import JobsTablePlaceholder from "../../../components/tables/jobs/JobsTablePlaceholder.tsx";
 import {AdminJobsTable} from "../../../components/tables/jobs/AdminJobsTable.tsx";
 import {Dispatch, SetStateAction} from "react";

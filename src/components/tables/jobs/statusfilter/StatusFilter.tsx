@@ -1,7 +1,7 @@
 import {ChangeEvent, Dispatch, SetStateAction} from "react";
-import {Checkbox} from "./Checkbox.tsx";
+import {Checkbox} from "../../../forms/input/Checkbox.tsx";
 import StatusFilterDropDownLabel from "./StatusFilterDropDownLabel.tsx";
-import CheckAllBox from "./CheckAllBox.tsx";
+import CheckAllBox from "../../../forms/input/CheckAllBox.tsx";
 
 type JobStatus = "OPEN" | "ASSIGNED" | "WAITING_FOR_APPROVAL" | "NOT_APPROVED" | "APPROVED" | "CLOSED";
 

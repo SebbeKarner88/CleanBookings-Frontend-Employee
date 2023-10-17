@@ -2,7 +2,7 @@ import {FieldValues, useForm} from "react-hook-form";
 import {z} from 'zod';
 import {zodResolver} from "@hookform/resolvers/zod";
 import {useNavigate} from "react-router-dom";
-import {FormField} from "./FormField.tsx";
+import {FormField} from "./input/FormField.tsx";
 import {registerEmployee} from "../../api/AdminApi.ts";
 
 const schema = z.object({
