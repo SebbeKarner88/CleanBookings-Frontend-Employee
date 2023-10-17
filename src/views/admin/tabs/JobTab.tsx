@@ -33,7 +33,7 @@ export default function JobTab({
                                }: IJobTab) {
     return (
         <div className="container">
-            <h2 className="text-md-center fw-bold my-3">Current jobs</h2>
+            <h2 className="text-md-center fw-bold my-3 text-primary-emphasis">Current jobs</h2>
             <StatusFilter selectedStatus={selectedStatus} setSelectedStatus={setSelectedStatus}/>
             <div className="my-3">
                 {

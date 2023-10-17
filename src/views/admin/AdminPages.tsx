@@ -8,6 +8,7 @@ import EmployeeCleaningsPerType from "../../components/EmployeeCleaningsPerType.
 import {InvoiceForm} from "../../components/forms/InvoiceForm.tsx";
 import {PaymentForm} from "../../components/forms/PaymentForm.tsx";
 import JobTab from "./tabs/JobTab.tsx";
+import EmployeeTab from "./tabs/EmployeeTab.tsx";
 
 type JobStatus = "OPEN" | "ASSIGNED" | "WAITING_FOR_APPROVAL" | "NOT_APPROVED" | "APPROVED" | "CLOSED";
 type Tab = "jobs" | "customers" | "employees" | "wip";
@@ -74,14 +75,14 @@ export default function AdminPages() {
                 </Tab>
                 <Tab eventKey="customers" title="Customers">
                     <div className="container">
-                        <h2 className="text-md-center fw-bold my-3">Customers</h2>
+                        <h2 className="text-md-center fw-bold my-3 text-primary-emphasis">Customers</h2>
                         <div className="my-3">
                             <CustomersTable/>
                         </div>
                     </div>
                 </Tab>
                 <Tab eventKey="employees" title="Employees">
-                    Tab content for Employees
+                    <EmployeeTab />
                 </Tab>
                 <Tab eventKey="wip" title="Work-in-progress">
                     <h1 className="text-md-center fw-bold my-3 mx-2">Customers</h1>

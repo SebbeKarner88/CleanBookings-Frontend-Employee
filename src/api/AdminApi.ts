@@ -101,6 +101,23 @@ export async function listAllCustomers(employeeId: string) {
     }
 }
 
+export async function listAllAdmins(employeeId: string) {
+    try {
+        const response = await api.get(
+            "/admin/admins",
+            {
+                params: {
+                    employeeId: employeeId,
+                }
+            });
+        if (response.status == 200) {
+            return response;
+        }
+    } catch (error) {
+        console.error(error);
+    }
+}
+
 export async function deleteCustomer(employeeId: string, customerId: string) {
     try {
         const response = await api.delete(
