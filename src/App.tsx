@@ -5,7 +5,7 @@ import "bootstrap";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import {AuthContext} from "./context/AuthContext.tsx";
 import {LoginView} from "./views/LoginView.tsx";
-import AdminPages from "./views/AdminPages.tsx";
+import AdminPages from "./views/admin/AdminPages.tsx";
 import CleanerPages from "./views/CleanerPages.tsx";
 import {QueryClient, QueryClientProvider} from "react-query";
 import GDPREmployeeData from "./components/gdpr-management/GDPREmployeeData.tsx";

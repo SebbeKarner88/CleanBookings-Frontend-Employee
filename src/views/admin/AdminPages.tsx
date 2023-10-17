@@ -1,17 +1,16 @@
-import {NavBar} from "../components/common/NavBar.tsx";
+import {NavBar} from "../../components/common/NavBar.tsx";
 import {useContext, useEffect, useState} from "react";
-import {AuthContext} from "../context/AuthContext.tsx";
-import {getAllJobs} from "../api/AdminApi.ts";
-import {AdminJobsTable} from "../components/tables/jobs/AdminJobsTable.tsx";
-import StatusFilter from "../components/tables/jobs/StatusFilter.tsx";
-import {CustomersTable} from "../components/tables/customers/CustomersTable.tsx";
-import JobsTablePlaceholder from "../components/tables/jobs/JobsTablePlaceholder.tsx";
+import {AuthContext} from "../../context/AuthContext.tsx";
+import {getAllJobs} from "../../api/AdminApi.ts";
+import {CustomersTable} from "../../components/tables/customers/CustomersTable.tsx";
 import {Tab, Tabs} from "react-bootstrap";
-import EmployeeCleaningsPerType from "../components/EmployeeCleaningsPerType.tsx";
-import {InvoiceForm} from "../components/forms/InvoiceForm.tsx";
-import {PaymentForm} from "../components/forms/PaymentForm.tsx";
+import EmployeeCleaningsPerType from "../../components/EmployeeCleaningsPerType.tsx";
+import {InvoiceForm} from "../../components/forms/InvoiceForm.tsx";
+import {PaymentForm} from "../../components/forms/PaymentForm.tsx";
+import JobTab from "./tabs/JobTab.tsx";
 
 type JobStatus = "OPEN" | "ASSIGNED" | "WAITING_FOR_APPROVAL" | "NOT_APPROVED" | "APPROVED" | "CLOSED";
+type Tab = "jobs" | "customers" | "employees" | "wip";
 
 interface Job {
     jobId: string,
@@ -28,7 +27,8 @@ export default function AdminPages() {
     const [selectedStatus, setSelectedStatus] = useState<JobStatus[]>(["OPEN" as JobStatus, "NOT_APPROVED" as JobStatus]);
     const [triggerUpdateOfJobs, setTriggerUpdateOfJobs] = useState<boolean>(false);
     const [isLoadingJobsData, setIsLoadingJobsData] = useState<boolean>(true);
-    const [key, setKey] = useState<string>("jobs");
+    const [key, setKey] = useState<Tab>("jobs");
+    const handleSelectedTab = (value: string | null) => value != null && setKey(value as Tab);
 
     useEffect(() => {
         fetchJobs().then(data => {
@@ -58,27 +58,19 @@ export default function AdminPages() {
             <Tabs
                 id="admin-dashboard"
                 activeKey={key}
-                onSelect={value => value != null && setKey(value)}
+                onSelect={handleSelectedTab}
                 className="mb-3"
                 justify={true}
             >
                 <Tab eventKey="jobs" title="Jobs">
-                    <div className="container">
-                        <h2 className="text-md-center fw-bold my-3">Current jobs</h2>
-                        <StatusFilter selectedStatus={selectedStatus} setSelectedStatus={setSelectedStatus}/>
-                        <div className="my-3">
-                            {
-                                isLoadingJobsData
-                                    ? <JobsTablePlaceholder/>
-                                    : <AdminJobsTable
-                                        jobs={jobs}
-                                        statuses={selectedStatus}
-                                        setTriggerUpdateOfJobs={setTriggerUpdateOfJobs}
-                                        setIsLoadingJobsData={setIsLoadingJobsData}
-                                    />
-                            }
-                        </div>
-                    </div>
+                    <JobTab
+                        jobs={jobs}
+                        selectedStatus={selectedStatus}
+                        setSelectedStatus={setSelectedStatus}
+                        setTriggerUpdateOfJobs={setTriggerUpdateOfJobs}
+                        isLoadingJobsData={isLoadingJobsData}
+                        setIsLoadingJobsData={setIsLoadingJobsData}
+                        />
                 </Tab>
                 <Tab eventKey="customers" title="Customers">
                     <div className="container">
