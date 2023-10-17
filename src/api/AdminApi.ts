@@ -118,6 +118,43 @@ export async function listAllAdmins(employeeId: string) {
     }
 }
 
+export async function listAllCleaners(employeeId: string) {
+    try {
+        const response = await api.get(
+            "/admin/cleaners",
+            {
+                params: {
+                    employeeId: employeeId,
+                }
+            });
+        if (response.status == 200) {
+            return response;
+        }
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+export async function deleteCleaner(
+    employeeId: string,
+    cleanerId: string
+) {
+    try {
+        const response = await api.delete(
+            `/admin/cleaner/${cleanerId}`,
+            {
+                params: {
+                    employeeId: employeeId
+                }
+            });
+        if (response.status == 200) {
+            return response;
+        }
+    } catch (error) {
+        console.error(error);
+    }
+}
+
 export async function deleteCustomer(employeeId: string, customerId: string) {
     try {
         const response = await api.delete(
@@ -180,6 +217,33 @@ export async function updateCustomer(
                 city: city,
                 phoneNumber: phoneNumber,
                 emailAddress: emailAddress
+            });
+        if (response.status == 200) {
+            return response;
+        }
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+export async function updateEmployee(
+    adminId: string,
+    employeeId: string,
+    firstName?: string,
+    lastName?: string,
+    emailAddress?: string,
+    phoneNumber?: string
+) {
+    try {
+        const response = await api.put(
+            "/admin/update-employee",
+            {
+                adminId: adminId,
+                employeeId: employeeId,
+                firstName: firstName,
+                lastName: lastName,
+                emailAddress: emailAddress,
+                phoneNumber: phoneNumber
             });
         if (response.status == 200) {
             return response;

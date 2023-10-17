@@ -13,6 +13,7 @@ import EmployeeCleaningsPerType from "./components/EmployeeCleaningsPerType.tsx"
 import {FormUpdateCustomer} from "./components/forms/FormUpdateCustomer.tsx";
 import RegisterAdminView from "./views/register/RegisterAdminView.tsx";
 import RegisterCleanerView from "./views/register/RegisterCleanerView.tsx";
+import {FormUpdateEmployee} from "./components/forms/FormUpdateEmployee.tsx";
 
 function App() {
     const {isAuthenticated, role} = useContext(AuthContext);
@@ -36,6 +37,7 @@ function App() {
                         isAuthenticated && role == "ADMIN" &&
                         <>
                             <Route path="/update-customer" element={<FormUpdateCustomer/>}/>
+                            <Route path="/update-employee" element={<FormUpdateEmployee/>}/>
                             <Route path="/register/new-admin" element={<RegisterAdminView/>}/>
                             <Route path="/register/new-cleaner" element={<RegisterCleanerView/>}/>
                         </>

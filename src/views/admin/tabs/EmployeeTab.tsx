@@ -1,4 +1,5 @@
-import {AdminTable} from "../../../components/tables/employees/AdminTable.tsx";
+import {AdminsTable} from "../../../components/tables/employees/AdminsTable.tsx";
+import {CleanersTable} from "../../../components/tables/employees/CleanersTable.tsx";
 
 export default function EmployeeTab() {
     return (
@@ -7,12 +8,12 @@ export default function EmployeeTab() {
 
             <h3 className="fw-bold my-3">Admins</h3>
             <div className="my-3">
-                <AdminTable/>
+                <AdminsTable/>
             </div>
 
             <h3 className="fw-bold my-3">Cleaners</h3>
             <div className="my-3">
-            {/*    Insert table for cleaners */}
+                <CleanersTable/>
             </div>
         </div>
     )

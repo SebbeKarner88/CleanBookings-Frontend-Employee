@@ -13,7 +13,7 @@ interface Admin {
     phoneNumber: string,
 }
 
-export function AdminTable() {
+export function AdminsTable() {
     const { employeeId } = useContext(AuthContext)
     const navigation = useNavigate();
     const [ admins, setAdmins ] = useState<Admin[]>([])
@@ -116,7 +116,7 @@ export function AdminTable() {
                         variant="primary"
                         // onClick={}
                     >
-                        Delete customer
+                        Delete
                     </Button>
                 </Modal.Footer>
             </Modal>
