@@ -4,7 +4,7 @@ import {AuthContext} from "../../context/AuthContext.tsx";
 import {getAllJobs} from "../../api/AdminApi.ts";
 import {CustomersTable} from "../../components/tables/customers/CustomersTable.tsx";
 import {Tab, Tabs} from "react-bootstrap";
-// import EmployeeCleaningsPerType from "../../components/EmployeeCleaningsPerType.tsx";
+import EmployeeCleaningsPerType from "../../components/EmployeeCleaningsPerType.tsx";
 import {InvoiceForm} from "../../components/forms/InvoiceForm.tsx";
 import {PaymentForm} from "../../components/forms/PaymentForm.tsx";
 import JobTab from "./tabs/JobTab.tsx";
@@ -86,12 +86,12 @@ export default function AdminPages() {
                 </Tab>
                 <Tab eventKey="wip" title="Work-in-progress">
                     {/*<h1 className="text-md-center fw-bold my-3 mx-2">Customers</h1>*/}
-                    {/*<div className="container">*/}
-                    {/*    <h2 className="text-md-center fw-bold my-3">Jobs per type</h2>*/}
-                    {/*    <div className="my-3">*/}
-                    {/*        <EmployeeCleaningsPerType/>*/}
-                    {/*    </div>*/}
-                    {/*</div>*/}
+                    <div className="container">
+                        <h2 className="text-md-center fw-bold my-3">Jobs per type</h2>
+                        <div className="my-3">
+                            <EmployeeCleaningsPerType/>
+                        </div>
+                    </div>
                     {/*Detta är bara en tillfällig länk för att se hur det såg ut*/}
                     <div className="container">
                         <h2 className="text-md-center fw-bold my-3">Invoices</h2>
