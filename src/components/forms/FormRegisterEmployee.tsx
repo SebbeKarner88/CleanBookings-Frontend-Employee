@@ -56,10 +56,8 @@ export default function FormRegisterEmployee({role}: IFormRegisterEmployee) {
     return (
         <form className="my-3 my-md-5 px-4 text-start"
               onSubmit={handleSubmit(onSubmit)}>
-            <h2 className="my-3 fw-bold text-md-center">New {role.toLowerCase()}</h2>
-            <h3 className="my-3 fw-semibold text-info-emphasis">Contact details</h3>
-            <div className="row">
-                <div className="col-md-6">
+            <h1 className="my-3 fw-bold text-md-center">New {role.toLowerCase()}</h1>
+            <h2 className="my-3 fw-semibold text-primary-emphasis">Contact details</h2>
                     <FormField
                         fieldName="firstName"
                         label="First name"
@@ -67,8 +65,7 @@ export default function FormRegisterEmployee({role}: IFormRegisterEmployee) {
                         fieldError={errors.firstName}
                         register={register}
                     />
-                </div>
-                <div className="col-md-6">
+
                     <FormField
                         fieldName="lastName"
                         label="Last name"
@@ -76,10 +73,7 @@ export default function FormRegisterEmployee({role}: IFormRegisterEmployee) {
                         fieldError={errors.lastName}
                         register={register}
                     />
-                </div>
-            </div>
-            <div className="row">
-                <div className="col-md-6">
+
                     <FormField
                         fieldName="phoneNumber"
                         label="Phone number"
@@ -87,8 +81,7 @@ export default function FormRegisterEmployee({role}: IFormRegisterEmployee) {
                         fieldError={errors.phoneNumber}
                         register={register}
                     />
-                </div>
-                <div className="col-md-6">
+
                     <FormField
                         fieldName="emailAddress"
                         label="Email address"
@@ -96,8 +89,7 @@ export default function FormRegisterEmployee({role}: IFormRegisterEmployee) {
                         fieldError={errors.emailAddress}
                         register={register}
                     />
-                </div>
-            </div>
+
             <button
                 type="submit"
                 className="btn btn-primary w-100"

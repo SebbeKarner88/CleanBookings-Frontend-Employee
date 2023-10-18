@@ -62,64 +62,74 @@ export function FormUpdateEmployee() {
 
     return (
         <>
-            <div className="container-fluid bg-dark min-vh-100 min-vw-100 text-bg-dark p-3 m-0 overflow-scroll"
+            <div className="container bg-dark min-vh-100 min-vw-100 text-bg-dark p-3 m-0 overflow-scroll"
                  data-bs-theme="dark">
-                <h1>Updating {values.role.toLowerCase()}: {values.firstName + " " + values.lastName}</h1>
-                <h2>Employee ID: {values.id}</h2>
-                <form
-                    className="my-3 my-md-5 px-4 text-start"
-                    onSubmit={handleSubmit(onSubmit)}
-                >
-                    <FormField
-                        fieldName="firstName"
-                        label="First name"
-                        inputType="text"
-                        defaultValue={values.firstName}
-                        fieldError={errors.firstName}
-                        register={register}
-                    />
-
-                    <FormField
-                        fieldName="lastName"
-                        label="Last name"
-                        inputType="text"
-                        defaultValue={values.lastName}
-                        fieldError={errors.lastName}
-                        register={register}
-                    />
-
-                    <FormField
-                        fieldName="emailAddress"
-                        label="Email address"
-                        inputType="text"
-                        defaultValue={values.emailAddress}
-                        fieldError={errors.emailAddress}
-                        register={register}
-                    />
-
-                    <FormField
-                        fieldName="phoneNumber"
-                        label="Phone number"
-                        inputType="text"
-                        defaultValue={values.phoneNumber}
-                        fieldError={errors.phoneNumber}
-                        register={register}
-                    />
-
-                    <button
-                        type="submit"
-                        className="btn btn-outline-light w-100"
+                <div className="container">
+                    <h1 className="text-md-center fw-bold my-3 text-primary-emphasis">
+                        Updating {values.role.toLowerCase()}
+                    </h1>
+                    <p className="h3 fw-bold my-3">
+                        {values.firstName + " " + values.lastName}
+                    </p>
+                    <p className="h3 my-3">
+                        {values.id}
+                    </p>
+                    <form
+                        className="my-3 my-md-5 px-4 text-start"
+                        onSubmit={handleSubmit(onSubmit)}
                     >
-                        Update
-                    </button>
-                    <button
-                        type="button"
-                        className="btn btn-outline-danger w-100 mt-3"
-                        onClick={() => navigation("/my-pages")}
-                    >
-                        Cancel
-                    </button>
-                </form>
+                        <FormField
+                            fieldName="firstName"
+                            label="First name"
+                            inputType="text"
+                            defaultValue={values.firstName}
+                            fieldError={errors.firstName}
+                            register={register}
+                        />
+
+                        <FormField
+                            fieldName="lastName"
+                            label="Last name"
+                            inputType="text"
+                            defaultValue={values.lastName}
+                            fieldError={errors.lastName}
+                            register={register}
+                        />
+
+                        <FormField
+                            fieldName="emailAddress"
+                            label="Email address"
+                            inputType="text"
+                            defaultValue={values.emailAddress}
+                            fieldError={errors.emailAddress}
+                            register={register}
+                        />
+
+                        <FormField
+                            fieldName="phoneNumber"
+                            label="Phone number"
+                            inputType="text"
+                            defaultValue={values.phoneNumber}
+                            fieldError={errors.phoneNumber}
+                            register={register}
+                        />
+
+                        <button
+                            type="submit"
+                            className="btn btn-primary w-100"
+                        >
+                            Update
+                        </button>
+                        <button
+                            type="button"
+                            className="btn btn-outline-danger w-100 mt-3"
+                            onClick={() => navigation("/my-pages")}
+                        >
+                            Cancel
+                        </button>
+                    </form>
+                </div>
+
                 <Modal
                     show={modalVisible}
                     onHide={() => setModalVisible(!modalVisible)}
