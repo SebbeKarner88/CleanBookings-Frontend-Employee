@@ -1,5 +1,16 @@
 import api from "./ApiRootUrl.ts";
 
+export const markInvoiceAsPaid = async (adminId: string, invoiceId: string) => {
+    try {
+        const response = await api.put('/api/v1/payment/markAsPaid', null, {
+            params: { adminId, invoiceId }
+        });
+        return { success: true };
+    } catch (error) {
+        console.error('Error marking invoice as paid:', error.response.data);
+        return { success: false, message: error.response.data };
+    }
+};
 export async function getAllJobs(employeeId: string) {
     try {
         const response = await api.get(

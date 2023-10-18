@@ -32,7 +32,6 @@ export function PaymentForm() {
             });
 
             if (response.status === 200) {
-                // Show a success message or redirect
             } else {
                 setErrorMessage(response.data.message || "An error occurred.");
             }
