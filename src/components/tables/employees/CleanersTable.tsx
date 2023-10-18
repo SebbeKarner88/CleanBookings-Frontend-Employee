@@ -102,7 +102,7 @@ export function CleanersTable() {
                                     <button
                                         className="btn focus-ring focus-ring-light"
                                         type="button"
-                                        aria-label="Press button to delete customer"
+                                        aria-label="Press button to delete cleaner"
                                         onClick={() => {
                                             setCleanerId(cleaner.id)
                                             setModalVisible(true)

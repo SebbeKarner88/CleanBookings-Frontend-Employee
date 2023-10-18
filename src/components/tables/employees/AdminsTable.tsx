@@ -1,12 +1,13 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../../context/AuthContext";
 import { MdDeleteForever, MdEdit } from "react-icons/md";
-import {listAllAdmins} from "../../../api/AdminApi";
+import {deleteAdmin, listAllAdmins} from "../../../api/AdminApi";
 import { useNavigate } from "react-router-dom";
-import { Button, Modal } from "react-bootstrap";
+import { Alert, Button, Modal } from "react-bootstrap";
 
 interface Admin {
     id: string,
+    role: "ADMIN",
     firstName: string,
     lastName: string,
     emailAddress: string
@@ -20,6 +21,7 @@ export function AdminsTable() {
     const [ updatedList, setUpdatedList ] = useState(false)
     const [ modalVisible, setModalVisible ] = useState(false)
     const [ adminId, setAdminId ] = useState("")
+    const [showErrorAlert, setShowErrorAlert] = useState<boolean>(false);
     const handleCloseModal = () => setModalVisible(false)
 
     useEffect(() => {
@@ -38,10 +40,36 @@ export function AdminsTable() {
         }
     }
 
+    const handleUpdate = (values: Admin) => {
+        navigation(
+            "/update-employee",
+            {state: values},
+        );
+    }
+
+    async function handleDelete() {
+        const response = await deleteAdmin(employeeId, adminId);
+        if (response?.status == 200)
+            setUpdatedList(value => !value);
+        else
+            setShowErrorAlert(true);
+        handleCloseModal();
+    }
+
     // TODO: Implement logic for handling update and delete of admins...
 
     return (
         <>
+            {
+                showErrorAlert &&
+                <Alert variant="danger" dismissible={true} onClose={() => setShowErrorAlert(false)}>
+                    <Alert.Heading>
+                        Oops! You've got an error...
+                    </Alert.Heading>
+                    Could not delete admin with ID "{adminId}" due to ...........
+                </Alert>
+            }
+
             <div className="table-responsive">
                 <table className="table table-responsive table-striped table-hover" data-bs-theme="dark">
                     <thead>
@@ -69,6 +97,7 @@ export function AdminsTable() {
                                             type="button"
                                             className="btn focus-ring focus-ring-light"
                                             // onClick={}
+                                            onClick={() => handleUpdate({...admin, role: "ADMIN"})}
                                         >
                                             <MdEdit size={30} />
                                         </button>
@@ -77,7 +106,7 @@ export function AdminsTable() {
                                         <button
                                             className="btn focus-ring focus-ring-light"
                                             type="button"
-                                            aria-label="Press button to delete customer"
+                                            aria-label="Press button to delete admin"
                                             onClick={() => {
                                                 setAdminId(admin.id)
                                                 setModalVisible(true)
@@ -115,6 +144,7 @@ export function AdminsTable() {
                     <Button
                         variant="primary"
                         // onClick={}
+                        onClick={handleDelete}
                     >
                         Delete
                     </Button>

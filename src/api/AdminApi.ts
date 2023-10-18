@@ -155,6 +155,26 @@ export async function deleteCleaner(
     }
 }
 
+export async function deleteAdmin(
+    employeeId: string,
+    adminId: string
+) {
+    try {
+        const response = await api.delete(
+            `/admin/admin/${adminId}`,
+            {
+                params: {
+                    employeeId: employeeId
+                }
+            });
+        if (response.status == 200) {
+            return response;
+        }
+    } catch (error) {
+        console.error(error);
+    }
+}
+
 export async function deleteCustomer(employeeId: string, customerId: string) {
     try {
         const response = await api.delete(
