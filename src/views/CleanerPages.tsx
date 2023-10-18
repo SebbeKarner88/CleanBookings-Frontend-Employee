@@ -2,7 +2,7 @@ import {NavBar} from "../components/common/NavBar.tsx";
 import {useContext, useEffect, useState} from "react";
 import {AuthContext} from "../context/AuthContext.tsx";
 import GDPREmployeeData from "../components/gdpr-management/GDPREmployeeData.tsx";
-import EmployeeCleaningsPerType from "../components/EmployeeCleaningsPerType.tsx";
+// import EmployeeCleaningsPerType from "../components/EmployeeCleaningsPerType.tsx";
 import {getJobsByCleanerId} from "../api/CleanerApi.ts";
 import StatusFilter from "../components/tables/jobs/statusfilter/StatusFilter.tsx";
 import {CleanerJobsTable} from "../components/tables/jobs/CleanerJobsTable.tsx";
@@ -74,10 +74,10 @@ export default function CleanerPages() {
             </div>
 
 
-            <div className="container">
-                <h2 className="text-md-center fw-bold my-3 text-info">Jobs Per Type</h2>
-                <EmployeeCleaningsPerType />
-            </div>
+            {/*<div className="container">*/}
+            {/*    <h2 className="text-md-center fw-bold my-3 text-info">Jobs Per Type</h2>*/}
+            {/*    <EmployeeCleaningsPerType />*/}
+            {/*</div>*/}
 
             <div className="container">
                 <h2 className="text-md-center fw-bold my-3 text-info">Din personliga information</h2>
