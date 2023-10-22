@@ -50,20 +50,6 @@ const EmployeeSettingsView = () => {
             <div className="container text-start my-md-4">
                 {employeeData ? (
                     <div className="row my-3 mx-2 bg-beige p-4 rounded-4 border border-dark-subtle">
-                        {/*<div className="col-md-12 d-flex justify-content-between mb-4">*/}
-                        {/*    /!*<h2 className="text-md-center fw-bold">*!/*/}
-                        {/*    <h2 className="text-md-center fw-bold my-3 text-info">*/}
-                        {/*        Användaruppgifter*/}
-                        {/*    </h2>*/}
-                        {/*    <Button*/}
-                        {/*        variant="btn"*/}
-                        {/*        className="w-auto focus-ring focus-ring-dark"*/}
-                        {/*        aria-label="Press to edit employee data"*/}
-                        {/*        type="button"*/}
-                        {/*        onClick={() => navigate("/update-employee", {state: employeeData})}>*/}
-                        {/*        <MdEdit size={30} color="var(--dark-purple)"/>*/}
-                        {/*    </Button>*/}
-                        {/*</div>*/}
                         <div className="col-md-12 d-flex justify-content-between align-items-center mb-4">
                             <div className="flex-grow-1 text-center">
                                 <h2 className="fw-bold my-3 text-info">

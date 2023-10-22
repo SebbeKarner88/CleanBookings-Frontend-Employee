@@ -62,5 +62,6 @@ export async function updateEmployeeCleaner(
     } catch (error) {
         console.error(error);
     }
+
 }
 

@@ -7,6 +7,7 @@ import {Button, Modal} from "react-bootstrap";
 import {useContext, useState} from "react";
 import {AuthContext} from "../context/AuthContext.tsx";
 import {useNavigate} from "react-router-dom";
+import FormUpdatePassword from "./forms/FormUpdatePassword.tsx";
 
 const EditEmployeeDataView = () => {
     const {employeeId} = useContext(AuthContext);
@@ -27,12 +28,12 @@ const EditEmployeeDataView = () => {
                         <FormUpdateEmployee />
                     </div>
 
-                    {/*<div className="row bg-beige mt-3 p-3 p-md-4 rounded-4 text-start border border-dark-subtle">*/}
-                    {/*    <h2 className="fw-bold">*/}
-                    {/*        Ändra lösenord*/}
-                    {/*    </h2>*/}
-                    {/*    <FormUpdatePassword setShowModal={setModalVisible}/>*/}
-                    {/*</div>*/}
+                    <div className="row bg-beige mt-3 p-3 p-md-4 rounded-4 text-start border border-dark-subtle">
+                        <h2 className="fw-bold">
+                            Ändra lösenord
+                        </h2>
+                        <FormUpdatePassword setShowModal={setModalVisible}/>
+                    </div>
                 </div>
             </div>
 

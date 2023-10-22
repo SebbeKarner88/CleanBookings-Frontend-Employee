@@ -28,3 +28,23 @@ export async function loginEmployee(
         console.error(error);
     }
 }
+
+export async function updatePasswordEmployee(
+    employeeId: string,
+    currentPassword: string,
+    newPassword: string
+) {
+    try {
+        const response = await api.put(
+            `/employee/updatePassword/${employeeId}`,
+            {
+                oldPassword: currentPassword,
+                newPassword: newPassword
+            }
+        );
+        if (response.status == 200)
+            return response;
+    } catch (error) {
+        return error;
+    }
+}
