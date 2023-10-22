@@ -14,6 +14,7 @@ import {FormUpdateCustomer} from "./components/forms/FormUpdateCustomer.tsx";
 import RegisterAdminView from "./views/register/RegisterAdminView.tsx";
 import RegisterCleanerView from "./views/register/RegisterCleanerView.tsx";
 import {FormUpdateEmployee} from "./components/forms/FormUpdateEmployee.tsx";
+import EmployeeSettingsView from "./views/EmployeeSettingsView.tsx";
 
 function App() {
     const {isAuthenticated, role} = useContext(AuthContext);
@@ -30,6 +31,7 @@ function App() {
                             : isAuthenticated && role == "CLEANER"
                                 ? <CleanerPages/>
                                 : <LoginView/>}/>
+                    <Route path="/my-pages/employee-settings" element={<EmployeeSettingsView />} />
 
                     <Route path="/gdpr-employee-data" element={<GDPREmployeeData/>}/>
                     <Route path="/employee-cleanings-per-type" element={<EmployeeCleaningsPerType/>}/>

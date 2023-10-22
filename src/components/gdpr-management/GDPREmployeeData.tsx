@@ -37,35 +37,86 @@ const GDPREmployeeData: React.FC = () => {
         setShowPrivacyModal(false);
     };
 
-    const handleShowPrivacyModal = () => {
-        setShowPrivacyModal(true);
-    };
+    // const handleShowPrivacyModal = () => {
+    //     setShowPrivacyModal(true);
+    // };
 
     return (
         <div className="container">
-            <div className="text-center">
-            <h2>Employee Data</h2>
-            {employeeData ? (
-                <div>
-                    <p><strong>Employee Id:</strong> {employeeData.id}</p>
-                    <p><strong>First Name:</strong> {employeeData.firstName}</p>
-                    <p><strong>Last Name:</strong> {employeeData.lastName}</p>
-                    <p><strong>Employee Type:</strong> {employeeData.employeeType}</p>
-                    <p><strong>Street Address:</strong> {employeeData.streetAddress}</p>
-                    <p><strong>Postal Code:</strong> {employeeData.postalCode}</p>
-                    <p><strong>City:</strong> {employeeData.city}</p>
-                    <p><strong>Phone Number:</strong> {employeeData.phoneNumber}</p>
-                    <p><strong>Email Address:</strong> {employeeData.emailAddress}</p>
+            {/*<div className="text-center">*/}
+            {/*{employeeData ? (*/}
+            {/*    <div>*/}
+            {/*        <p><strong>Employee Id:</strong> {employeeData.id}</p>*/}
+            {/*        <p><strong>First Name:</strong> {employeeData.firstName}</p>*/}
+            {/*        <p><strong>Last Name:</strong> {employeeData.lastName}</p>*/}
+            {/*        <p><strong>Phone Number:</strong> {employeeData.phoneNumber}</p>*/}
+            {/*        <p><strong>Email Address:</strong> {employeeData.emailAddress}</p>*/}
+            {/*    </div>*/}
+            {/*) : (*/}
+            {/*    <p>Loading employee data...</p>*/}
+            {/*)}*/}
+
+            {/*</div>*/}
+            <div className="d-flex justify-content-center">
+                <div className="text-center">
+                    {employeeData ? (
+                        <table className="table table-bordered">
+                            <tbody>
+                            <tr>
+                                <th scope="row">Employee Id</th>
+                                <td>{employeeData.id}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">First Name</th>
+                                <td>{employeeData.firstName}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Last Name</th>
+                                <td>{employeeData.lastName}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Phone Number</th>
+                                <td>{employeeData.phoneNumber}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Email Address</th>
+                                <td>{employeeData.emailAddress}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    ) : (
+                        <p>Loading employee data...</p>
+                    )}
                 </div>
-            ) : (
-                <p>Loading employee data...</p>
-            )}
-
-
-            <Button variant="primary" onClick={handleShowPrivacyModal}>
-                Privacy Policy
-            </Button>
             </div>
+            {/*<div className="text-center">*/}
+            {/*    {employeeData ? (*/}
+            {/*        <div>*/}
+            {/*            <div className="row mb-2">*/}
+            {/*                <div className="col-6 text-end fw-bold">Employee Id:     </div>*/}
+            {/*                <div className="col-6 text-start">{employeeData.id}</div>*/}
+            {/*            </div>*/}
+            {/*            <div className="row mb-2">*/}
+            {/*                <div className="col-6 text-end fw-bold">First Name:      </div>*/}
+            {/*                <div className="col-6 text-start">{employeeData.firstName}</div>*/}
+            {/*            </div>*/}
+            {/*            <div className="row mb-2">*/}
+            {/*                <div className="col-6 text-end fw-bold">Last Name:......</div>*/}
+            {/*                <div className="col-6 text-start">{employeeData.lastName}</div>*/}
+            {/*            </div>*/}
+            {/*            <div className="row mb-2">*/}
+            {/*                <div className="col-6 text-end fw-bold">Phone Number:.......</div>*/}
+            {/*                <div className="col-6 text-start">{employeeData.phoneNumber}</div>*/}
+            {/*            </div>*/}
+            {/*            <div className="row mb-2">*/}
+            {/*                <div className="col-6 text-end fw-bold">Email Address:......</div>*/}
+            {/*                <div className="col-6 text-start">{employeeData.emailAddress}</div>*/}
+            {/*            </div>*/}
+            {/*        </div>*/}
+            {/*    ) : (*/}
+            {/*        <p>Loading employee data...</p>*/}
+            {/*    )}*/}
+            {/*</div>*/}
 
             {/* Privacy Policy Modal */}
             <Modal show={showPrivacyModal} onHide={handleClosePrivacyModal}>

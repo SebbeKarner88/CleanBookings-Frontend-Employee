@@ -37,8 +37,8 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     const authContextValue = {
         isAuthenticated,
         setIsAuthenticated,
-        employeeId: employeeId,
-        setEmployeeId: setEmployeeId,
+        employeeId,
+        setEmployeeId,
         username,
         setUsername,
         role: role,
