@@ -37,3 +37,30 @@ export async function executedCleaningRequest(
     }
 }
 
+export async function updateEmployeeCleaner(
+    adminId: string,
+    employeeId: string,
+    firstName?: string,
+    lastName?: string,
+    emailAddress?: string,
+    phoneNumber?: string
+) {
+    try {
+        const response = await api.put(
+            "/cleaner/update-employee",
+            {
+                adminId: adminId,
+                employeeId: employeeId,
+                firstName: firstName,
+                lastName: lastName,
+                emailAddress: emailAddress,
+                phoneNumber: phoneNumber
+            });
+        if (response.status == 200) {
+            return response;
+        }
+    } catch (error) {
+        console.error(error);
+    }
+}
+

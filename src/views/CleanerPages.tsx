@@ -55,9 +55,9 @@ export default function CleanerPages() {
         <div className="container-fluid bg-dark min-vh-100 min-vw-100 text-bg-dark p-3 m-0 overflow-scroll"
              data-bs-theme="dark">
             <NavBar/>
-            <p className="text-info my-3 my-md-0 mx-2 mx-md-3">Signed in as: {username.toLowerCase()}</p>
 
-            <h1 className="text-md-center fw-bold my-3 mb-md-5 mx-2">Cleaner Dashboard</h1>
+            <div className="d-flex flex-column align-items-end">
+            <p className="text-info my-3 my-md-0 mx-2 mx-md-3">Signed in as: {username.toLowerCase()}</p>
 
             <Link to="/my-pages/employee-settings">
                 <Button size="lg" variant="btn-link" className="btn-dark-purple m-3">
@@ -67,6 +67,9 @@ export default function CleanerPages() {
                         aria-label="Inställningar" />
                 </Button>
             </Link>
+            </div>
+
+            <h1 className="text-md-center fw-bold my-3 mb-md-5 mx-2">Cleaner Dashboard</h1>
 
             <div className="container">
                 <h2 className="text-md-center fw-bold my-3 text-info">Assignments</h2>

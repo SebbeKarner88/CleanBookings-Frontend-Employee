@@ -7,6 +7,7 @@ import {zodResolver} from "@hookform/resolvers/zod";
 import {FormField} from "./input/FormField.tsx";
 import {Button, Modal} from "react-bootstrap";
 import {updateEmployee} from "../../api/AdminApi.ts";
+import {updateEmployeeCleaner} from "../../api/CleanerApi.ts";
 
 const schema = z.object({
     firstName: z
@@ -30,7 +31,7 @@ const schema = z.object({
 type FormData = z.infer<typeof schema>;
 
 export function FormUpdateEmployee() {
-    const {employeeId} = useContext(AuthContext)
+    const {employeeId, role} = useContext(AuthContext)
     const [modalVisible, setModalVisible] = useState(false)
     const navigation = useNavigate()
     const location = useLocation()
@@ -43,18 +44,36 @@ export function FormUpdateEmployee() {
         resolver: zodResolver(schema)
     });
 
+
     async function onSubmit(data: FieldValues) {
         try {
-            const response = await updateEmployee(
-                employeeId,
-                values.id,
-                data.firstName != values.firstName ? data.firstName : null,
-                data.lastName != values.lastName ? data.lastName : null,
-                data.emailAddress != values.emailAddress ? data.emailAddress : null,
-                data.phoneNumber != values.phoneNumber ? data.phoneNumber : null,
-            );
-            if (response?.status == 200)
+            let response;
+
+            if (role === "ADMIN") {
+                response = await updateEmployee(
+                    employeeId,
+                    values.id,
+                    data.firstName !== values.firstName ? data.firstName : null,
+                    data.lastName !== values.lastName ? data.lastName : null,
+                    data.emailAddress !== values.emailAddress ? data.emailAddress : null,
+                    data.phoneNumber !== values.phoneNumber ? data.phoneNumber : null
+                );
+            } else if (role === "CLEANER") {
+                response = await updateEmployeeCleaner(
+                    employeeId,
+                    values.id,
+                    data.firstName !== values.firstName ? data.firstName : null,
+                    data.lastName !== values.lastName ? data.lastName : null,
+                    data.emailAddress !== values.emailAddress ? data.emailAddress : null,
+                    data.phoneNumber !== values.phoneNumber ? data.phoneNumber : null
+                );
+            } else {
+                throw new Error("Unknown role");
+            }
+
+            if (response?.status === 200) {
                 setModalVisible(true);
+            }
         } catch (error) {
             console.error(error);
         }
