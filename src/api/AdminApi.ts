@@ -1,8 +1,20 @@
 import api from "./ApiRootUrl.ts";
 
+export const getAllAdminInvoices = async (employeeId: string) => {
+    try {
+        const response = await api.get('/payment/getAllInvoices', {
+            params: { adminId: employeeId }
+        });
+        return { success: true, data: response.data };
+    } catch (error) {
+        console.error('Error fetching all admin invoices:', error.response.data);
+        return { success: false, message: error.response.data };
+    }
+};
+
 export const markInvoiceAsPaid = async (adminId: string, invoiceId: string) => {
     try {
-        const response = await api.put('/api/v1/payment/markAsPaid', null, {
+        const response = await api.put('/payment/markAsPaid', null, {
             params: { adminId, invoiceId }
         });
         return { success: true };
