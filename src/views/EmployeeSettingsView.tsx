@@ -42,9 +42,11 @@ const EmployeeSettingsView = () => {
     }, [employeeId]);
 
     return (
-        <div className="bg-dark-beige min-vh-100 min-vw-100">
+        // <div className="bg-dark-beige min-vh-100 min-vw-100">
+        <div className="bg-dark min-vh-100 min-vw-100">
             <NavBar/>
-            <h1 className="text-md-center fw-semibold my-3 text-dark-purple">
+            {/*<h1 className="text-md-center fw-semibold my-3 text-dark-purple">*/}
+            <h1 className="text-md-center fw-semibold my-3 text-light">
                 Mina inställningar
             </h1>
             <div className="container text-start my-md-4">
@@ -57,13 +59,15 @@ const EmployeeSettingsView = () => {
                                 </h2>
                             </div>
                             <Button
-                                variant="btn"
+                                // variant="btn"
+                                variant="btn-outline-light"
                                 className="w-auto focus-ring focus-ring-dark"
                                 aria-label="Press to edit employee data"
                                 type="button"
                                 onClick={() => navigate("/update-employee", {state: employeeData})}
                             >
-                                <MdEdit size={30} color="var(--dark-purple)"/>
+                                {/*<MdEdit size={30} color="var(--dark-purple)"/>*/}
+                                <MdEdit size={30} color="#FFFFFF" />
                             </Button>
                         </div>
 

@@ -17,10 +17,11 @@ const EditEmployeeDataView = () => {
     return (
         <>
             {/*<NavBar />*/}
-            <div className="bg-dark-beige min-vw-100 min-vh-100 p-3">
+            <div className="bg-dark min-vw-100 min-vh-100 p-3">
                 <div className="container">
+                {/*<div className="container bg-dark">*/}
 
-                    <div className="row bg-beige p-3 p-md-4 rounded-4 text-start border border-dark-subtle">
+                    <div className="row bg-beige p-3 p-md-4 rounded-4 text-start text-light border border-dark-subtle">
                         <h2 className="fw-bold">
                             Ändra användaruppgifter
                         </h2>
@@ -28,7 +29,7 @@ const EditEmployeeDataView = () => {
                         <FormUpdateEmployee />
                     </div>
 
-                    <div className="row bg-beige mt-3 p-3 p-md-4 rounded-4 text-start border border-dark-subtle">
+                    <div className="row bg-beige mt-3 p-3 p-md-4 rounded-4 text-start text-light border border-dark-subtle">
                         <h2 className="fw-bold">
                             Ändra lösenord
                         </h2>

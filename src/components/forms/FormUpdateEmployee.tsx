@@ -81,7 +81,7 @@ export function FormUpdateEmployee() {
 
     return (
         <>
-            <div className="container bg-dark min-vh-100 min-vw-100 text-bg-dark p-3 m-0 overflow-scroll"
+            <div className="container bg-dark width: 80% min-vh-100 text-bg-dark p-3 m-0 overflow-scroll"
                  data-bs-theme="dark">
                 <div className="container">
                     <h1 className="text-md-center fw-bold my-3 text-primary-emphasis">

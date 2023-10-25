@@ -27,7 +27,8 @@ export function NavBar() {
                 <div className="collapse navbar-collapse justify-content-md-between" id="navbarNavDropdown">
                     <h1 className="my-3 my-md-0">
                         <Link to="/my-pages" className="link-light">
-                            [Replace with logo]
+                            {/*[Replace with logo]*/}
+                            Städafint AB
                         </Link>
                     </h1>
                     <div>
