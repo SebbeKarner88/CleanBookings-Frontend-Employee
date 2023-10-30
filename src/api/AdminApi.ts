@@ -3,26 +3,51 @@ import api from "./ApiRootUrl.ts";
 export const getAllAdminInvoices = async (employeeId: string) => {
     try {
         const response = await api.get('/payment/getAllInvoices', {
-            params: { adminId: employeeId }
+            params: {adminId: employeeId}
         });
-        return { success: true, data: response.data };
-    } catch (error) {
+        return {success: true, data: response.data};
+    } catch (error: any) {
         console.error('Error fetching all admin invoices:', error.response.data);
-        return { success: false, message: error.response.data };
+        return {success: false, message: error.response.data};
     }
 };
 
 export const markInvoiceAsPaid = async (adminId: string, invoiceId: string) => {
     try {
-        const response = await api.put('/payment/markAsPaid', null, {
-            params: { adminId, invoiceId }
-        });
-        return { success: true };
-    } catch (error) {
+        await api.put(
+            '/payment/markAsPaid',
+            null,
+            {
+                params: {
+                    adminId: adminId,
+                    invoiceId: invoiceId
+                }
+            });
+        return {success: true};
+    } catch (error: any) {
         console.error('Error marking invoice as paid:', error.response.data);
-        return { success: false, message: error.response.data };
+        return {success: false, message: error.response.data};
     }
 };
+
+export async function deleteInvoice(
+    adminId: string,
+    invoiceId: string
+) {
+    try {
+        return await api.delete(
+            `/payment/${invoiceId}`,
+            {
+                params: {
+                    adminId: adminId
+                }
+            }
+        );
+    } catch (error) {
+        console.error(error);
+    }
+}
+
 export async function getAllJobs(employeeId: string) {
     try {
         const response = await api.get(
