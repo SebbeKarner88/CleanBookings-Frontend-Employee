@@ -1,19 +1,25 @@
-import React, { useEffect, useState, useContext } from 'react';
+import React, {useEffect, useState, useContext} from 'react';
 import axios from 'axios';
 import EmployeeDataResponse from '../dto/EmployeeDataResponse'; // Replace with your EmployeeDataResponse DTO
-import { Button, Modal } from 'react-bootstrap';
+import {Button, Modal} from 'react-bootstrap';
 import ReactMarkdown from 'react-markdown';
-import { AuthContext } from '../../context/AuthContext';
+import {AuthContext} from '../../context/AuthContext';
 
 const GDPREmployeeData: React.FC = () => {
     const [employeeData, setEmployeeData] = useState<EmployeeDataResponse | null>(null);
     const [showPrivacyModal, setShowPrivacyModal] = useState(false);
-    const { employeeId } = useContext(AuthContext); // Update to use employeeId from AuthContext
+    const {employeeId} = useContext(AuthContext); // Update to use employeeId from AuthContext
     const [privacyPolicyText, setPrivacyPolicyText] = useState<string>('');
 
     useEffect(() => {
         // Fetch employee data from the backend using employeeId
-        axios.get(`http://localhost:8080/api/v1/gdpr/employee-data/${employeeId}`) // Update the API endpoint
+        axios.get(
+            `http://localhost:8081/api/v1/gdpr/employee-data/${employeeId}`,
+            {
+                headers: {
+                    "Authorization": `Bearer ${sessionStorage.getItem("access_token")}`
+                }
+            }) // Update the API endpoint
             .then((response) => {
                 const data: EmployeeDataResponse = response.data;
                 setEmployeeData(data);

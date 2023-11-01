@@ -8,6 +8,9 @@ export async function getJobsByCleanerId(employeeId: string) {
             {
                 params: {
                     employeeId: employeeId,
+                },
+                headers: {
+                    "Authorization": `Bearer ${sessionStorage.getItem("access_token")}`
                 }
             });
         if (response.status == 200) {
@@ -29,6 +32,10 @@ export async function executedCleaningRequest(
                 userId: employeeId,
                 jobId: jobId
 
+            }, {
+                headers: {
+                    "Authorization": `Bearer ${sessionStorage.getItem("access_token")}`
+                }
             });
         if (response.status == 200)
             return response;
@@ -55,6 +62,11 @@ export async function updateEmployeeCleaner(
                 lastName: lastName,
                 emailAddress: emailAddress,
                 phoneNumber: phoneNumber
+            },
+            {
+                headers: {
+                    "Authorization": `Bearer ${sessionStorage.getItem("access_token")}`
+                }
             });
         if (response.status == 200) {
             return response;

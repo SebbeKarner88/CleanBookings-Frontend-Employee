@@ -31,7 +31,8 @@ const schema = z.object({
 type FormData = z.infer<typeof schema>;
 
 export function FormUpdateEmployee() {
-    const {employeeId, role} = useContext(AuthContext)
+    const {employeeId} = useContext(AuthContext)
+    const role = sessionStorage.getItem("role");
     const [modalVisible, setModalVisible] = useState(false)
     const navigation = useNavigate()
     const location = useLocation()
@@ -49,7 +50,7 @@ export function FormUpdateEmployee() {
         try {
             let response;
 
-            if (role === "ADMIN") {
+            if (role === "client_admin") {
                 response = await updateEmployee(
                     employeeId,
                     values.id,
@@ -58,7 +59,7 @@ export function FormUpdateEmployee() {
                     data.emailAddress !== values.emailAddress ? data.emailAddress : null,
                     data.phoneNumber !== values.phoneNumber ? data.phoneNumber : null
                 );
-            } else if (role === "CLEANER") {
+            } else if (role === "client_cleaner") {
                 response = await updateEmployeeCleaner(
                     employeeId,
                     values.id,
@@ -85,7 +86,7 @@ export function FormUpdateEmployee() {
                  data-bs-theme="dark">
                 <div className="container">
                     <h1 className="text-md-center fw-bold my-3 text-primary-emphasis">
-                        Updating {values.role.toLowerCase()}
+                        Updating {values.role.toLowerCase().replace("client_", "")}
                     </h1>
                     <p className="h3 fw-bold my-3">
                         {values.firstName + " " + values.lastName}

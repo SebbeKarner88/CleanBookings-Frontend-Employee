@@ -30,7 +30,12 @@ const EmployeeSettingsView = () => {
 
     useEffect(() => {
         // Fetch customer data from the backend
-        axios.get(`http://localhost:8080/api/v1/gdpr/employee-data/${employeeId}`)
+        axios.get(
+            `http://localhost:8081/api/v1/gdpr/employee-data/${employeeId}`, {
+                headers: {
+                    "Authorization": `Bearer ${sessionStorage.getItem("access_token")}`
+                }
+            })
             .then((response) => {
                 const data: Employee = response.data;
                 setEmployeeData(data);
@@ -67,7 +72,7 @@ const EmployeeSettingsView = () => {
                                 onClick={() => navigate("/update-employee", {state: employeeData})}
                             >
                                 {/*<MdEdit size={30} color="var(--dark-purple)"/>*/}
-                                <MdEdit size={30} color="#FFFFFF" />
+                                <MdEdit size={30} color="#FFFFFF"/>
                             </Button>
                         </div>
 

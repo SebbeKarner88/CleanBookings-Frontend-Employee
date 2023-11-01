@@ -3,7 +3,12 @@ import api from "./ApiRootUrl.ts";
 export const getAllAdminInvoices = async (employeeId: string) => {
     try {
         const response = await api.get('/payment/getAllInvoices', {
-            params: {adminId: employeeId}
+            params: {
+                adminId: employeeId
+            },
+            headers: {
+                "Authorization": `Bearer ${sessionStorage.getItem("access_token")}`
+            }
         });
         return {success: true, data: response.data};
     } catch (error: any) {
@@ -21,6 +26,9 @@ export const markInvoiceAsPaid = async (adminId: string, invoiceId: string) => {
                 params: {
                     adminId: adminId,
                     invoiceId: invoiceId
+                },
+                headers: {
+                    "Authorization": `Bearer ${sessionStorage.getItem("access_token")}`
                 }
             });
         return {success: true};
@@ -40,6 +48,9 @@ export async function deleteInvoice(
             {
                 params: {
                     adminId: adminId
+                },
+                headers: {
+                    "Authorization": `Bearer ${sessionStorage.getItem("access_token")}`
                 }
             }
         );
@@ -55,6 +66,9 @@ export async function getAllJobs(employeeId: string) {
             {
                 params: {
                     employeeId: employeeId,
+                },
+                headers: {
+                    "Authorization": `Bearer ${sessionStorage.getItem("access_token")}`
                 }
             });
         if (response.status == 200) {
@@ -76,6 +90,9 @@ export async function getAllAvailableEmployees(
                 params: {
                     employeeId: employeeId,
                     jobId: jobId
+                },
+                headers: {
+                    "Authorization": `Bearer ${sessionStorage.getItem("access_token")}`
                 }
             });
         if (response.status == 200) {
@@ -102,6 +119,11 @@ export async function registerEmployee(
                 phoneNumber: phoneNumber,
                 role: role,
                 emailAddress: emailAddress
+            },
+            {
+                headers: {
+                    "Authorization": `Bearer ${sessionStorage.getItem("access_token")}`
+                }
             }
         );
         if (response?.status == 201)
@@ -123,6 +145,11 @@ export async function assignEmployees(
                 jobId: jobId,
                 adminId: employeeId,
                 cleanerIds: selectedEmployeeIds
+            },
+            {
+                headers: {
+                    "Authorization": `Bearer ${sessionStorage.getItem("access_token")}`
+                }
             });
         if (response.status == 200) {
             return response;
@@ -139,6 +166,9 @@ export async function listAllCustomers(employeeId: string) {
             {
                 params: {
                     employeeId: employeeId,
+                },
+                headers: {
+                    "Authorization": `Bearer ${sessionStorage.getItem("access_token")}`
                 }
             });
         if (response.status == 200) {
@@ -156,6 +186,9 @@ export async function listAllAdmins(employeeId: string) {
             {
                 params: {
                     employeeId: employeeId,
+                },
+                headers: {
+                    "Authorization": `Bearer ${sessionStorage.getItem("access_token")}`
                 }
             });
         if (response.status == 200) {
@@ -173,6 +206,9 @@ export async function listAllCleaners(employeeId: string) {
             {
                 params: {
                     employeeId: employeeId,
+                },
+                headers: {
+                    "Authorization": `Bearer ${sessionStorage.getItem("access_token")}`
                 }
             });
         if (response.status == 200) {
@@ -193,6 +229,9 @@ export async function deleteCleaner(
             {
                 params: {
                     employeeId: employeeId
+                },
+                headers: {
+                    "Authorization": `Bearer ${sessionStorage.getItem("access_token")}`
                 }
             });
         if (response.status == 200) {
@@ -213,6 +252,9 @@ export async function deleteAdmin(
             {
                 params: {
                     employeeId: employeeId
+                },
+                headers: {
+                    "Authorization": `Bearer ${sessionStorage.getItem("access_token")}`
                 }
             });
         if (response.status == 200) {
@@ -231,6 +273,9 @@ export async function deleteCustomer(employeeId: string, customerId: string) {
                 params: {
                     adminId: employeeId,
                     customerId: customerId
+                },
+                headers: {
+                    "Authorization": `Bearer ${sessionStorage.getItem("access_token")}`
                 }
             });
         if (response.status == 200) {
@@ -251,6 +296,9 @@ export async function deleteJob(
             {
                 params: {
                     employeeId: employeeId
+                },
+                headers: {
+                    "Authorization": `Bearer ${sessionStorage.getItem("access_token")}`
                 }
             });
         if (response.status == 200) {
@@ -285,6 +333,10 @@ export async function updateCustomer(
                 city: city,
                 phoneNumber: phoneNumber,
                 emailAddress: emailAddress
+            }, {
+                headers: {
+                    "Authorization": `Bearer ${sessionStorage.getItem("access_token")}`
+                }
             });
         if (response.status == 200) {
             return response;
@@ -312,6 +364,11 @@ export async function updateEmployee(
                 lastName: lastName,
                 emailAddress: emailAddress,
                 phoneNumber: phoneNumber
+            },
+            {
+                headers: {
+                    "Authorization": `Bearer ${sessionStorage.getItem("access_token")}`
+                }
             });
         if (response.status == 200) {
             return response;

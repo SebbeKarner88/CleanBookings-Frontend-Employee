@@ -6,15 +6,13 @@ export function NavBar() {
     const {
         setIsAuthenticated,
         setEmployeeId,
-        role,
-        setRole
     } = useContext(AuthContext);
+    const role = sessionStorage.getItem("role");
     const navigation = useNavigate();
 
     async function handleLogout() {
         setIsAuthenticated(false);
         setEmployeeId("");
-        setRole("");
         navigation("/");
     }
 
@@ -33,7 +31,7 @@ export function NavBar() {
                     </h1>
                     <div>
                         <ul className="navbar-nav">
-                            { role == "ADMIN" &&
+                            { role == "client_admin" &&
                                 <li className="nav-link">
                                 <div className="dropdown">
                                     <button className="btn btn-success dropdown-toggle w-100"

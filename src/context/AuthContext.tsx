@@ -7,8 +7,6 @@ interface IAuthContext {
     setEmployeeId: Dispatch<SetStateAction<string>>;
     username: string;
     setUsername: Dispatch<SetStateAction<string>>;
-    role: string,
-    setRole: Dispatch<SetStateAction<string>>;
 }
 
 const defaultAuthContext: IAuthContext = {
@@ -20,9 +18,6 @@ const defaultAuthContext: IAuthContext = {
     },
     username: "",
     setUsername: () => {
-    },
-    role: "",
-    setRole: () => {
     }
 };
 
@@ -32,7 +27,6 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     const [ isAuthenticated, setIsAuthenticated ] = useState(false);
     const [ employeeId, setEmployeeId ] = useState("");
     const [ username, setUsername ] = useState("");
-    const [ role, setRole ] = useState("");
 
     const authContextValue = {
         isAuthenticated,
@@ -40,9 +34,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
         employeeId,
         setEmployeeId,
         username,
-        setUsername,
-        role: role,
-        setRole: setRole
+        setUsername
     };
 
     return (

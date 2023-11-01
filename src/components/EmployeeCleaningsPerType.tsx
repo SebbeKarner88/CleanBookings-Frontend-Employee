@@ -8,9 +8,9 @@ import Pagination from 'react-bootstrap/Pagination';
 const EmployeeCleaningsPerType: React.FC = () => {
     const [cleanings, setCleanings] = useState<JobDto[]>([]);
     const { employeeId } = useContext(AuthContext);
-    const { role } = useContext(AuthContext);
+    const role = sessionStorage.getItem("role");
     // const employeeId = "c1c25ab4-a387-4a53-b9bf-7dc98dd2666d";
-    const selectedRole = role;
+    const selectedRole = role.toUpperCase().replace("client_", "");
     // const { status } = useParams<{ status: string }>();
     const [selectedStatus, setSelectedStatus] = useState<string | null>(null); // Status selection field
     const [currentPage, setCurrentPage] = useState<number>(1);

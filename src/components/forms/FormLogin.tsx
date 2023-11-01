@@ -33,12 +33,11 @@ export function FormLogin() {
     const navigation = useNavigate();
     const {setIsAuthenticated,
         setEmployeeId,
-        setUsername,
-        setRole
+        setUsername
     } = useContext(AuthContext);
 
     function onSubmit(data: FieldValues) {
-        loginEmployee(data.emailAddress, data.password, setIsAuthenticated, setEmployeeId, setUsername, setRole).then(response => {
+        loginEmployee(data.emailAddress, data.password, setIsAuthenticated, setEmployeeId, setUsername).then(response => {
             if (response?.status == 200) {
                 navigation("/my-pages");
             } else {

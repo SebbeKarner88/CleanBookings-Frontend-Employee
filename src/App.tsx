@@ -18,7 +18,8 @@ import EmployeeSettingsView from "./views/EmployeeSettingsView.tsx";
 import EditEmployeeDataView from "./components/EditEmployeeDataView.tsx";
 
 function App() {
-    const {isAuthenticated, role} = useContext(AuthContext);
+    const {isAuthenticated} = useContext(AuthContext);
+    const role = sessionStorage.getItem("role");
     const queryClient = new QueryClient();
 
     return (
@@ -27,9 +28,9 @@ function App() {
                 <Routes>
                     <Route path="/" element={<LoginView/>}/>
                     <Route path="/my-pages" element={
-                        isAuthenticated && role == "ADMIN"
+                        isAuthenticated && role == "client_admin"
                             ? <AdminPages/>
-                            : isAuthenticated && role == "CLEANER"
+                            : isAuthenticated && role == "client_cleaner"
                                 ? <CleanerPages/>
                                 : <LoginView/>}/>
                     <Route path="/my-pages/employee-settings" element={<EmployeeSettingsView />} />
@@ -38,7 +39,7 @@ function App() {
                     <Route path="/gdpr-employee-data" element={<GDPREmployeeData/>}/>
                     <Route path="/employee-cleanings-per-type" element={<EmployeeCleaningsPerType/>}/>
                     {
-                        isAuthenticated && role == "ADMIN" &&
+                        isAuthenticated && role == "client_admin" &&
                         <>
                             <Route path="/update-customer" element={<FormUpdateCustomer/>}/>
                             <Route path="/update-employee" element={<FormUpdateEmployee/>}/>

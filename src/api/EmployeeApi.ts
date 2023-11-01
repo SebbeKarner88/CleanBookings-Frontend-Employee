@@ -7,7 +7,6 @@ export async function loginEmployee(
     setIsAuthenticated: Dispatch<SetStateAction<boolean>>,
     setEmployeeId: Dispatch<SetStateAction<string>>,
     setUsername: Dispatch<SetStateAction<string>>,
-    setRole: Dispatch<SetStateAction<string>>,
 ) {
     try {
         const response = await api.post(
@@ -21,7 +20,9 @@ export async function loginEmployee(
             setIsAuthenticated(true);
             setEmployeeId(response.data.employeeId);
             setUsername(response.data.username);
-            setRole(response.data.role);
+            sessionStorage.setItem("access_token", response.data.accessToken);
+            sessionStorage.setItem("refresh_token", response.data.refreshToken);
+            sessionStorage.setItem("role", response.data.role);
             return response;
         }
     } catch (error) {
