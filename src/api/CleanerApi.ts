@@ -1,4 +1,5 @@
 import api from "./ApiRootUrl.ts";
+import {refreshToken} from "./EmployeeApi.ts";
 
 
 export async function getJobsByCleanerId(employeeId: string) {
@@ -16,8 +17,14 @@ export async function getJobsByCleanerId(employeeId: string) {
         if (response.status == 200) {
             return response;
         }
-    } catch (error) {
-        console.error(error);
+    } catch (error: any) {
+        if (error.response.status == 401) {
+            const response = await refreshToken();
+            if (response?.status == 200)
+                return getJobsByCleanerId(employeeId);
+        } else {
+            console.error(error);
+        }
     }
 }
 
@@ -39,8 +46,14 @@ export async function executedCleaningRequest(
             });
         if (response.status == 200)
             return response;
-    } catch (error) {
-        console.error(error);
+    } catch (error: any) {
+        if (error.response.status == 401) {
+            const response = await refreshToken();
+            if (response?.status == 200)
+                return executedCleaningRequest(employeeId, jobId);
+        } else {
+            console.error(error);
+        }
     }
 }
 
@@ -71,9 +84,14 @@ export async function updateEmployeeCleaner(
         if (response.status == 200) {
             return response;
         }
-    } catch (error) {
-        console.error(error);
+    } catch (error: any) {
+        if (error.response.status == 401) {
+            const response = await refreshToken();
+            if (response?.status == 200)
+                return updateEmployeeCleaner(adminId, employeeId, firstName, lastName, emailAddress, phoneNumber);
+        } else {
+            console.error(error);
+        }
     }
-
 }
 

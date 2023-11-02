@@ -1,4 +1,5 @@
 import api from "./ApiRootUrl.ts";
+import {refreshToken} from "./EmployeeApi.ts";
 
 export const getAllAdminInvoices = async (employeeId: string) => {
     try {
@@ -12,8 +13,14 @@ export const getAllAdminInvoices = async (employeeId: string) => {
         });
         return {success: true, data: response.data};
     } catch (error: any) {
-        console.error('Error fetching all admin invoices:', error.response.data);
-        return {success: false, message: error.response.data};
+        if (error.response.status == 401) {
+            const response = await refreshToken();
+            if (response?.status == 200)
+                return getAllAdminInvoices(employeeId);
+        } else {
+            console.error('Error fetching all admin invoices:', error.response.data);
+            return {success: false, message: error.response.data};
+        }
     }
 };
 
@@ -33,8 +40,14 @@ export const markInvoiceAsPaid = async (adminId: string, invoiceId: string) => {
             });
         return {success: true};
     } catch (error: any) {
-        console.error('Error marking invoice as paid:', error.response.data);
-        return {success: false, message: error.response.data};
+        if (error.response.status == 401) {
+            const response = await refreshToken();
+            if (response?.status == 200)
+                return markInvoiceAsPaid(adminId, invoiceId);
+        } else {
+            console.error('Error marking invoice as paid:', error.response.data);
+            return {success: false, message: error.response.data};
+        }
     }
 };
 
@@ -54,8 +67,14 @@ export async function deleteInvoice(
                 }
             }
         );
-    } catch (error) {
-        console.error(error);
+    } catch (error: any) {
+        if (error.response.status == 401) {
+            const response = await refreshToken();
+            if (response?.status == 200)
+                return deleteInvoice(adminId, invoiceId);
+        } else {
+            console.error(error);
+        }
     }
 }
 
@@ -74,8 +93,14 @@ export async function getAllJobs(employeeId: string) {
         if (response.status == 200) {
             return response;
         }
-    } catch (error) {
-        console.error(error);
+    } catch (error: any) {
+        if (error.response.status == 401) {
+            const response = await refreshToken();
+            if (response?.status == 200)
+                return getAllJobs(employeeId);
+        } else {
+            console.error(error);
+        }
     }
 }
 
@@ -98,8 +123,14 @@ export async function getAllAvailableEmployees(
         if (response.status == 200) {
             return response;
         }
-    } catch (error) {
-        console.error(error);
+    } catch (error: any) {
+        if (error.response.status == 401) {
+            const response = await refreshToken();
+            if (response?.status == 200)
+                return getAllAvailableEmployees(employeeId, jobId);
+        } else {
+            console.error(error);
+        }
     }
 }
 
@@ -128,8 +159,14 @@ export async function registerEmployee(
         );
         if (response?.status == 201)
             return response;
-    } catch (error) {
-        console.error(error);
+    } catch (error: any) {
+        if (error.response.status == 401) {
+            const response = await refreshToken();
+            if (response?.status == 200)
+                return registerEmployee(firstName, lastName, phoneNumber, role, emailAddress);
+        } else {
+            console.error(error);
+        }
     }
 }
 
@@ -154,8 +191,14 @@ export async function assignEmployees(
         if (response.status == 200) {
             return response;
         }
-    } catch (error) {
-        console.error(error);
+    } catch (error: any) {
+        if (error.response.status == 401) {
+            const response = await refreshToken();
+            if (response?.status == 200)
+                return assignEmployees(jobId, employeeId, selectedEmployeeIds);
+        } else {
+            console.error(error);
+        }
     }
 }
 
@@ -174,8 +217,14 @@ export async function listAllCustomers(employeeId: string) {
         if (response.status == 200) {
             return response;
         }
-    } catch (error) {
-        console.error(error);
+    } catch (error: any) {
+        if (error.response.status == 401) {
+            const response = await refreshToken();
+            if (response?.status == 200)
+                return listAllCustomers(employeeId);
+        } else {
+            console.error(error);
+        }
     }
 }
 
@@ -194,8 +243,14 @@ export async function listAllAdmins(employeeId: string) {
         if (response.status == 200) {
             return response;
         }
-    } catch (error) {
-        console.error(error);
+    } catch (error: any) {
+        if (error.response.status == 401) {
+            const response = await refreshToken();
+            if (response?.status == 200)
+                return listAllAdmins(employeeId);
+        } else {
+            console.error(error);
+        }
     }
 }
 
@@ -214,8 +269,14 @@ export async function listAllCleaners(employeeId: string) {
         if (response.status == 200) {
             return response;
         }
-    } catch (error) {
-        console.error(error);
+    } catch (error: any) {
+        if (error.response.status == 401) {
+            const response = await refreshToken();
+            if (response?.status == 200)
+                return listAllCleaners(employeeId);
+        } else {
+            console.error(error);
+        }
     }
 }
 
@@ -237,8 +298,14 @@ export async function deleteCleaner(
         if (response.status == 200) {
             return response;
         }
-    } catch (error) {
-        console.error(error);
+    } catch (error: any) {
+        if (error.response.status == 401) {
+            const response = await refreshToken();
+            if (response?.status == 200)
+                return deleteCleaner(employeeId, cleanerId);
+        } else {
+            console.error(error);
+        }
     }
 }
 
@@ -260,8 +327,14 @@ export async function deleteAdmin(
         if (response.status == 200) {
             return response;
         }
-    } catch (error) {
-        console.error(error);
+    } catch (error: any) {
+        if (error.response.status == 401) {
+            const response = await refreshToken();
+            if (response?.status == 200)
+                return deleteAdmin(employeeId, adminId);
+        } else {
+            console.error(error);
+        }
     }
 }
 
@@ -281,8 +354,14 @@ export async function deleteCustomer(employeeId: string, customerId: string) {
         if (response.status == 200) {
             return response;
         }
-    } catch (error) {
-        console.error(error);
+    } catch (error: any) {
+        if (error.response.status == 401) {
+            const response = await refreshToken();
+            if (response?.status == 200)
+                return deleteCustomer(employeeId, customerId);
+        } else {
+            console.error(error);
+        }
     }
 }
 
@@ -304,8 +383,14 @@ export async function deleteJob(
         if (response.status == 200) {
             return response;
         }
-    } catch (error) {
-        console.error(error);
+    } catch (error: any) {
+        if (error.response.status == 401) {
+            const response = await refreshToken();
+            if (response?.status == 200)
+                return deleteJob(jobId, employeeId);
+        } else {
+            console.error(error);
+        }
     }
 }
 
@@ -341,8 +426,14 @@ export async function updateCustomer(
         if (response.status == 200) {
             return response;
         }
-    } catch (error) {
-        console.error(error);
+    } catch (error: any) {
+        if (error.response.status == 401) {
+            const response = await refreshToken();
+            if (response?.status == 200)
+                return updateCustomer(employeeId, customerId, firstName, lastName, streetAddress, postalCode, city, phoneNumber, emailAddress);
+        } else {
+            console.error(error);
+        }
     }
 }
 
@@ -373,7 +464,13 @@ export async function updateEmployee(
         if (response.status == 200) {
             return response;
         }
-    } catch (error) {
-        console.error(error);
+    } catch (error: any) {
+        if (error.response.status == 401) {
+            const response = await refreshToken();
+            if (response?.status == 200)
+                return updateEmployee(adminId, employeeId, firstName, lastName, emailAddress, phoneNumber);
+        } else {
+            console.error(error);
+        }
     }
 }

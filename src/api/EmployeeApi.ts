@@ -1,6 +1,28 @@
 import {Dispatch, SetStateAction} from "react";
 import api from "./ApiRootUrl.ts";
 
+export async function refreshToken() {
+    try {
+        const response = await api.post(
+            "employee/refresh-token",
+            null,
+            {
+                headers: {
+                    "refresh_token": sessionStorage.getItem("refresh_token")
+                }
+            }
+        );
+        if (response?.status == 200) {
+            console.log("Using refresh token...");
+            sessionStorage.setItem("access_token", response.data.accessToken);
+            sessionStorage.setItem("refresh_token", response.data.refreshToken);
+        }
+        return response;
+    } catch (error) {
+        console.error("Error refreshing token: " + error);
+    }
+}
+
 export async function loginEmployee(
     email: string,
     password: string,
@@ -45,7 +67,13 @@ export async function updatePasswordEmployee(
         );
         if (response.status == 200)
             return response;
-    } catch (error) {
-        return error;
+    } catch (error: any) {
+        if (error.response.status == 401) {
+            const response = await refreshToken();
+            if (response?.status == 200)
+                return updatePasswordEmployee(employeeId, currentPassword, newPassword);
+        } else {
+            console.error(error);
+        }
     }
 }
