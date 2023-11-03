@@ -1,19 +1,25 @@
 import {useContext} from 'react'
 import {Link, useNavigate} from "react-router-dom";
 import {AuthContext} from "../../context/AuthContext.tsx";
+import {logout} from "../../api/EmployeeApi.ts";
 
 export function NavBar() {
     const {
         setIsAuthenticated,
         setEmployeeId,
+        setUsername
     } = useContext(AuthContext);
     const role = sessionStorage.getItem("role");
     const navigation = useNavigate();
 
     async function handleLogout() {
-        setIsAuthenticated(false);
-        setEmployeeId("");
-        navigation("/");
+        const response = await logout();
+        if (response?.status === 204) {
+            setIsAuthenticated(false);
+            setEmployeeId("");
+            setUsername("");
+            navigation("/");
+        }
     }
 
     return (
