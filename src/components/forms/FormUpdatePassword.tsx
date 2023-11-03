@@ -55,10 +55,10 @@ export default function FormUpdatePassword({setShowModal}: IFormUpdatePassword) 
     }
 
     return (
-        <form onSubmit={handleSubmit(onSubmit)}>
+        <form className="px-2" onSubmit={handleSubmit(onSubmit)}>
             <FormField
                 fieldName="currentPassword"
-                label="Nuvarande lösenord"
+                label="Current password"
                 inputType="password"
                 fieldError={errors.currentPassword}
                 register={register}
@@ -66,8 +66,8 @@ export default function FormUpdatePassword({setShowModal}: IFormUpdatePassword) 
 
             <FormField
                 fieldName="newPassword"
-                label="Nytt lösenord"
-                labelDescription="Måste innehålla minst 8 tecken, minst 1 nummer, minst 1 stor bokstav & minst 1 liten bokstav"
+                label="New password"
+                labelDescription="Must contain at least 8 characters, 1 digit [0-9], 1 uppercase [A-Z] and 1 lowercase [a-z] letter"
                 inputType="password"
                 fieldError={errors.newPassword}
                 register={register}
@@ -75,14 +75,14 @@ export default function FormUpdatePassword({setShowModal}: IFormUpdatePassword) 
 
             <FormField
                 fieldName="confirmPassword"
-                label="Bekräfta lösenord"
+                label="Confirm password"
                 inputType="password"
                 fieldError={errors.confirmPassword}
                 register={register}
             />
 
             <Button type="submit" className="btn-dark-purple w-100 mb-3">
-                Uppdatera lösenord
+                Update your password
             </Button>
 
             <Button
@@ -91,7 +91,7 @@ export default function FormUpdatePassword({setShowModal}: IFormUpdatePassword) 
                 className="w-100"
                 onClick={() => navigation("/my-pages")}
             >
-                Tillbaka till mina sidor
+                Back to dashboard
             </Button>
 
         </form>

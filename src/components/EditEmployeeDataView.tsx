@@ -8,6 +8,7 @@ import {useContext, useState} from "react";
 import {AuthContext} from "../context/AuthContext.tsx";
 import {useNavigate} from "react-router-dom";
 import FormUpdatePassword from "./forms/FormUpdatePassword.tsx";
+import {NavBar} from "./common/NavBar.tsx";
 
 const EditEmployeeDataView = () => {
     const {employeeId} = useContext(AuthContext);
@@ -15,30 +16,22 @@ const EditEmployeeDataView = () => {
     const [modalVisible, setModalVisible] = useState(false);
 
     return (
-        <>
-            {/*<NavBar />*/}
-            <div className="bg-dark min-vw-100 min-vh-100 p-3">
-                <div className="container">
-                {/*<div className="container bg-dark">*/}
+        <div className="container bg-dark min-vh-100 min-vw-100 text-bg-dark p-3 m-0 overflow-scroll"
+             data-bs-theme="dark">
+            <NavBar />
 
-                    <div className="row bg-beige p-3 p-md-4 rounded-4 text-start text-light border border-dark-subtle">
-                        <h2 className="fw-bold">
-                            Ändra användaruppgifter
+                    <div className="container bg-dark-subtle mt-3 p-3 rounded-4 text-start border border-dark-subtle">
+                        <h2 className="fw-bold mx-2 text-md-center">
+                            Update user data
                         </h2>
-                        {/*<FormUpdateEmployee setShowModal={setModalVisible} />*/}
                         <FormUpdateEmployee />
                     </div>
-
-                    <div className="row bg-beige mt-3 p-3 p-md-4 rounded-4 text-start text-light border border-dark-subtle">
-                        <h2 className="fw-bold">
-                            Ändra lösenord
+                    <div className="container bg-dark-subtle my-3 p-3 rounded-4 text-start border border-dark-subtle">
+                        <h2 className="fw-bold mx-2 text-md-center">
+                            Change password
                         </h2>
                         <FormUpdatePassword setShowModal={setModalVisible}/>
                     </div>
-                </div>
-            </div>
-
-            {/*<Footer />*/}
 
             <Modal
                 show={modalVisible}
@@ -69,7 +62,7 @@ const EditEmployeeDataView = () => {
                     </Button>
                 </Modal.Footer>
             </Modal>
-        </>
+        </div>
     );
 };
 

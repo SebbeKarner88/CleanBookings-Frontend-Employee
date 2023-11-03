@@ -82,103 +82,95 @@ export function FormUpdateEmployee() {
 
     return (
         <>
-            <div className="container bg-dark width: 80% min-vh-100 text-bg-dark p-3 m-0 overflow-scroll"
-                 data-bs-theme="dark">
-                <div className="container">
-                    <h1 className="text-md-center fw-bold my-3 text-primary-emphasis">
+
+                <div className="px-2">
+                    <h3 className="h2 fw-bold my-3 text-primary-emphasis">
                         Updating {values.role.toLowerCase().replace("client_", "")}
-                    </h1>
+                    </h3>
                     <p className="h3 fw-bold my-3">
                         {values.firstName + " " + values.lastName}
                     </p>
                     <p className="h3 my-3">
                         {values.id}
                     </p>
-                    <form
-                        className="my-3 my-md-5 px-4 text-start"
-                        onSubmit={handleSubmit(onSubmit)}
-                    >
-                        <FormField
-                            fieldName="firstName"
-                            label="First name"
-                            inputType="text"
-                            defaultValue={values.firstName}
-                            fieldError={errors.firstName}
-                            register={register}
-                        />
-
-                        <FormField
-                            fieldName="lastName"
-                            label="Last name"
-                            inputType="text"
-                            defaultValue={values.lastName}
-                            fieldError={errors.lastName}
-                            register={register}
-                        />
-
-                        <FormField
-                            fieldName="emailAddress"
-                            label="Email address"
-                            inputType="text"
-                            defaultValue={values.emailAddress}
-                            fieldError={errors.emailAddress}
-                            register={register}
-                        />
-
-                        <FormField
-                            fieldName="phoneNumber"
-                            label="Phone number"
-                            inputType="text"
-                            defaultValue={values.phoneNumber}
-                            fieldError={errors.phoneNumber}
-                            register={register}
-                        />
-
-                        <button
-                            type="submit"
-                            className="btn btn-primary w-100"
-                        >
-                            Update
-                        </button>
-                        <button
-                            type="button"
-                            className="btn btn-outline-danger w-100 mt-3"
-                            onClick={() => navigation("/my-pages")}
-                        >
-                            Cancel
-                        </button>
-                    </form>
                 </div>
-
-                <Modal
-                    show={modalVisible}
-                    onHide={() => setModalVisible(!modalVisible)}
-                    fullscreen="md-down"
+                <form
+                    className="my-3 px-2 text-start"
+                    onSubmit={handleSubmit(onSubmit)}
                 >
-                    <Modal.Header
-                        className="bg-secondary-subtle"
-                        closeButton
+                    <FormField
+                        fieldName="firstName"
+                        label="First name"
+                        inputType="text"
+                        defaultValue={values.firstName}
+                        fieldError={errors.firstName}
+                        register={register}
+                    />
+
+                    <FormField
+                        fieldName="lastName"
+                        label="Last name"
+                        inputType="text"
+                        defaultValue={values.lastName}
+                        fieldError={errors.lastName}
+                        register={register}
+                    />
+
+                    <FormField
+                        fieldName="emailAddress"
+                        label="Email address"
+                        inputType="text"
+                        defaultValue={values.emailAddress}
+                        fieldError={errors.emailAddress}
+                        register={register}
+                    />
+
+                    <FormField
+                        fieldName="phoneNumber"
+                        label="Phone number"
+                        inputType="text"
+                        defaultValue={values.phoneNumber}
+                        fieldError={errors.phoneNumber}
+                        register={register}
+                    />
+
+                    <button
+                        type="submit"
+                        className="btn btn-primary w-100"
                     >
-                        <Modal.Title className="fs-6 fw-bold">
-                            {"Update successful!"}
-                        </Modal.Title>
-                    </Modal.Header>
-                    <Modal.Body className="bg-secondary-subtle">
-                        <p>Employee with ID {values.id} has been updated.</p>
-                    </Modal.Body>
-                    <Modal.Footer className="bg-secondary-subtle">
-                        <Button
-                            variant="primary"
-                            onClick={() => {
-                                setModalVisible(!modalVisible)
-                                navigation("/my-pages")
-                            }}
-                        >
-                            Return to My Pages
-                        </Button>
-                    </Modal.Footer>
-                </Modal>
-            </div>
+                        Update employee
+                    </button>
+                </form>
+
+
+            <Modal
+                show={modalVisible}
+                onHide={() => setModalVisible(!modalVisible)}
+                fullscreen="md-down"
+            >
+                <Modal.Header
+                    className="bg-secondary-subtle"
+                    closeButton
+                >
+                    <Modal.Title className="fs-6 fw-bold">
+                        {"Update successful!"}
+                    </Modal.Title>
+                </Modal.Header>
+                <Modal.Body className="bg-secondary-subtle">
+                    <p>Employee with ID {values.id} has been updated.</p>
+                </Modal.Body>
+                <Modal.Footer className="bg-secondary-subtle">
+                    <Button
+                        variant="primary"
+                        onClick={() => {
+                            setModalVisible(!modalVisible)
+                            navigation("/my-pages")
+                        }}
+                    >
+                        Back to dashboard
+                    </Button>
+                </Modal.Footer>
+            </Modal>
         </>
     )
 }
