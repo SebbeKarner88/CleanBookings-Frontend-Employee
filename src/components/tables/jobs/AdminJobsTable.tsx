@@ -5,7 +5,6 @@ import {assignEmployees, deleteJob} from "../../../api/AdminApi.ts";
 import DeleteJobModal from "../../modals/DeleteJobModal.tsx";
 import AssignEmployeesModal from "../../modals/AssignEmployeesModal.tsx";
 import {Button} from "react-bootstrap";
-import {IoIosArrowDropdown, IoIosArrowDropup} from "react-icons/io";
 import {BsDashCircle, BsPlusCircle} from "react-icons/bs";
 
 type JobStatus = "OPEN" | "ASSIGNED" | "WAITING_FOR_APPROVAL" | "NOT_APPROVED" | "APPROVED" | "CLOSED";

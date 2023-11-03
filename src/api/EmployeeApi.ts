@@ -80,7 +80,7 @@ export async function updatePasswordEmployee(
     newPassword: string
 ) {
     try {
-        const response = await api.put(
+        return await api.put(
             `/employee/updatePassword/${employeeId}`,
             {
                 oldPassword: currentPassword,
@@ -92,8 +92,6 @@ export async function updatePasswordEmployee(
         }
             }
         );
-        if (response.status == 200)
-            return response;
     } catch (error: any) {
         if (error.response.status == 401) {
             const response = await refreshToken();

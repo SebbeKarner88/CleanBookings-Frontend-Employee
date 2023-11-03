@@ -1,5 +1,5 @@
 import {z} from "zod";
-import {Dispatch, SetStateAction, useContext} from "react";
+import {Dispatch, SetStateAction, useContext, useState} from "react";
 import {AuthContext} from "../../context/AuthContext.tsx";
 import {FieldValues, useForm} from "react-hook-form";
 import {zodResolver} from "@hookform/resolvers/zod";
@@ -40,15 +40,21 @@ export default function FormUpdatePassword({setShowModal}: IFormUpdatePassword) 
         resolver: zodResolver(schema)
     });
     const navigation = useNavigate();
+    const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
     async function onSubmit(data: FieldValues) {
         try {
-            await updatePasswordEmployee(
+            const response = await updatePasswordEmployee(
                 employeeId,
                 data.currentPassword,
                 data.newPassword
             );
-            setShowModal(true)
+            if (response?.status === 204) {
+                setErrorMessage(null);
+                setShowModal(true)
+            } else {
+                setErrorMessage("Incorrect password.");
+            }
         } catch (error) {
             console.error(error);
         }
@@ -56,11 +62,13 @@ export default function FormUpdatePassword({setShowModal}: IFormUpdatePassword) 
 
     return (
         <form className="px-2" onSubmit={handleSubmit(onSubmit)}>
+            {errorMessage && <div className="my-1 fw-bold text-danger">{errorMessage}</div>}
             <FormField
                 fieldName="currentPassword"
                 label="Current password"
                 inputType="password"
                 fieldError={errors.currentPassword}
+                customError={errorMessage}
                 register={register}
             />
 
