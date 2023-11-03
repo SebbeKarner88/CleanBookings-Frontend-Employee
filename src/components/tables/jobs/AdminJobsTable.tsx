@@ -4,6 +4,9 @@ import {AuthContext} from "../../../context/AuthContext.tsx";
 import {assignEmployees, deleteJob} from "../../../api/AdminApi.ts";
 import DeleteJobModal from "../../modals/DeleteJobModal.tsx";
 import AssignEmployeesModal from "../../modals/AssignEmployeesModal.tsx";
+import {Button} from "react-bootstrap";
+import {IoIosArrowDropdown, IoIosArrowDropup} from "react-icons/io";
+import {BsDashCircle, BsPlusCircle} from "react-icons/bs";
 
 type JobStatus = "OPEN" | "ASSIGNED" | "WAITING_FOR_APPROVAL" | "NOT_APPROVED" | "APPROVED" | "CLOSED";
 
@@ -32,6 +35,14 @@ export function AdminJobsTable({jobs, statuses, setTriggerUpdateOfJobs, setIsLoa
     const handleCloseAssignModal = () => setShowAssignModal(false);
     const handleCloseDeleteModal = () => setShowDeleteModal(false);
     const [isAssigning, setIsAssigning] = useState<boolean>(false);
+    const [expandedRows, setExpandedRows] = useState<Record<string, boolean>>({});
+
+    function toggleRowExpansion(id: string) {
+        setExpandedRows((prevExpandedRows) => ({
+            ...prevExpandedRows,
+            [id]: !prevExpandedRows[id],
+        }));
+    }
 
     async function handleAssignEmployees() {
         setIsAssigning(true);
@@ -91,7 +102,20 @@ export function AdminJobsTable({jobs, statuses, setTriggerUpdateOfJobs, setIsLoa
                                     <td>{job.jobId}</td>
                                     <td>{job.jobType}</td>
                                     <td className={setStatusColor(job.jobStatus)}>{job.jobStatus}</td>
-                                    <td>{job.jobMessage}</td>
+                                    <td>
+                                        <Button
+                                        type="button"
+                                        variant="btn-link"
+                                        className="text-start focus-ring focus-ring-light"
+                                        onClick={() => toggleRowExpansion(job.jobId)}
+                                        aria-label={expandedRows[job.jobId] ? "Hide messages" : "Show messages"}>
+                                        {
+                                            expandedRows[job.jobId]
+                                                ? <>{job.jobMessage ? job.jobMessage : "No messages"} <BsDashCircle className="float-end"/></>
+                                                : <BsPlusCircle />
+                                        }
+                                    </Button>
+                                    </td>
                                     <td>{job.customerId}</td>
                                     <td>
                                         {job.employees.length === 0 || job.jobStatus === "NOT_APPROVED" ? (
