@@ -12,7 +12,7 @@ import JobTab from "./tabs/JobTab.tsx";
 import EmployeeTab from "./tabs/EmployeeTab.tsx";
 
 type JobStatus = "OPEN" | "ASSIGNED" | "WAITING_FOR_APPROVAL" | "NOT_APPROVED" | "APPROVED" | "CLOSED";
-type Tab = "jobs" | "customers" | "employees" | "wip";
+type Tab = "jobs" | "customers" | "employees" | "invoices" | "wip";
 
 interface Job {
     jobId: string,
@@ -33,11 +33,13 @@ export default function AdminPages() {
     const handleSelectedTab = (value: string | null) => value != null && setKey(value as Tab);
 
     useEffect(() => {
-        fetchJobs().then(data => {
-            setJobs(data);
-            setIsLoadingJobsData(false);
-        });
-    }, [triggerUpdateOfJobs]);
+        if (key == "jobs") {
+            fetchJobs().then(data => {
+                setJobs(data);
+                setIsLoadingJobsData(false);
+            });
+        }
+    }, [key, triggerUpdateOfJobs]);
 
     async function fetchJobs() {
         try {
@@ -78,15 +80,15 @@ export default function AdminPages() {
                     <div className="container">
                         <h2 className="text-md-center fw-bold my-3 text-primary-emphasis">Customers</h2>
                         <div className="my-3">
-                            <CustomersTable/>
+                            <CustomersTable isActive={key == "customers"} />
                         </div>
                     </div>
                 </Tab>
                 <Tab eventKey="employees" title="Employees">
-                    <EmployeeTab />
+                    <EmployeeTab isActive={key == "employees"} />
                 </Tab>
                 <Tab eventKey="invoices" title="Invoices">
-                    <InvoiceTab />
+                    <InvoiceTab isActive={key == "invoices"} />
                 </Tab>
                 <Tab eventKey="wip" title="Work-in-progress">
                     {/*<h1 className="text-md-center fw-bold my-3 mx-2">Customers</h1>*/}
@@ -100,7 +102,7 @@ export default function AdminPages() {
                     <div className="container">
                         <h2 className="text-md-center fw-bold my-3">Invoices</h2>
                         <div className="my-3">
-                            <InvoiceForm/>
+                            <InvoiceForm />
                         </div>
                     </div>
                     {/*Detta är bara en tillfällig länk för att se hur det såg ut*/}

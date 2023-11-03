@@ -17,7 +17,11 @@ export interface Customer {
     emailAddress: string
 }
 
-export function CustomersTable() {
+interface ICustomerTable {
+    isActive: boolean;
+}
+
+export function CustomersTable({isActive}: ICustomerTable) {
     const { employeeId } = useContext(AuthContext)
     const navigation = useNavigate();
     const [ customers, setCustomers ] = useState<Customer[]>([])
@@ -27,8 +31,9 @@ export function CustomersTable() {
     const handleCloseModal = () => setModalVisible(false)
 
     useEffect(() => {
-        fetchCustomers().then(data => setCustomers(data))
-    }, [ updatedList ])
+        if (isActive)
+            fetchCustomers().then(data => setCustomers(data));
+    }, [isActive, updatedList ])
 
     async function fetchCustomers() {
         try {

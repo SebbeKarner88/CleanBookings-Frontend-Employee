@@ -14,7 +14,11 @@ interface Admin {
     phoneNumber: string,
 }
 
-export function AdminsTable() {
+interface IAdminsTable {
+    isActive: boolean;
+}
+
+export function AdminsTable({isActive}: IAdminsTable) {
     const { employeeId } = useContext(AuthContext)
     const navigation = useNavigate();
     const [ admins, setAdmins ] = useState<Admin[]>([])
@@ -25,8 +29,9 @@ export function AdminsTable() {
     const handleCloseModal = () => setModalVisible(false)
 
     useEffect(() => {
-        fetchAdmins().then(data => setAdmins(data))
-    }, [updatedList])
+        if (isActive)
+            fetchAdmins().then(data => setAdmins(data))
+    }, [isActive, updatedList])
 
     async function fetchAdmins() {
         try {

@@ -14,7 +14,11 @@ interface Cleaner {
     phoneNumber: string,
 }
 
-export function CleanersTable() {
+interface ICleanersTable {
+    isActive: boolean;
+}
+
+export function CleanersTable({isActive}: ICleanersTable) {
     const {employeeId} = useContext(AuthContext)
     const navigation = useNavigate();
     const [cleaners, setCleaners] = useState<Cleaner[]>([])
@@ -25,8 +29,9 @@ export function CleanersTable() {
     const handleCloseModal = () => setModalVisible(false)
 
     useEffect(() => {
-        fetchCleaners().then(data => setCleaners(data))
-    }, [updatedList])
+        if (isActive)
+            fetchCleaners().then(data => setCleaners(data));
+    }, [isActive, updatedList])
 
     async function fetchCleaners() {
         try {

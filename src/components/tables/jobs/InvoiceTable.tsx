@@ -17,7 +17,11 @@ interface Invoice {
 
 type Action = "Update" | "Delete" | undefined;
 
-export const InvoiceTable = () => {
+interface IInvoiceTable {
+    isActive: boolean;
+}
+
+export const InvoiceTable = ({isActive}: IInvoiceTable) => {
     const {employeeId} = useContext(AuthContext);
     const [invoices, setInvoices] = useState<Invoice[]>([]);
     const [isLoading, setIsLoading] = useState(true);
@@ -63,8 +67,9 @@ export const InvoiceTable = () => {
                 console.error('Error fetching invoices:', message);
             }
         }
-        fetchInvoices().then(data => setInvoices(data));
-    }, [employeeId, updateNeeded]);
+        if (isActive)
+            fetchInvoices().then(data => setInvoices(data));
+    }, [isActive, employeeId, updateNeeded]);
 
     return (
         <>

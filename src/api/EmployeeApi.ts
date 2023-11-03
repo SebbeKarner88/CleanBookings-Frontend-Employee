@@ -85,6 +85,11 @@ export async function updatePasswordEmployee(
             {
                 oldPassword: currentPassword,
                 newPassword: newPassword
+            },
+            {
+            headers: {
+            "Authorization": `Bearer ${sessionStorage.getItem("access_token")}`
+        }
             }
         );
         if (response.status == 200)
