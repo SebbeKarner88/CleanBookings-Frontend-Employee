@@ -6,8 +6,6 @@ import {CustomersTable} from "../../components/tables/customers/CustomersTable.t
 import {Tab, Tabs} from "react-bootstrap";
 import InvoiceTab from "./tabs/InvoiceTab.tsx";
 // import EmployeeCleaningsPerType from "../../components/EmployeeCleaningsPerType.tsx";
-import {InvoiceForm} from "../../components/forms/InvoiceForm.tsx";
-import {PaymentForm} from "../../components/forms/PaymentForm.tsx";
 import JobTab from "./tabs/JobTab.tsx";
 import EmployeeTab from "./tabs/EmployeeTab.tsx";
 
@@ -91,27 +89,6 @@ export default function AdminPages() {
                     <InvoiceTab isActive={key == "invoices"} />
                 </Tab>
                 <Tab eventKey="wip" title="Work-in-progress">
-                    {/*<h1 className="text-md-center fw-bold my-3 mx-2">Customers</h1>*/}
-                    {/*<div className="container">*/}
-                    {/*    <h2 className="text-md-center fw-bold my-3">Jobs per type</h2>*/}
-                    {/*    <div className="my-3">*/}
-                    {/*        <EmployeeCleaningsPerType/>*/}
-                    {/*    </div>*/}
-                    {/*</div>*/}
-                    {/*Detta är bara en tillfällig länk för att se hur det såg ut*/}
-                    <div className="container">
-                        <h2 className="text-md-center fw-bold my-3">Invoices</h2>
-                        <div className="my-3">
-                            <InvoiceForm />
-                        </div>
-                    </div>
-                    {/*Detta är bara en tillfällig länk för att se hur det såg ut*/}
-                    <div className="container">
-                        <h2 className="text-md-center fw-bold my-3">Payments</h2>
-                        <div className="my-3">
-                            <PaymentForm/>
-                        </div>
-                    </div>
                 </Tab>
             </Tabs>
         </div>
