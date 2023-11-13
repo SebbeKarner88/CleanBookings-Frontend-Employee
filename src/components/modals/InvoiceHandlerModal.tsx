@@ -18,18 +18,6 @@ const InvoiceActionModal = ({
                                 actionType,
                                 isSendingRequest
                             }: InvoiceActionModalProps) => {
-    // return (
-    //     <div className={`modal ${onShow ? 'show' : ''}`} onClick={onClose}>
-    //         <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-    //             <h2>{actionType} Invoice</h2>
-    //             <p>Do you want to {actionType.toLowerCase()} invoice {invoiceNumber}?</p>
-    //             <div className="buttons">
-    //                 <button onClick={handleAction}>{actionType}</button>
-    //                 <button onClick={onClose}>Cancel</button>
-    //             </div>
-    //         </div>
-    //     </div>
-    // );
 
     return (
         <Modal

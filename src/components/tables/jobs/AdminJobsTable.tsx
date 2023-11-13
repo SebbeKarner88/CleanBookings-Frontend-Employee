@@ -94,7 +94,6 @@ export function AdminJobsTable({jobs, statuses, setTriggerUpdateOfJobs, setIsLoa
                     {jobs?.map((job: Job) => {
                         const isApproved: boolean = job.jobStatus == ("APPROVED" || "CLOSED");
 
-                        // Check if a status filter is provided and if the job's status is included in the filter
                         if (!statuses || statuses.includes(job.jobStatus as JobStatus)) {
                             return (
                                 <tr key={job.jobId} className="align-middle">
@@ -151,7 +150,6 @@ export function AdminJobsTable({jobs, statuses, setTriggerUpdateOfJobs, setIsLoa
                                 </tr>
                             );
                         }
-                        // Job doesn't match the status filter, so return null
                         return null;
                     })}
                     </tbody>
