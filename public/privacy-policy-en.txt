@@ -1,0 +1,123 @@
+
+This privacy policy explains how Städafint AB collects personal data about you and how we use your data. This privacy policy applies to all Städafint customers and end users of our digital services, such as the Städafint app.
+
+If you have any questions about this privacy policy or the way we process your personal data, please contact us at **info@stadafint.se**
+
+**1. Collection of personal data**
+
+The personal data that we process is mostly collected directly from you. Your personal data is collected in the following situations:
+
+*When you order services from us.* When you order services from us, we collect your contact details and details regarding the order, such as information about the purchase, other orders and additional information about your place of residence and your expectations.
+
+*When you contact us.* We collect the information when you contact us. We collect data about messages and feedback we receive. We also monitor the communication channels used.
+
+*When we contact you or when you receive our marketing messages.* We collect personal data when we contact you through various channels or reach you through our advertising partners. We also carry out various surveys for our customers to ensure that our services meet the standards we require. We also collect your personal data to analyze the effectiveness of our advertising and sales campaigns.
+
+*When you use our digital services.* We use cookies and similar technologies to map how many visitors our website has and what information is displayed, as well as other metrics.
+
+<span style="text-decoration: underline;">External data sources.</span> We collect data from external sources for our sales team to contact you and present our services. Sometimes we receive your contact information through a campaign, such as, for example, tell-a-friend or through competitions on social media or on our website.
+
+**2. Processing of personal data**
+
+We process different categories of personal data for different purposes. For example, the personal data that we process consists of the following categories:
+
+- • Your basic contact information, such as your first name, last name, address, coordinates, phone number, and email address.
+
+- • Information about your purchases, orders, and contracts, such as your customer number, billing details, payment details, purchase details, purchase history, your inquiries to our team, your feedback about our services, and any information about your participation in our competitions or surveys.
+
+- • Information we receive from your use when you register on our website or Städafint app, such as username, password, registrations, and statistics related to our newsletters, your actions and used discounts.
+
+Other user data related to our services and marketing campaigns, such as profile information, your interests, various consents, and other information we obtained when you consented to such collection.
+
+We collect certain information automatically when you use our services, such as Städafint's web pages and mobile apps. The information we collect is, for example, how long you stay on our website, when you visit it, which website you came from, and how you use such services. This information includes the pages visited and we use such data to make our marketing more relevant to you.
+
+The technical data we collect from the website and app relates to the devices you use, such as the version of your web browser, device model, data capsule IDs, IP addresses, and operating systems. This information is collected automatically via server requests when you use our services.
+
+**3. Purpose of data processing**
+
+When the data processing is necessary to be able to carry out a contract to which you are a party, or to be able to take measures at your request before entering into such a contract. When you order services from us, we process personal data that we need to be able to perform our contractual obligations. For example, we need your billing information and your address to be able to carry out the ordered service.
+
+When the data processing is necessary to fulfill legal obligations imposed on us. Data related to invoicing is stored for accounting and taxation. In these cases, we are obliged to fulfill legal obligations that require us to process personal data.
+
+When you have given us your consent to process your personal data. For example, to send you a newsletter, we need your consent to do so. With your consent, we send you targeted advertising and share your data with our selected business partners to carry out various marketing campaigns.
+
+When the data processing is necessary for legitimate interests pursued by us, our business partners or third parties. When we rely on legitimate interests, we have a customer relationship with you and we ensure that the data processing is necessary and proportionate.
+
+- • Collect statistics and make analyses. We measure the effectiveness of our campaigns in various media and closely monitor new orders for services made through various campaigns. This enables us to forecast our sales and develop our services to better meet our customers' needs.
+
+- • Development of new services. When we collect data about your interests and connect them with your profile, we can develop better service models for our customers and recommend new services that may be of interest to you.
+
+- • Protect personal data and prevent fraud and abuse. To prevent malicious interference with your personal data, we collect logs about the use of our services, for example, from which IP addresses our services are used. With the help of these log files, we try to detect, for example, abnormal use of our services in order to prevent illegal access to personal data by malicious third parties.
+
+- • Customer service and customer communication. We process your personal data to answer various inquiries and requests from you, for example, when you contact our customer service through various channels. Of course, we will also process your contact details when we notify you about new products and services.
+
+- • Electronic direct marketing in certain situations. We will send you direct marketing messages, for example, when such marketing is related to your position as a potential decision maker in a company or to promote similar products or services that you have previously purchased from us.
+
+**4. Sharing of personal data with third parties**
+
+Although we do a lot ourselves, we also use service providers outside Städafint to process personal data. Below you will find a list of categories of third parties with whom your personal data may be shared. We strive to enter into agreements with all recipients to ensure that your personal data is only used on our behalf.
+
+- • Marketing partners. We transfer personal information to various marketing partners for marketing purposes. For example, we run marketing campaigns where we transfer information related to target groups within marketing segments to systems managed by our partners.
+
+* -Sales partners. We use external sales partners to, for example, conduct sales calls to our existing customers and customers whose subscription is about to expire.
+
+- • IT systems and data center providers. In our operations, we use various IT systems and data center services. For example, we use an email system managed by Google and data centers managed by Google.
+
+- • Social media providers. We use functions within social media in our online services, whereby your personal data may end up with providers of these functions, such as Facebook and Google.
+
+- • Other service providers and subcontractors. In addition to the aforementioned categories, we also use other service providers, as well as subcontractors with whom your personal data may be shared. Such actors who operate outside of Städafint can be, for example, providers of cleaning services, consultants and companies that provide market research and customer surveys.
+
+- • Other situations where your personal data may be disclosed. We may disclose your personal data outside Städafint in other, more unusual situations such as when we collect claims, review potential violations of our terms or to defend legal claims.
+
+We may also disclose your personal data if required by competent authorities under applicable law. These authorities include, for example, tax authorities, the police, bailiffs or supervisory authorities.
+
+In addition, if we sell, merge or otherwise reorganize our business operations, your personal information may be disclosed to potential purchasers or their advisors for the purpose of completing those acquisitions.
+
+We use Google services on our Digital Services to analyze the use of our Digital Services and to conduct marketing outside of our Services. Google uses cookies and similar technologies to collect and receive personal data for personalized advertising and measurements. Read how Google collects and uses personal data:** https://policies.google.com/technologies/partner-sites
+**
+
+**5. Transfer of personal data outside the European**
+**economic cooperation area**
+
+Some of our partners and the IT systems and data centers we use are located outside the European Economic Area. Therefore, your personal data is transferred outside the EEA. In these situations, we intend to take the necessary measures to ensure the high level of protection required by European data protection law after the transfer.
+
+The measures we have implemented include, for example, the use of standard contractual clauses approved and provided by the European Commission as part of the agreements we enter into with recipients of personal data in third-party countries.
+
+Read more about the European Commission's standards for contractual clauses here:** https://ec.europa.eu/info/law/law-topic/data-protection/international-dimension-data-protection/standard-contractual-clauses- scc_en
+**
+
+**6. How long do we keep your personal data?**
+
+We retain your personal data only as long as is necessary to carry out each purpose of the data processing. We usually process your personal data as long as you have a customer relationship with us.
+
+As a company, we must comply with a variety of laws that may require us to process or retain your personal data even after the end of your customer relationship. In such cases, the length of the storage period of your personal data is specified in the applicable law. For example, the Accounting Act requires us to store documents and other accounting documents for at least six years from the end of the year in which the accounting year ended.
+
+If you have given us your consent to receive marketing, we will store, for as long as we have a valid consent, certain information such as your name, email address and telephone number, which is transferred to our marketing register, even if your customer relationship with us has ended.
+
+If you have refused marketing, we will store information about your refusal and your necessary personal data to ensure that we comply with your decision.
+
+Please note that instead of deleting your personal data, we may anonymize your personal data in such a way that the data can no longer be traced back to you.
+
+**7. Your rights as a customer**
+
+Data protection laws guarantee you certain rights regarding the processing of your personal data. Please note that these rights guaranteed by law are not always completely unlimited. For example, we cannot, at your request, delete all of your personal data, as the retention of your personal data may be a legal requirement that we must comply with. For example, accounting legislation requires us to store certain documents that contain personal data.
+
+To exercise your rights, please contact us at email(a)address.com. To prevent your personal data from falling into the wrong hands, please be prepared to prove your identity in connection with your requests.
+
+- • Right of access. You have the right to receive confirmation from us as to whether or not your personal data is being processed and, where appropriate, access to the personal data and a copy of the personal data being processed.
+
+- • Right to correct information. Of course, we intend to ensure that the personal data that is processed is correct and up-to-date. If you discover that personal data about you is incorrect, incomplete or out of date, you can always ask us to correct the information.
+
+- • Right to be forgotten. In certain circumstances, you may ask us to delete personal information about you. Please note that we may not be able to delete information for which there is a legitimate need to store it, such as a specific legal requirement.
+
+- • Right to object to the processing of personal data. You have the right to refuse the processing of your personal data in special situations. However, this does not mean that you have a general right to refuse all processing, but is applied, for example, in situations where the processing of your personal data is based on legitimate interests. In addition, you always have the right to refuse the processing of your personal data for direct marketing purposes.
+
+- • Right to restrict the processing of your personal data. In special situations, it may happen that you ask us to limit the processing of your personal data. You have that right, for example, when you dispute the accuracy of your personal data. At your request, we will limit the processing of your personal data to the data to which you wish to limit it.
+
+- • Right to data portability. You can request that we transfer your personal data to another controller. Please note that such a right only relates to information that is processed in an automated way, which you have provided to us and the data processing is based on your consent or contract.
+
+- • Right to submit a complaint to a supervisory authority. If you suspect that we have processed your personal data in an illegal manner, you always have the right to submit a complaint to the supervisory authority for the processing of personal data.
+
+**8. Updates to this Privacy Policy**
+
+As we are continuously developing our services, we may change or update the content of this privacy policy. Changes can also be based on changes in current legislation.
