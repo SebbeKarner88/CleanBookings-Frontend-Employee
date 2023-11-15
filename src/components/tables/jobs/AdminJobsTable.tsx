@@ -107,7 +107,7 @@ export function AdminJobsTable({jobs, statuses, setTriggerUpdateOfJobs, setIsLoa
                                     <td>{job.jobId}</td>
                                     <td>{job.jobType}</td>
                                     <td>{formatDate(job.date)}</td>
-                                    <td>{convertTimeslot(job.timeslot)}</td>
+                                    <td style={{minWidth: 60}}>{convertTimeslot(job.timeslot)}</td>
                                     <td className={setStatusColor(job.jobStatus)}>{job.jobStatus}</td>
                                     <td>
                                         <Button

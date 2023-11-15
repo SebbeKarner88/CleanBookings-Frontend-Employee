@@ -4,6 +4,8 @@ import {AuthContext} from "../../../context/AuthContext.tsx";
 import {executedCleaningRequest} from "../../../api/CleanerApi.ts";
 import UpdateJobStatusModal from "../../modals/UpdateJobStatusModal.tsx";
 import {AiOutlineCheck} from "react-icons/ai";
+import formatDate from "../../../utils/formatDate.ts";
+import convertTimeslot from "../../../utils/convertTimslot.ts";
 
 type JobStatus = "OPEN" | "ASSIGNED" | "WAITING_FOR_APPROVAL" | "NOT_APPROVED" | "APPROVED" | "CLOSED";
 
@@ -17,6 +19,8 @@ interface IJobsTable {
 interface Job {
     jobId: string,
     jobType: string,
+    date: string,
+    timeslot: string,
     jobStatus: JobStatus,
     jobMessage: string,
     customerId: string,
@@ -62,6 +66,8 @@ export function CleanerJobsTable({jobs, statuses, setTriggerUpdateOfJobs, setIsL
                     <tr>
                         <th scope="col">Job ID</th>
                         <th scope="col">Type</th>
+                        <th scope="col">Date</th>
+                        <th scope="col">Time</th>
                         <th scope="col">Status</th>
                         <th scope="col">Message</th>
                         <th scope="col">Customer ID</th>
@@ -76,6 +82,8 @@ export function CleanerJobsTable({jobs, statuses, setTriggerUpdateOfJobs, setIsL
                                 <tr key={job.jobId} className="align-middle">
                                     <td>{job.jobId}</td>
                                     <td>{job.jobType}</td>
+                                    <td>{formatDate(job.date)}</td>
+                                    <td style={{minWidth: 60}}>{convertTimeslot(job.timeslot)}</td>
                                     <td className={setStatusColor(job.jobStatus)}>
                                         {
                                             job.jobStatus == "ASSIGNED"
