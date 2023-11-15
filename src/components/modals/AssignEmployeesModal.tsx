@@ -7,6 +7,7 @@ interface IAssignEmployeesModal {
     onShow: boolean;
     onClose: () => void;
     jobId: string;
+    timeslot: string;
     setSelectedEmployeeIds: Dispatch<SetStateAction<string[]>>;
     handleAssign: () => void;
     isAssigning: boolean;
@@ -15,7 +16,9 @@ interface IAssignEmployeesModal {
 export default function AssignEmployeesModal({
                                                  onShow,
                                                  onClose,
-                                                 jobId, setSelectedEmployeeIds,
+                                                 jobId,
+                                                 timeslot,
+                                                 setSelectedEmployeeIds,
                                                  handleAssign,
                                                  isAssigning
                                              }: IAssignEmployeesModal) {
@@ -37,6 +40,7 @@ export default function AssignEmployeesModal({
             <Modal.Body className="bg-secondary-subtle">
                 <SelectEmployees
                     jobId={jobId}
+                    timeslot={timeslot}
                     setSelectedEmployeeIds={setSelectedEmployeeIds}
                 />
             </Modal.Body>

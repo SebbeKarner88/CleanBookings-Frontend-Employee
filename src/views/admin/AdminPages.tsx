@@ -17,6 +17,7 @@ type Tab = "jobs" | "customers" | "employees" | "invoices" | "wip";
 interface Job {
     jobId: string,
     jobType: string,
+    timeslot: string,
     jobStatus: JobStatus,
     jobMessage: string,
     customerId: string,

@@ -19,6 +19,7 @@ interface IJobsTable {
 interface Job {
     jobId: string,
     jobType: string,
+    timeslot: string,
     jobStatus: JobStatus,
     jobMessage: string,
     customerId: string,
@@ -28,6 +29,7 @@ interface Job {
 export function AdminJobsTable({jobs, statuses, setTriggerUpdateOfJobs, setIsLoadingJobsData}: IJobsTable) {
     const {employeeId} = useContext(AuthContext);
     const [jobId, setJobId] = useState<string>("");
+    const [timeslot, setTimeslot] = useState<string>("");
     const [selectedEmployeeIds, setSelectedEmployeeIds] = useState<string[]>([]);
     const [showAssignModal, setShowAssignModal] = useState<boolean>(false);
     const [showDeleteModal, setShowDeleteModal] = useState<boolean>(false);
@@ -140,6 +142,7 @@ export function AdminJobsTable({jobs, statuses, setTriggerUpdateOfJobs, setIsLoa
                                                 aria-label="Press button to delete job"
                                                 onClick={() => {
                                                     setJobId(job.jobId);
+                                                    setTimeslot(job.timeslot);
                                                     setShowDeleteModal(true);
                                                 }}
                                             >
@@ -157,6 +160,7 @@ export function AdminJobsTable({jobs, statuses, setTriggerUpdateOfJobs, setIsLoa
             </div>
             <AssignEmployeesModal
                 jobId={jobId}
+                timeslot={timeslot}
                 onShow={showAssignModal}
                 onClose={handleCloseAssignModal}
                 setSelectedEmployeeIds={setSelectedEmployeeIds}

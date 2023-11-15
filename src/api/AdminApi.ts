@@ -1,5 +1,6 @@
 import api from "./ApiRootUrl.ts";
 import {refreshToken} from "./EmployeeApi.ts";
+import {AxiosResponse} from "axios";
 
 export const getAllAdminInvoices = async (employeeId: string) => {
     try {
@@ -106,7 +107,8 @@ export async function getAllJobs(employeeId: string) {
 
 export async function getAllAvailableEmployees(
     employeeId: string,
-    jobId: string
+    jobId: string,
+    timeslot: string
 ) {
     try {
         const response = await api.get(
@@ -114,7 +116,8 @@ export async function getAllAvailableEmployees(
             {
                 params: {
                     employeeId: employeeId,
-                    jobId: jobId
+                    jobId: jobId,
+                    timeslot: timeslot
                 },
                 headers: {
                     "Authorization": `Bearer ${sessionStorage.getItem("access_token")}`
@@ -444,27 +447,23 @@ export async function updateEmployee(
     lastName?: string,
     emailAddress?: string,
     phoneNumber?: string
-) {
-    try {
-        const response = await api.put(
-            "/admin/update-employee",
-            {
-                adminId: adminId,
-                employeeId: employeeId,
-                firstName: firstName,
-                lastName: lastName,
-                emailAddress: emailAddress,
-                phoneNumber: phoneNumber
-            },
-            {
-                headers: {
-                    "Authorization": `Bearer ${sessionStorage.getItem("access_token")}`
-                }
-            });
-        if (response.status == 200) {
-            return response;
+): Promise<AxiosResponse<any, any> | undefined> {
+    return await api.put(
+        "/admin/update-employee",
+        {
+            adminId: adminId,
+            employeeId: employeeId,
+            firstName: firstName,
+            lastName: lastName,
+            emailAddress: emailAddress,
+            phoneNumber: phoneNumber
+        },
+        {
+            headers: {
+                "Authorization": `Bearer ${sessionStorage.getItem("access_token")}`
+            }
         }
-    } catch (error: any) {
+        ).catch(async function (error) {
         if (error.response.status == 401) {
             const response = await refreshToken();
             if (response?.status == 200)
@@ -472,5 +471,5 @@ export async function updateEmployee(
         } else {
             console.error(error);
         }
-    }
+    });
 }

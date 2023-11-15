@@ -17,6 +17,7 @@ interface IJobTab {
 interface Job {
     jobId: string,
     jobType: string,
+    timeslot: string,
     jobStatus: JobStatus,
     jobMessage: string,
     customerId: string,

@@ -4,6 +4,7 @@ import {getAllAvailableEmployees} from "../../../api/AdminApi.ts";
 
 interface ISelectEmployees {
     jobId: string;
+    timeslot: string;
     setSelectedEmployeeIds: Dispatch<SetStateAction<string[]>>
 }
 
@@ -12,7 +13,7 @@ interface Employee {
     name: string
 }
 
-export default function SelectEmployees({ jobId, setSelectedEmployeeIds }: ISelectEmployees) {
+export default function SelectEmployees({ jobId, setSelectedEmployeeIds, timeslot }: ISelectEmployees) {
     const { employeeId } = useContext(AuthContext);
     const [employees, setEmployees] = useState<Employee[]>([]);
 
@@ -21,7 +22,7 @@ export default function SelectEmployees({ jobId, setSelectedEmployeeIds }: ISele
     }, [jobId]);
 
     async function fetchAllAvailableEmployees() {
-        const response = await getAllAvailableEmployees(employeeId, jobId);
+        const response = await getAllAvailableEmployees(employeeId, jobId, timeslot);
         if (response?.status == 200)
             return response.data;
     }
