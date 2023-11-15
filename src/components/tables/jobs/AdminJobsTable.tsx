@@ -6,6 +6,8 @@ import DeleteJobModal from "../../modals/DeleteJobModal.tsx";
 import AssignEmployeesModal from "../../modals/AssignEmployeesModal.tsx";
 import {Button} from "react-bootstrap";
 import {BsDashCircle, BsPlusCircle} from "react-icons/bs";
+import formatDate from "../../../utils/formatDate.ts";
+import convertTimeslot from "../../../utils/convertTimslot.ts";
 
 type JobStatus = "OPEN" | "ASSIGNED" | "WAITING_FOR_APPROVAL" | "NOT_APPROVED" | "APPROVED" | "CLOSED";
 
@@ -19,6 +21,7 @@ interface IJobsTable {
 interface Job {
     jobId: string,
     jobType: string,
+    date: string,
     timeslot: string,
     jobStatus: JobStatus,
     jobMessage: string,
@@ -85,6 +88,8 @@ export function AdminJobsTable({jobs, statuses, setTriggerUpdateOfJobs, setIsLoa
                     <tr>
                         <th scope="col">Job ID</th>
                         <th scope="col">Type</th>
+                        <th scope="col">Date</th>
+                        <th scope="col">Time</th>
                         <th scope="col">Status</th>
                         <th scope="col">Message</th>
                         <th scope="col">Customer ID</th>
@@ -101,6 +106,8 @@ export function AdminJobsTable({jobs, statuses, setTriggerUpdateOfJobs, setIsLoa
                                 <tr key={job.jobId} className="align-middle">
                                     <td>{job.jobId}</td>
                                     <td>{job.jobType}</td>
+                                    <td>{formatDate(job.date)}</td>
+                                    <td>{convertTimeslot(job.timeslot)}</td>
                                     <td className={setStatusColor(job.jobStatus)}>{job.jobStatus}</td>
                                     <td>
                                         <Button
