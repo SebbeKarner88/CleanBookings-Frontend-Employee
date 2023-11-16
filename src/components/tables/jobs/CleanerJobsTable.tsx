@@ -6,6 +6,8 @@ import UpdateJobStatusModal from "../../modals/UpdateJobStatusModal.tsx";
 import {AiOutlineCheck} from "react-icons/ai";
 import formatDate from "../../../utils/formatDate.ts";
 import convertTimeslot from "../../../utils/convertTimslot.ts";
+import {Button} from "react-bootstrap";
+import {BsDashCircle, BsPlusCircle} from "react-icons/bs";
 
 type JobStatus = "OPEN" | "ASSIGNED" | "WAITING_FOR_APPROVAL" | "NOT_APPROVED" | "APPROVED" | "CLOSED";
 
@@ -33,6 +35,22 @@ export function CleanerJobsTable({jobs, statuses, setTriggerUpdateOfJobs, setIsL
     const [showUpdateJobStatusModal, setShowUpdateJobStatusModal] = useState<boolean>(false);
     const handleCloseJobStatusModal = () => setShowUpdateJobStatusModal(false);
     const [isUpdating, setIsUpdating] = useState<boolean>(false);
+    const [expandedRowsMessages, setExpandedRowsMessages] = useState<Record<string, boolean>>({});
+    const [expandedRowsCustomerIds, setExpandedRowsCustomerIds] = useState<Record<string, boolean>>({});
+
+    function toggleRowExpansionMessages(id: string) {
+        setExpandedRowsMessages((prevExpandedRows) => ({
+            ...prevExpandedRows,
+            [id]: !prevExpandedRows[id],
+        }));
+    }
+
+    function toggleRowExpansionCustomerIds(id: string) {
+        setExpandedRowsCustomerIds((prevExpandedRows) => ({
+            ...prevExpandedRows,
+            [id]: !prevExpandedRows[id],
+        }));
+    }
 
     async function handleStatusChange() {
         setIsUpdating(true);
@@ -100,8 +118,34 @@ export function CleanerJobsTable({jobs, statuses, setTriggerUpdateOfJobs, setIsL
                                                 : job.jobStatus
                                         }
                                     </td>
-                                    <td>{job.jobMessage}</td>
-                                    <td>{job.customerId}</td>
+                                    <td>
+                                        <Button
+                                            type="button"
+                                            variant="btn-link"
+                                            className="text-start focus-ring focus-ring-light"
+                                            onClick={() => toggleRowExpansionMessages(job.jobId)}
+                                            aria-label={expandedRowsMessages[job.jobId] ? "Hide messages" : "Show messages"}>
+                                            {
+                                                expandedRowsMessages[job.jobId]
+                                                    ? <>{job.jobMessage ? job.jobMessage : "No messages"} <BsDashCircle className="float-end"/></>
+                                                    : <BsPlusCircle />
+                                            }
+                                        </Button>
+                                    </td>
+                                    <td>
+                                        <Button
+                                            type="button"
+                                            variant="btn-link"
+                                            className="text-start focus-ring focus-ring-light"
+                                            onClick={() => toggleRowExpansionCustomerIds(job.jobId)}
+                                            aria-label={expandedRowsCustomerIds[job.jobId] ? "Minimize job ID" : "Show full job ID"}>
+                                            {
+                                                expandedRowsCustomerIds[job.jobId]
+                                                    ? <>{job.customerId} <BsDashCircle className="float-end"/></>
+                                                    : <>{job.customerId.substring(0, 7)}... <BsPlusCircle /></>
+                                            }
+                                        </Button>
+                                    </td>
                                     <td>
                                         {job.employees.join(", ")}
                                     </td>

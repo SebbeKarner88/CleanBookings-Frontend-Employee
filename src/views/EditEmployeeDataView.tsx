@@ -2,13 +2,13 @@
 // import NavBar from "../common/NavBar.tsx";
 // import {Footer} from "../common/Footer.tsx";
 // import FormEditEmployeeData from "./forms/FormEditEmployeeData.tsx";
-import {FormUpdateEmployee} from "./forms/FormUpdateEmployee.tsx";
+import {FormUpdateEmployee} from "../components/forms/FormUpdateEmployee.tsx";
 import {Button, Modal} from "react-bootstrap";
 import {useContext, useState} from "react";
 import {AuthContext} from "../context/AuthContext.tsx";
 import {useNavigate} from "react-router-dom";
-import FormUpdatePassword from "./forms/FormUpdatePassword.tsx";
-import {NavBar} from "./common/NavBar.tsx";
+import FormUpdatePassword from "../components/forms/FormUpdatePassword.tsx";
+import {NavBar} from "../components/common/NavBar.tsx";
 
 const EditEmployeeDataView = () => {
     const {employeeId} = useContext(AuthContext);

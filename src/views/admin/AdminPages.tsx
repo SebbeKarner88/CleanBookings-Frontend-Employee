@@ -3,20 +3,18 @@ import {useContext, useEffect, useState} from "react";
 import {AuthContext} from "../../context/AuthContext.tsx";
 import {getAllJobs} from "../../api/AdminApi.ts";
 import {CustomersTable} from "../../components/tables/customers/CustomersTable.tsx";
-import {Button, Tab, Tabs} from "react-bootstrap";
+import {Tab, Tabs} from "react-bootstrap";
 import InvoiceTab from "./tabs/InvoiceTab.tsx";
-// import EmployeeCleaningsPerType from "../../components/EmployeeCleaningsPerType.tsx";
 import JobTab from "./tabs/JobTab.tsx";
 import EmployeeTab from "./tabs/EmployeeTab.tsx";
-import { Link } from "react-router-dom";
-import { IoSettingsOutline } from "react-icons/io5";
 
 type JobStatus = "OPEN" | "ASSIGNED" | "WAITING_FOR_APPROVAL" | "NOT_APPROVED" | "APPROVED" | "CLOSED";
-type Tab = "jobs" | "customers" | "employees" | "invoices" | "wip";
+type Tab = "jobs" | "customers" | "employees" | "invoices";
 
 interface Job {
     jobId: string,
     jobType: string,
+    date: string,
     timeslot: string,
     jobStatus: JobStatus,
     jobMessage: string,
@@ -60,15 +58,6 @@ export default function AdminPages() {
             <p className="text-info my-3 my-md-0 mx-2 mx-md-3">Signed in as: {username.toLowerCase()}</p>
             <h1 className="text-md-center fw-bold my-3 mb-md-5 mx-2">Admin Dashboard</h1>
 
-            <Link to="/my-pages/employee-settings">
-                    <Button size="lg" variant="btn-link" className="btn-dark-purple m-3">
-                        <IoSettingsOutline
-                            color="var(--beige)"
-                            size={30}
-                            aria-label="Inställningar" />
-                    </Button>
-                </Link>
-
             <Tabs
                 id="admin-dashboard"
                 activeKey={key}
@@ -99,8 +88,6 @@ export default function AdminPages() {
                 </Tab>
                 <Tab eventKey="invoices" title="Invoices">
                     <InvoiceTab isActive={key == "invoices"} />
-                </Tab>
-                <Tab eventKey="wip" title="Work-in-progress">
                 </Tab>
             </Tabs>
         </div>

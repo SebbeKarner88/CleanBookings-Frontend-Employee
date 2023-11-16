@@ -2,6 +2,8 @@ import {useContext} from 'react'
 import {Link, useNavigate} from "react-router-dom";
 import {AuthContext} from "../../context/AuthContext.tsx";
 import {logout} from "../../api/EmployeeApi.ts";
+import {Button} from "react-bootstrap";
+import {IoSettingsOutline} from "react-icons/io5";
 
 export function NavBar() {
     const {
@@ -37,6 +39,15 @@ export function NavBar() {
                     </h1>
                     <div>
                         <ul className="navbar-nav">
+                            <li className="nav-link">
+                                    <Button
+                                        variant="btn-link"
+                                        className="focus-ring focus-ring-light"
+                                        onClick={() => navigation("/my-pages/employee-settings")}
+                                    >
+                                        <IoSettingsOutline size={30} aria-label="Inställningar" />
+                                    </Button>
+                            </li>
                             { role == "client_admin" &&
                                 <li className="nav-link">
                                 <div className="dropdown">

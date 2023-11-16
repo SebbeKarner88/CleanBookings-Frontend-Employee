@@ -39,10 +39,18 @@ export function AdminJobsTable({jobs, statuses, setTriggerUpdateOfJobs, setIsLoa
     const handleCloseAssignModal = () => setShowAssignModal(false);
     const handleCloseDeleteModal = () => setShowDeleteModal(false);
     const [isAssigning, setIsAssigning] = useState<boolean>(false);
-    const [expandedRows, setExpandedRows] = useState<Record<string, boolean>>({});
+    const [expandedRowsMessages, setExpandedRowsMessages] = useState<Record<string, boolean>>({});
+    const [expandedRowsCustomerIds, setExpandedRowsCustomerIds] = useState<Record<string, boolean>>({});
 
-    function toggleRowExpansion(id: string) {
-        setExpandedRows((prevExpandedRows) => ({
+    function toggleRowExpansionMessages(id: string) {
+        setExpandedRowsMessages((prevExpandedRows) => ({
+            ...prevExpandedRows,
+            [id]: !prevExpandedRows[id],
+        }));
+    }
+
+    function toggleRowExpansionCustomerIds(id: string) {
+        setExpandedRowsCustomerIds((prevExpandedRows) => ({
             ...prevExpandedRows,
             [id]: !prevExpandedRows[id],
         }));
@@ -114,16 +122,29 @@ export function AdminJobsTable({jobs, statuses, setTriggerUpdateOfJobs, setIsLoa
                                         type="button"
                                         variant="btn-link"
                                         className="text-start focus-ring focus-ring-light"
-                                        onClick={() => toggleRowExpansion(job.jobId)}
-                                        aria-label={expandedRows[job.jobId] ? "Hide messages" : "Show messages"}>
+                                        onClick={() => toggleRowExpansionMessages(job.jobId)}
+                                        aria-label={expandedRowsMessages[job.jobId] ? "Hide messages" : "Show messages"}>
                                         {
-                                            expandedRows[job.jobId]
+                                            expandedRowsMessages[job.jobId]
                                                 ? <>{job.jobMessage ? job.jobMessage : "No messages"} <BsDashCircle className="float-end"/></>
                                                 : <BsPlusCircle />
                                         }
                                     </Button>
                                     </td>
-                                    <td>{job.customerId}</td>
+                                    <td>
+                                        <Button
+                                            type="button"
+                                            variant="btn-link"
+                                            className="text-start focus-ring focus-ring-light"
+                                            onClick={() => toggleRowExpansionCustomerIds(job.jobId)}
+                                            aria-label={expandedRowsCustomerIds[job.jobId] ? "Minimize job ID" : "Show full job ID"}>
+                                            {
+                                                expandedRowsCustomerIds[job.jobId]
+                                                    ? <>{job.customerId} <BsDashCircle className="float-end"/></>
+                                                    : <>{job.customerId.substring(0, 12)}... <BsPlusCircle /></>
+                                            }
+                                        </Button>
+                                    </td>
                                     <td>
                                         {job.employees.length === 0 || job.jobStatus === "NOT_APPROVED" ? (
                                             <button

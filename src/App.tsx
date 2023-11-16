@@ -14,7 +14,7 @@ import RegisterAdminView from "./views/register/RegisterAdminView.tsx";
 import RegisterCleanerView from "./views/register/RegisterCleanerView.tsx";
 import { FormUpdateEmployee } from "./components/forms/FormUpdateEmployee.tsx";
 import EmployeeSettingsView from "./views/EmployeeSettingsView.tsx";
-import EditEmployeeDataView from "./components/EditEmployeeDataView.tsx";
+import EditEmployeeDataView from "./views/EditEmployeeDataView.tsx";
 
 function App() {
     const { isAuthenticated } = useContext(AuthContext);
