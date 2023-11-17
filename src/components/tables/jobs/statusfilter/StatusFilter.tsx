@@ -59,7 +59,7 @@ export default function StatusFilter({selectedStatus, setSelectedStatus}: IStatu
                 >
                     Clear filter
                 </button>
-                <ul className="dropdown-menu p-3 p-md-4 bg-dark-subtle" style={{minWidth: "76vw", maxWidth: "1300px"}}>
+                <ul className="dropdown-menu p-3 p-md-4 bg-dark-subtle" style={{width: "270px"}}>
                     <div className="row">
                         <div className="col-md-4">
                             <StatusFilterDropDownLabel
@@ -123,48 +123,6 @@ export default function StatusFilter({selectedStatus, setSelectedStatus}: IStatu
                                     selectedStatus={selectedStatus}
                                     onChange={handleCheckboxChange}
                                 />
-                            </li>
-                        </div>
-                        <div className="col-md-4">
-                            <li>
-                                {/* TODO: Add logic for clearing all job types */}
-                                <StatusFilterDropDownLabel
-                                    label="JOB TYPE"
-                                    onClear={() => console.log("Clearing")}
-                                />
-                            </li>
-                            <li>
-                                <hr className="dropdown-divider"/>
-                            </li>
-                            {/* TODO: Add CheckAllBox-component */}
-                            <li className="dropdown-item">
-                                <div className="form-check">
-                                    <input id="type1" className="form-check-input" type="checkbox"/>
-                                    <label htmlFor="type1" className="form-check-label">
-                                        Type 1
-                                    </label>
-                                </div>
-                            </li>
-                        </div>
-                        <div className="col-md-4">
-                            <li>
-                                {/* TODO: Add logic for clearing all employees */}
-                                <StatusFilterDropDownLabel
-                                    label="EMPLOYEE"
-                                    onClear={() => console.log("Clearing")}
-                                />
-                            </li>
-                            <li>
-                                <hr className="dropdown-divider"/>
-                            </li>
-                            {/* TODO: Add CheckAllBox-component */}
-                            <li className="dropdown-item">
-                                <div className="form-check">
-                                    <input id="customer1" className="form-check-input" type="checkbox"/>
-                                    <label htmlFor="customer1" className="form-check-label">
-                                        Employee 1
-                                    </label>
-                                </div>
                             </li>
                         </div>
                     </div>
